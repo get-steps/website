@@ -1,0 +1,38 @@
+{% if section.settings.display_sticky_cta %}
+<section class="pxl-sticky-cta">
+  <a class="btn" href="{{ section.settings.sticky_cta_link }}">
+    {{ section.settings.sticky_cta_label }}
+ </a>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Sticky CTA",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "display_sticky_cta",
+      "default": true,
+      "label": "Enable sticky CTA at bottom of viewport (mobile)"
+    },
+    {
+      "type": "text",
+      "id": "sticky_cta_label",
+      "default": "Jezt Bestellen",
+      "label": "text to display in the CTA"
+    },
+    {
+      "type": "url",
+      "id": "sticky_cta_link",
+      "label": "link for CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky CTA",
+      "category": "CTA"
+    }
+  ]
+}
+{% endschema %}

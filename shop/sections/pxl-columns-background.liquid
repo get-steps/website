@@ -1,0 +1,124 @@
+
+<h3 data-aos-duration="500" data-aos="fade-up">{{ section.settings.title }}</h3>
+<div class="pxl-columns-background-content three-steps">
+  {% for block in section.blocks %}
+  <div class="pxl-columns-background-content-block"
+    data-aos-duration="500"
+    data-aos="fade-up"
+    style="z-index: {{4 | minus: forloop.index0}};"
+  >
+   <h4>{{ block.settings.title }}</h4>
+    <p>{{ block.settings.blurb }}</p>
+
+
+    {% case forloop.index %}
+      {% when 1 %}
+         <img src="{{ 'step-1.svg' | asset_url }}" alt="Three steps icon" class="three-steps__icon-mob three-steps__icon-mob--s1">
+      {% when 2 %}
+         <img src="{{ 'step-2.svg' | asset_url }}" alt="Three steps icon" class="three-steps__icon-mob three-steps__icon-mob--s2">
+      {% when 3 %}
+         <img src="{{ 'step-3.svg' | asset_url }}" alt="Three steps icon" class="three-steps__icon-mob three-steps__icon-mob--s3">
+         <img src="{{ 'step-4.svg' | asset_url }}" alt="Three steps icon" class="three-steps__icon-mob three-steps__icon-mob--s4">
+    {% endcase %}
+  </div>
+  {% endfor %}
+
+  {% comment %}
+    TODO
+    Change to section setting text capturing for asset name
+  {% endcomment %}
+
+  <div class="pxl-columns-background pxl-columns-background-landscape">
+    <img src="{{ 'three-steps-landscape.svg' | asset_url }}" alt="Three steps">
+  </div>
+
+  {% comment %}
+  <div class="pxl-columns-background pxl-columns-background-portrait">
+    <img src="{{ 'three-steps-portrait.svg' | asset_url }}" alt="Three steps">
+  </div>
+  {% endcomment %}
+</div>
+
+<a class="btn btn--large btn--secondary caps pxl-fancy-button"
+  href="{{ section.settings.cta_link }}"
+  data-aos="fade-up"
+  data-aos-duration="700"
+  data-aos-delay="200">
+  {{ section.settings.cta_link_text | escape }}
+  <div class="pxl-fancy-button-svg">
+    {% render 'pxl_fancy_button.liquid' %}
+  </div>
+</a>
+
+{% schema %}
+{
+  "name": "Columns with background",
+  "class": "s-pxl-columns-background",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_link_text",
+      "label": "Button link text",
+      "default": "Jetzt Bestellen"
+    },
+    {
+      "type": "image_picker",
+      "id": "landscape_background",
+      "label": "Landscape graphic (desktop..)"
+    },
+    {
+      "type": "image_picker",
+      "id": "portrait_background",
+      "label": "Portrait graphic (mobile..)"
+    }
+  ],
+  "blocks": [
+      {
+        "type": "text",
+        "name": "Text block",
+        "settings": [
+          {
+            "type": "header",
+            "content": "text"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Caption for image"
+          },
+          {
+            "type": "textarea",
+            "id": "blurb",
+            "label": "Blurb text for column"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Columns with background",
+      "category": "text",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+  }]
+}
+{% endschema %}

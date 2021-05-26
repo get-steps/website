@@ -1,0 +1,21 @@
+.pxl-sticky-cta {
+  align-items: center;
+  background-color: $brand;
+  bottom: 0;
+  display: flex;
+  height: $sticky-cta-height;
+  padding: $sticky-button-padding;
+  position: fixed;
+  width: 100%;
+  z-index: base_index(sticky-nav);
+
+  .btn {
+    @extend %button;
+    @extend %button-full-width;
+    @extend %brand-highlight-button;
+  }
+
+  @include breakpoint(medium up) {
+    display: none;
+  }
+}

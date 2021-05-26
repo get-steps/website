@@ -1,0 +1,137 @@
+<div class="popup-type">
+  <!-- popup-type--visible -->
+  <div class="popup-type__btn">
+    <img src="{{ 'i-close.svg' | asset_url }}" alt="" class="popup-type__btn-icon">
+    <div class="popup-type__btn-label popup-type__btn-label--desktop">{{section.settings.btn_d}}</div>
+    <div class="popup-type__btn-label popup-type__btn-label--mobile">{{section.settings.btn_m}}</div>
+  </div>
+
+  <div class="popup-type__overlay"></div>
+
+  <div class="popup-type__body">
+    <h2 class="popup-type__title">{{section.settings.title}}</h2>
+    <p class="popup-type__text">{{section.settings.text | newline_to_br }}</p>
+    <img src="{{ 'popup-deco-arrow.svg' | asset_url }}" alt="" class="popup-type__deco">
+    
+    <div class="popup-type__slider">
+      
+    </div>
+
+    <div class="popup-type__grid">
+
+      {% for block in section.blocks %}
+
+        <div class="popup-type__col">
+          <div class="popup-type__item">
+            <div class="popup-type__shoes">
+
+              {% assign icons = block.settings.icons | split: ',' %}
+
+              {% for icon in icons %}
+                {% assign icon_name = 'type-shoes-' %}
+                {% assign icon_name = icon_name | append: icon %}
+                {% assign icon_name = icon_name | append: '.svg' %}
+
+                <img src="{{ icon_name | asset_url }}" alt="" class="popup-type__shoes-icon">
+              {% endfor %}
+            </div>
+
+            <div class="popup-type__desc">{{block.settings.desc}}</div>
+
+            <img src="{{ block.settings.insole_img | img_url: 'master' }}" alt="" class="popup-type__insole">
+
+            <div class="popup-type__height-items">
+
+              {% if block.settings.height1 != blank %}
+                <div class="popup-type__height">
+                  <img src="{{ 'i-insole-height.svg' | asset_url }}" alt="" class="popup-type__height-img">
+                  <div class="popup-type__height-label">{{block.settings.height1}}</div>
+                </div>
+              {% endif %}
+
+              {% if block.settings.height2 != blank %}
+                <div class="popup-type__height">
+                  <img src="{{ 'i-insole-height.svg' | asset_url }}" alt="" class="popup-type__height-img">
+                  <div class="popup-type__height-label">{{block.settings.height2}}</div>
+                </div>
+              {% endif %}
+              
+            </div>
+            
+            <p class="popup-type__sub">{{block.settings.sub | newline_to_br}}</p>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Insoles popup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_d",
+      "label": "Button label - desktop"
+    },
+    {
+      "type": "text",
+      "id": "btn_m",
+      "label": "Button label - mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide/column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icons",
+          "label": "Shoes icons id"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Shoes types text"
+        },
+        
+        {
+          "type": "image_picker",
+          "id": "insole_img",
+          "label": "Insole image"
+        },
+        {
+          "type": "text",
+          "id": "height1",
+          "label": "Insole height value (1)"
+        },
+        {
+          "type": "text",
+          "id": "height2",
+          "label": "Insole height value (2)"
+        },
+        {
+          "type": "textarea",
+          "id": "sub",
+          "label": "Insole text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

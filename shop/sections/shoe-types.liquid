@@ -1,0 +1,53 @@
+{% assign current = product.selected_or_first_available_variant %}
+{% assign currentType = current.option1 | handleize %}
+
+<div class="shoe-types">
+  {% for block in section.blocks %}
+    {% assign titleHandled = block.settings.title | handleize %}
+
+    {% if currentType == titleHandled %}
+      {% assign class = "conf__content--active" %}
+    {% else %}
+      {% assign class = "" %}
+    {% endif %}
+
+    <div class="conf__content {{class}}" data-type='{{block.settings.title | handleize}}'>
+      <div class="conf__content-title">{{block.settings.desc_title}}</div>
+      <div class="conf__content-text">
+        {{block.settings.text}}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+
+{
+  "name": "Shoe types",
+  "blocks": [
+    {
+      "type": "shoe_type",
+      "name": "Shoe type",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product type name"
+        },
+        {
+          "type": "text",
+          "id": "desc_title",
+          "label": "Description title"
+        },
+        
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description text"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

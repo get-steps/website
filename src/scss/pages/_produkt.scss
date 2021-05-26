@@ -1,0 +1,186 @@
+.s-pxl-page-produkt-page {
+  /* stylelint-disable max-nesting-depth */
+  // Cleaner in areas with 4 nested than breaking out again
+  // Overriding current theme + &- directive + breakpoint
+  .pxl-page-hero {
+    display: flex;
+
+    &-image-container {
+      display: flex;
+      flex-direction: column;
+      order: 1;
+
+      @include breakpoint(large up) {
+        flex-direction: row;
+        max-height: 90%;
+        order: 2;
+      }
+    }
+
+    &-grouping {
+      display: flex;
+      flex-direction: column;
+      order: 2;
+
+      @include breakpoint(large up) {
+        order: 1;
+        width: 59%;
+      }
+
+      &-first {
+        @include breakpoint(large up) {
+          padding-top: 20px;
+        }
+      }
+
+      &-heading {
+        text-align: center;
+        width: 100%;
+        @include breakpoint(large up) {
+          text-align: left;
+          width: 68%;
+        }
+      }
+    }
+
+    .hero__content {
+      box-shadow: none;
+      flex-direction: column;
+      margin: auto 0;
+
+      @include breakpoint(large up) {
+        flex-direction: row;
+        margin: 0;
+        padding: 20vh 0 40px;
+      }
+    }
+
+    &-left-heading {
+      display: flex;
+      flex-direction: column;
+      order: 2;
+      width: 100%;
+
+      @include breakpoint(large up) {
+        height: 100%;
+        order: 1;
+        width: 60%;
+      }
+    }
+
+    &-left-heading-top {
+      height: auto;
+
+      @include breakpoint(large up) {
+        height: 80vh;
+      }
+
+      > h1 {
+        margin-bottom: 90px;
+        padding-top: 20px;
+
+        @include breakpoint(large up) {
+          padding-top: 90px;
+        }
+      }
+    }
+
+    &-left-heading-top-cta {
+      display: none;
+      margin-bottom: 10vh;
+
+      @include breakpoint(large up) {
+        display: flex;
+      }
+
+      > a {
+        width: 275px;
+        @extend %steps-button;
+        @extend %fancy-button;
+
+        .pxl-fancy-button-svg {
+          left: -50%;
+        }
+      }
+    }
+
+    &-left-heading-bottom {
+      height: 70%;
+      width: 100%;
+    }
+
+    &-right-image {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      max-height: 100%;
+      order: 1;
+
+      > img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      @include breakpoint(medium down) {
+        height: 46vh;
+      }
+
+      @include breakpoint(large up) {
+        max-height: unset;
+        order: 2;
+        width: 40%;
+
+        > img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  /* stylelint-enable max-nesting-depth */
+}
+
+.template-page.produkt {
+  .pxl-steps-columns {
+    background-color: $brand;
+  }
+
+  .are-steps-for-me {
+    background-color: $brand;
+    padding-bottom: 70px;
+
+    @include breakpoint(medium down) {
+      padding-bottom: 50px;
+    }
+
+    &,
+    .rich-text__content > h3,
+    .rich-text__content > p strong,
+    .rich-text__content > p {
+      color: $black !important;
+    }
+  }
+
+  .pxl-mid-slideshow {
+    @include breakpoint(small only) {
+      padding: 20px 0;
+    }
+  }
+
+  .homepage-slideshow {
+    @include breakpoint(large down) {
+      .slideshow__arrow {
+        display: none !important;
+      }
+    }
+
+    .slick-dots {
+      margin-top: 8px;
+
+      li button::before {
+        color: $white !important;
+        font-size: 16px;
+      }
+    }
+  }
+}

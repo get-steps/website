@@ -1,0 +1,44 @@
+<section class="infoblock">
+  <div class="section-width-wrapper">
+    <h2 class="infoblock__title" data-aos-duration="500" data-aos="fade-up">{{section.settings.title}}</h2>
+    <div class="infoblock__text" data-aos-duration="500" data-aos="fade-up">{{section.settings.text}}</div>
+    <div class="infoblock__btn-wrapper" data-aos-duration="500" data-aos="fade-up">
+      <button class="infoblock__btn about__btn hero__btn btn btn--large btn--secondary caps pxl-fancy-button">
+        <a href="{{section.settings.btn_url}}">{{section.settings.btn_label}}</a>
+        <div class="pxl-fancy-button-svg">
+          {% render 'pxl_fancy_button.liquid', fill: 'white', class: 'four-images-fancy-button' %}
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Text info block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    }
+  ]
+}
+{% endschema %}

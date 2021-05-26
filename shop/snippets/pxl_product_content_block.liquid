@@ -1,0 +1,15 @@
+{%- if section.settings.enable_content_blocks and section.blocks.size > 0 -%}
+  <div class="pxl-product-content-blocks">
+    <h2>{{ section.settings.content_blocks_heading }}</h2>
+    <div class="pxl-product-content-blocks-flex-wrapper">
+    {%- for block in section.blocks -%}
+      {%- if block.type == "content_block" -%}
+        <div class="pxl-product-content-block">
+          <h3>{{ block.settings.title }}</h3>
+          <div class="pxl-product-content-block-body">{{ block.settings.raw_content }}</div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  </div>
+{%- endif -%}

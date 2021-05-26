@@ -1,0 +1,157 @@
+.foot {
+  background-color: #e0cbba;
+  overflow: hidden;
+  padding: 0 50px;
+
+  @include breakpoint(medium down) {
+  }
+  @include breakpoint(small down) {
+    padding: 22px 28px 0;
+  }
+
+  &__grid {
+    display: flex;
+    margin: 0 -7px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      flex-wrap: wrap;
+    }
+  }
+  &__col {
+    order: 1;
+    padding: 0 7px;
+
+    @include breakpoint(small down) {
+      padding: 0;
+    }
+  }
+
+  &__pictures {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    user-select: none;
+    width: 60%;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: flex;
+      justify-content: center;
+      order: 2;
+      padding: 0;
+      width: 100%;
+      width: calc(100% + 56px);
+    }
+  }
+  &__figure {
+    position: relative;
+    width: calc(100% + 100px);
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      flex-shrink: 0;
+    }
+  }
+  &__image-main {
+    width: 100%;
+  }
+  &__image-arrows {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  &__image-over {
+    max-width: 286px;
+    position: absolute;
+    right: 8px;
+    top: 47%;
+    transform: translate(50%, -50%) !important;
+
+    &.aos-animate {
+      transform: translate(0%, -50%) !important;
+
+      @include breakpoint(small down) {
+        transform: translate(0, 0) !important;
+      }
+    }
+
+    @include breakpoint(medium down) {
+      width: 36%;
+    }
+    @include breakpoint(small down) {
+      right: 6px;
+      top: -14px;
+      transform: translate(50%, 0) !important;
+      width: 48.5%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: center;
+    padding-bottom: 70px;
+    width: 40%;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 36px;
+      padding-bottom: 0;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  &__content {
+    padding-left: 24px;
+    padding-top: 24px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      padding: 0;
+    }
+  }
+  &__title {
+    margin-bottom: 28px;
+
+    @include breakpoint(small down) {
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+  }
+  &__subtitle {
+    font-weight: bold !important;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  &__text {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      // padding: 0 20px;
+      padding: 0;
+    }
+
+    p {
+    }
+    p + p {
+      margin-top: 1em;
+    }
+  }
+}
+
+/*
+@include breakpoint(medium down) {
+  
+}
+@include breakpoint(small down) {
+  
+}
+*/

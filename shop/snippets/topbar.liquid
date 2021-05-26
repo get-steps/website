@@ -1,0 +1,30 @@
+{% assign bar_visible = false %}
+{% if template == 'index' and section.settings.topbar_index == true %}
+  {% assign bar_visible = true %}
+  <div class="topbar" style="background-color: {{ section.settings.topbar_bgcolor }}; color: {{section.settings.topbar_color}}">
+    <div class="topbar__inner">
+      {{section.settings.topbar_index_text}}
+    </div>
+  </div>
+{% elsif template == 'cart' and section.settings.topbar_cart == true %}
+  {% assign bar_visible = true %}
+  <div class="topbar" style="background-color: {{ section.settings.topbar_bgcolor }}; color: {{section.settings.topbar_color}}">
+    <div class="topbar__inner">
+      {{section.settings.topbar_cart_text}}
+    </div>
+  </div>
+{% elsif template == 'product.custom' and section.settings.topbar_product == true %}
+  {% assign bar_visible = true %}
+  <div class="topbar" style="background-color: {{ section.settings.topbar_bgcolor }}; color: {{section.settings.topbar_color}}">
+    <div class="topbar__inner">
+      {{section.settings.topbar_product_text}}
+    </div>
+  </div>
+{% elsif template != 'product.custom' and template != 'cart' and template != 'index' and section.settings.topbar_global == true %}
+  {% assign bar_visible = true %}
+  <div class="topbar" style="background-color: {{ section.settings.topbar_bgcolor }}; color: {{section.settings.topbar_color}}">
+    <div class="topbar__inner">
+      {{section.settings.topbar_global_text}}
+    </div>
+  </div>
+{% endif %}

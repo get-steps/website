@@ -1,0 +1,156 @@
+{%comment%}
+<div class="section-width-wrapper">
+  <div class="pxl-four-images-title">
+    <h2 class="h1">{{ section.settings.title }}</h2>
+    <p>{{ section.settings.blurb }}</p>
+  </div>
+
+  <div class="pxl-four-images">
+    <div class="pxl-four-images-left-side">
+      <h2 class="h1">{{ section.settings.title }}</h1>
+      <p>{{ section.settings.blurb }}</p>
+      <button class="hero__btn btn btn--large btn--secondary caps pxl-fancy-button">
+        <a href="{{ section.settings.cta_link }}">
+          {{ section.settings.cta_link_text | escape }}
+        </a>
+        <div class="pxl-fancy-button-svg">
+          {% render 'pxl_fancy_button.liquid', fill: 'black', class: 'four-images-fancy-button' %}
+        </div>
+      </button>
+    </div>
+
+    <div class="pxl-four-images-right-side">
+      {% for block in section.blocks %}
+        <div class="pxl-four-images-image-block">
+          <img src="{{ block.settings.image | img_url: '1440x' }}" alt="{{ block.settings.image.alt | default: section.settings.title }}" class="responsive-wide-image"/>
+          <span class="caption">{{ block.settings.caption }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{%endcomment%}
+
+<section class="about">
+  <div class="section-width-wrapper">
+    <h2 class="about__title h2">{{ section.settings.title }}</h2>
+    <p class="about__text">{{ section.settings.blurb }}</p>
+    <div class="about__grid">
+      {% for block in section.blocks %}
+        <div class='about__col'>
+          <div class="about__item">
+            <img src="{{ block.settings.image | img_url: '570x' }}" alt="{{ block.settings.image.alt | default: section.settings.title }}" class="about__item-img"/>
+            <div class="about__item-content">
+              <h3 class="about__item-title">{{ block.settings.caption }}</h3>
+              <p class="about__item-text">{{ block.settings.desc }}</p>
+              <!-- <p class="about__item-text">Maßgefertigte orthopädische Schuheinlagen können Fuß-, Knie-, Hüft- und Rückenschmerzen nicht nur verhindern, sondern auch langfristig vorbeugen.</p>
+               -->
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="about__slider">
+      {% for block in section.blocks %}
+        <div class="about__slide">
+          <div class="about__slide-inner">
+            <figure class="about__slide-figure">
+              <img src="{{ block.settings.image | img_url: '570x' }}" alt="Get steps {{ block.settings.caption }}" class="about__slide-img">
+            </figure>
+            <div class="about__slide-content">
+              <h3 class="about__slide-title">{{ block.settings.caption }}</h3>
+              <p class="about__slide-text">{{ block.settings.desc }}</p>
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %}
+    </div>
+
+    <div class="about__btn-wrapper">
+      <button class="about__btn hero__btn btn btn--large btn--secondary caps pxl-fancy-button">
+        <a href="{{ section.settings.cta_link }}">
+          {{ section.settings.cta_link_text | escape }}
+        </a>
+        <div class="pxl-fancy-button-svg">
+          {% render 'pxl_fancy_button.liquid', fill: 'black', class: 'four-images-fancy-button' %}
+        </div>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+{% schema %}
+
+{
+  "name": "Four images",
+  "class": "s-pxl-four-images",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    }, {
+      "type": "textarea",
+      "id": "blurb",
+      "label": "Blurb text",
+      "default": "Some longer description text here"
+    }, {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Link"
+    }, {
+      "type": "text",
+      "id": "cta_link_text",
+      "label": "Button link text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image"
+        }, {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Match size to other slides"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption for image"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Item text description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FourImages",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        }, {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,15 @@
+.reviews-list {
+  margin-bottom: 50px;
+  padding-top: 50px;
+
+  &__title {
+    font-size: 39px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include breakpoint(small down) {
+      font-size: 24px;
+      margin-bottom: 41px;
+    }
+  }
+}

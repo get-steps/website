@@ -1,0 +1,60 @@
+.template-page {
+  .pxl-page-hero {
+    margin-bottom: 20px;
+
+    .hero__content__wrapper {
+      @include breakpoint(large up) {
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 60px;
+      max-width: 100%;
+      padding-top: 20vh;
+
+      .hero__title {
+        padding: 0 20px 50px;
+
+        @include breakpoint(large up) {
+          padding: 0 0 50px;
+        }
+      }
+
+      @include breakpoint(large up) {
+        padding-top: 22vh;
+      }
+
+      @media (max-height: 500px) {
+        padding-top: 40vh;
+      }
+    }
+
+    .hero__btn {
+      margin-top: 100px;
+      max-width: 275px;
+
+      @extend %button;
+      @extend %brand-highlight-button;
+    }
+
+    @include breakpoint(small only) {
+      .hero__btn {
+        display: none;
+      }
+    }
+  }
+
+  h1,
+  .h1 {
+    text-align: center;
+
+    @include breakpoint(large up) {
+      text-align: left;
+    }
+  }
+}

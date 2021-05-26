@@ -1,0 +1,154 @@
+// Hero / h1 - from UI kit in designs
+%header-font-style {
+  color: $brand-dark;
+  font-family: $font-family-heavy;
+  font-size: rem-calc(45px);
+  font-weight: normal;
+  font-weight: 900;
+
+  @include breakpoint(large up) {
+    font-size: rem-calc(60px);
+  }
+
+  @include breakpoint(xlarge up) {
+    font-size: rem-calc(90px);
+  }
+}
+
+// h2
+%subheader-font-style {
+  color: $black;
+  font-family: $font-family-bold;
+  font-size: rem-calc(40px);
+  font-weight: 700;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(30px);
+  }
+
+  &-white {
+    @extend %subheader-font-style;
+    color: $white;
+  }
+}
+
+// h3
+%midheader-font-style {
+  color: $black;
+  font-family: $font-family-bold;
+
+  font-size: rem-calc(25px);
+  font-weight: 700;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(24px);
+  }
+}
+
+// body
+%body-text-font-style {
+  color: $black;
+  font-family: $font-family-primary;
+  font-size: rem-calc(20px);
+  font-weight: 400;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(17px);
+  }
+
+  &-bold {
+    @extend %body-text-font-style;
+    font-family: $font-family-bold;
+    font-weight: 700;
+  }
+
+  &-white {
+    @extend %body-text-font-style;
+    color: $white;
+  }
+
+  &-bold-white {
+    @extend %body-text-font-style;
+    color: $white;
+    font-family: $font-family-bold;
+    font-weight: 700;
+  }
+}
+
+// small captions
+%body-text-small-captions {
+  color: $brand-dark;
+  font-family: $font-family-primary;
+
+  font-size: rem-calc(14px);
+  font-weight: 400;
+
+  &-white {
+    @extend %body-text-small-captions;
+    color: $white;
+  }
+}
+
+// navigation
+%navigation-font-style {
+  color: $black;
+  font-family: $font-family-primary;
+  font-size: rem-calc(14px);
+  font-weight: 400;
+
+  &-bold {
+    @extend %navigation-font-style;
+    font-family: $font-family-bold;
+    font-weight: 700;
+  }
+
+  &-bold-white {
+    @extend %navigation-font-style;
+    color: $white;
+    font-family: $font-family-bold;
+    font-weight: 700;
+  }
+}
+
+// links
+%link-font-style {
+  color: $brand-dark;
+  font-family: $font-family-primary;
+  font-size: rem-calc(20px);
+  font-weight: 400;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(17px);
+  }
+}
+
+// quotes
+%quote-font-style {
+  color: $brand-dark;
+  font-family: $font-family-bold;
+  font-size: rem-calc(37px);
+  font-weight: 700;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(30px);
+  }
+}
+
+// buttons
+%button-font-style {
+  color: $brand-dark;
+  font-family: $font-family-bold;
+  font-size: rem-calc(20px);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: unset;
+
+  @include breakpoint(small only) {
+    font-size: rem-calc(18px);
+  }
+
+  &-white {
+    @extend %button-font-style;
+    color: $white;
+  }
+}

@@ -1,0 +1,11 @@
+<section class="pxl-mobile-menu">
+  {%- for link in linklists.main-menu-new.links -%}
+    <a class="{% if link.current %}main-menu--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+  <div class="pxl-bag-cart">
+    <a href="/cart">
+      {% render 'bag_cart' %}
+    </a>
+    {% render 'pxl_cart_count' %}
+  </div>
+</section>

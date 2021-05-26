@@ -1,0 +1,45 @@
+.so-gehts,
+.warum-einlagen {
+  .index-hero {
+    display: none;
+    @include breakpoint(large up) {
+      display: flex;
+      max-height: 80vh;
+    }
+
+    .hero__content {
+      margin: 0 auto;
+
+      .hero__title {
+        margin: 0 auto;
+        max-width: 1160px;
+      }
+    }
+  }
+
+  .five-fifty-height-hero {
+    @include breakpoint(medium only) {
+      height: 400px;
+    }
+  }
+
+  .colors-pxl_page_so_gehts {
+    background-color: transparent; // take body background colour
+  }
+
+  .pxl-hero-mobile {
+    margin-bottom: 40px;
+    padding-top: 60px;
+  }
+
+  .btn {
+    @extend %steps-button;
+
+    &.image__video__play {
+      font-size: rem-calc(12px);
+      > span {
+        margin-right: 10px;
+      }
+    }
+  }
+}

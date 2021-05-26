@@ -1,0 +1,59 @@
+<section class="faq faq--product">
+  <div class="section-width-wrapper">
+    <div class="faq__items">
+
+      {% for block in section.blocks %}
+        {% if block.type == "faq_tab" %}
+          <div class="faq__item">
+            <div class="faq__item-header">
+              <p class="faq__item-title">{{block.settings.faq_tab_title}}</p>
+              {% render 'icon-plus-2' %}
+            </div>
+
+            <div class="faq__item-content">
+
+              {% if block.settings.faq_tab_text != blank %}
+                <div class="faq__item-text">{{block.settings.faq_tab_text}}</div>
+              {% endif %}
+
+              <div class="faq__item-grid">
+
+                {% if block.settings.faq_col1_img != blank %}
+                  <div class="faq__item-col">
+                    <figure class="faq__item-figure">
+                      <img src="{{ block.settings.faq_col1_img | img_url: '548x' }}" alt="Get Steps - {{block.settings.faq_tab_title}}" class="faq__item-img">
+                    </figure>
+                    <div class="faq__item-col-text">{{block.settings.faq_col1_text}}</div>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.faq_col2_img != blank %}
+                  <div class="faq__item-col">
+                    <figure class="faq__item-figure">
+                      <img src="{{ block.settings.faq_col2_img | img_url: '548x' }}" alt="Get Steps - {{block.settings.faq_tab_title}}" class="faq__item-img">
+                    </figure>
+                    <div class="faq__item-col-text">{{block.settings.faq_col2_text}}</div>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.faq_col3_img != blank %}
+                  <div class="faq__item-col">
+                    <figure class="faq__item-figure">
+                      <img src="{{ block.settings.faq_col3_img | img_url: '548x' }}" alt="Get Steps - {{block.settings.faq_tab_title}}" class="faq__item-img">
+                    </figure>
+                    <div class="faq__item-col-text">{{block.settings.faq_col3_text}}</div>
+                  </div>
+                {% endif %}
+
+                
+                
+              </div>
+
+              
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,105 @@
+.pxl-index-rich-text {
+  .three-steps {
+    // class is set via Section settings
+    background-color: $brand;
+    padding: 10px 0;
+
+    .wrapper {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    @include breakpoint(small only) {
+      padding-top: 30px;
+    }
+
+    .rich-text__content {
+      > h3 {
+        @extend %subheader-font-style;
+      }
+
+      > p strong {
+        @extend %body-text-font-style-bold;
+      }
+
+      > p {
+        @extend %body-text-font-style;
+      }
+    }
+  }
+
+  .pxl-index-rich-text-background {
+    background-color: $brand;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .why-insoles {
+    // class is set via Section settings
+    background-color: $brand;
+    padding: 0;
+
+    @include breakpoint(small only) {
+      margin-top: 40px;
+    }
+
+    // > h3 {
+    // }
+  }
+
+  .are-steps-for-me {
+    // class is set via Section settings
+    background-color: $brand;
+
+    .rich-text__content {
+      > h3 {
+        @extend %subheader-font-style;
+        text-align: center;
+
+        @include breakpoint(large up) {
+          text-align: left;
+        }
+      }
+
+      > p {
+        padding-left: 22px;
+        text-align: left;
+        @extend %body-text-font-style;
+      }
+
+      > p br {
+        display: none;
+      }
+
+      > p strong {
+        @extend %body-text-font-style-bold;
+        display: list-item;
+        font-weight: normal;
+        list-style: disc;
+        text-align: left;
+      }
+
+      > p:last-child {
+        padding-left: 0;
+      }
+
+      button.btn {
+        @extend %steps-button;
+        @extend %fancy-button;
+        margin: 0 auto;
+        min-width: 275px;
+
+        > a {
+          @extend %button-font-style-white;
+        }
+
+        .pxl-fancy-button-svg {
+          padding-right: 43px;
+        }
+      }
+    }
+  }
+}

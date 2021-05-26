@@ -1,0 +1,93 @@
+<section class="hm">
+  <div class="section-width-wrapper">
+    <div class="hm__grid">
+      
+      <div class="hm__description hm__col">
+        <div class="hm__content">
+          <h2 class="hm__title" data-aos-duration="500" data-aos="fade-up">{{section.settings.title}}</h2>
+          <p class="hm__subtitle" data-aos-duration="500" data-aos="fade-up">{{section.settings.subtitle}}</p>
+          <div class="hm__text" data-aos-duration="500" data-aos="fade-up">
+            {{section.settings.text}}
+          </div>
+        </div>
+      </div>
+
+      <div class="hm__pictures hm__col">
+        <div class="hm__model">
+
+          <div class="hm__product" data-aos-duration="600" data-aos-delay="200" data-aos="fade-up">
+            <img src="{{ 'layer-0.png' | asset_url }}" alt="" class="hm__product-img">
+
+            <img src="{{ 'layer-1.png' | asset_url }}" alt="" class="hm__product-layer hm__product-layer--active">
+            <img src="{{ 'layer-2.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-3.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-4-new.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-5.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-6.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-7.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-8.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-9.png' | asset_url }}" alt="" class="hm__product-layer">
+            <img src="{{ 'layer-10.png' | asset_url }}" alt="" class="hm__product-layer">
+          </div>
+          
+
+          <div class="hm__bubble" data-aos-duration="500" data-aos="fade-right" data-aos-delay="100">
+            <img src="{{'hm-bubble.svg' | asset_url}}" alt="" class="hm__bubble-icon">
+            <div class="hm__bubble-text">{{section.settings.bubble}}</div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="hm__side">
+        <div class="hm__tools" data-aos-duration="500" data-aos="fade-up">
+          <img src="{{'hm-tools-2.png' | asset_url}}" alt="" class="hm__tools-img">
+        </div>
+        <div class="hm__note" data-aos-duration="500" data-aos="fade-up">
+          <img src="{{'i-lamp.svg' | asset_url}}" alt="" class="hm__note-icon">
+          <div class="hm__note-text">
+            {{section.settings.note}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Hand made",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    },
+    {
+      "type": "textarea",
+      "id": "bubble",
+      "label": "Bubble text"
+    },
+    
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Bottom note"
+    }
+  ]
+}
+
+{% endschema %}

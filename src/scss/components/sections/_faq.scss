@@ -1,0 +1,297 @@
+.faq {
+  padding: 110px 30px 90px;
+  position: relative;
+
+  @include breakpoint(medium down) {
+  }
+  @include breakpoint(small down) {
+    padding-bottom: 90px;
+    padding-top: 82px;
+  }
+
+  &--product {
+    padding-bottom: 80px;
+    padding-top: 80px;
+
+    @include breakpoint(medium down) {
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
+  }
+
+  &__title {
+    font-size: 39px;
+    font-weight: bold;
+    margin-bottom: 44px;
+    margin-top: 0;
+    text-align: center;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      font-size: 24px;
+      margin-bottom: 41px;
+    }
+  }
+  &__items {
+    margin: 0 auto 88px;
+    max-width: 960px;
+
+    @include breakpoint(small down) {
+      margin-bottom: 40px;
+    }
+
+    .faq--product & {
+      margin-bottom: 0;
+
+      @include breakpoint(medium down) {
+        max-width: 360px;
+      }
+      @include breakpoint(small down) {
+        margin-bottom: 0px;
+        max-width: 420px;
+      }
+    }
+  }
+  &__item {
+    border-bottom: 1px solid #1c1c1c;
+
+    &:first-of-type {
+      .faq--product & {
+        border-top: 1px solid #1c1c1c;
+      }
+      @include breakpoint(small down) {
+        border-top: 1px solid #1c1c1c;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+  &__item-header {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding: 40px 0;
+    position: relative;
+    user-select: none;
+    width: 100%;
+
+    @include breakpoint(medium down) {
+      padding: 15px 0 13px;
+    }
+    @include breakpoint(small down) {
+    }
+
+    .faq--product & {
+      padding: 28px 0 25px;
+
+      @include breakpoint(medium down) {
+        padding: 15px 0 13px;
+      }
+    }
+
+    svg {
+      flex-shrink: 0;
+      margin-left: auto;
+
+      path {
+        transition: opacity 0.3s;
+      }
+    }
+
+    .is-expanded & {
+      svg {
+        path {
+          &:nth-of-type(2) {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &__item-title {
+    font-weight: bold !important;
+    padding-right: 50px;
+
+    @include breakpoint(small down) {
+      font-size: 17px;
+      padding-right: 15px;
+    }
+    .faq--product & {
+      font-size: 25px;
+
+      @include breakpoint(medium down) {
+        font-size: 17px;
+      }
+    }
+  }
+  svg {
+    margin-left: auto;
+  }
+  &__item-content {
+    display: none;
+    margin-top: -15px;
+    padding-bottom: 40px;
+    padding-right: 100px;
+
+    @include breakpoint(medium down) {
+      padding-bottom: 20px;
+    }
+    @include breakpoint(small down) {
+      font-size: 17px;
+      padding-right: 20px;
+    }
+
+    .is-expanded & {
+      animation: faqFade 1s forwards;
+      display: block;
+    }
+
+    .faq--product & {
+      @include breakpoint(medium down) {
+        padding-right: 20px;
+      }
+    }
+  }
+  &__item-text {
+    font-size: 20px;
+    pointer-events: all;
+
+    p {
+      font-size: inherit !important;
+
+      strong,
+      em,
+      i,
+      b {
+        font-size: inherit !important;
+      }
+    }
+    a {
+      text-decoration: underline;
+    }
+
+    @include breakpoint(medium down) {
+      font-size: 17px;
+    }
+
+    .faq--product & {
+      @include breakpoint(medium down) {
+        padding-top: 20px;
+      }
+    }
+  }
+  &__item-disclaimer {
+    color: $brand-dark !important;
+    font-size: 14px !important;
+    margin-top: 25px;
+  }
+  &__btn-wrapper {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+  }
+  &__btn {
+    background-color: $brand-mid;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $brand-dark;
+      color: #fff;
+    }
+  }
+
+  &__item-grid {
+    display: flex;
+    margin: 0 -10px;
+
+    @include breakpoint(medium down) {
+      flex-wrap: wrap;
+      padding-top: 30px;
+    }
+  }
+  &__item-col {
+    padding: 0 10px;
+    width: 33.33%;
+    width: calc(100% / 3);
+
+    @include breakpoint(medium down) {
+      margin-bottom: 34px;
+      width: 100%;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__item-figure {
+    margin-bottom: 12px;
+    position: relative;
+    user-select: none;
+
+    @include breakpoint(medium down) {
+      margin-bottom: 10px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      padding-top: 66.3%;
+      width: 100%;
+    }
+  }
+  &__item-img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  &__item-col-text {
+    font-size: 20px;
+
+    p {
+      font-size: inherit !important;
+
+      strong,
+      em,
+      i,
+      b {
+        font-size: inherit !important;
+      }
+    }
+    a {
+      text-decoration: underline;
+    }
+
+    .faq--product & {
+      @include breakpoint(medium down) {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@keyframes faqFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

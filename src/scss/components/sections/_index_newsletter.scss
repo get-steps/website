@@ -1,0 +1,100 @@
+.pxl-steps-newsletter {
+  align-items: center;
+  background-color: $brand-mid;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  @include breakpoint(small only) {
+    height: 215px;
+  }
+
+  h5 {
+    @extend %body-text-font-style-bold-white;
+  }
+
+  form {
+    .input-group.newsletter-form {
+      border: solid 2px $white;
+
+      input[type='email'] {
+        height: 50px;
+      }
+
+      ::placeholder {
+        color: $white;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        box-shadow: 0 0 0 44px $brand-dark inset !important;
+      }
+
+      input:-webkit-autofill {
+        -webkit-text-fill-color: $white !important;
+      }
+    }
+
+    .newsletter-form {
+      .input-group-btn {
+        background-color: transparent;
+      }
+
+      input[type='submit'] {
+        width: 30px;
+      }
+
+      svg {
+        height: 100%;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  p > em {
+    @extend %body-text-font-style-white;
+  }
+
+  @include breakpoint(large up) {
+    .newsletter__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      max-width: 100%;
+
+      > * {
+        align-items: center;
+        display: flex;
+        display: flex;
+        margin: 0;
+        margin: 0 30px;
+      }
+
+      > h5 {
+        font-size: rem-calc(30px);
+        line-height: 1;
+      }
+
+      > .newsletter-signup,
+      > .newsletter-signup > form {
+        max-width: 450px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+input:required {
+  box-shadow: none;
+}

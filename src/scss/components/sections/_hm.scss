@@ -1,0 +1,266 @@
+.hm {
+  overflow: hidden;
+  padding: 85px 50px 60px;
+
+  @include breakpoint(medium down) {
+    padding-bottom: 80px;
+  }
+  @include breakpoint(small down) {
+    padding: 50px 28px;
+  }
+  @media (max-width: 380px) {
+    padding: 50px 18px;
+  }
+
+  .section-width-wrapper {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__grid {
+    display: flex;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      flex-wrap: wrap;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: center;
+    padding-bottom: 57px;
+    width: 392px;
+
+    @include breakpoint(medium down) {
+      width: 320px;
+    }
+    @include breakpoint(small down) {
+      padding-bottom: 36px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  &__col {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__content {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__title {
+    margin-bottom: 28px;
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__subtitle {
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__text {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+
+  &__pictures {
+    flex-shrink: 0;
+    margin: 0 auto;
+    padding-left: 100px;
+
+    @include breakpoint(medium down) {
+      margin-right: 170px;
+      padding-left: 0;
+    }
+    @include breakpoint(small down) {
+      margin-right: 0;
+      padding-left: 0;
+      width: 100%;
+    }
+  }
+  &__model {
+    position: relative;
+    user-select: none;
+    z-index: 1;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &__product {
+    display: inline-block;
+    position: relative;
+    width: 220px;
+
+    @media (max-width: 1380px) {
+      width: 200px;
+    }
+    @include breakpoint(medium down) {
+      width: 200px;
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 28px;
+      width: 40%;
+    }
+  }
+  &__product-img {
+    max-width: 100%;
+    width: 100%;
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__product-layer {
+    left: 0;
+    max-width: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: scale(0.85);
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(0.85, 0, 0.15, 1);
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+      @include breakpoint(medium down) {
+      }
+      @include breakpoint(small down) {
+      }
+    }
+  }
+  &__bubble {
+    display: inline-block;
+    left: 97%;
+    position: absolute;
+    top: 8%;
+    user-select: none;
+
+    @include breakpoint(medium down) {
+      left: 84%;
+      top: 3%;
+    }
+    @include breakpoint(small down) {
+      left: 60%;
+      top: 53%;
+    }
+  }
+  &__bubble-icon {
+    @include breakpoint(medium down) {
+      width: 160px;
+    }
+    @include breakpoint(small down) {
+      width: 120px;
+    }
+  }
+  &__bubble-text {
+    font-size: 20px;
+    font-size: 20px;
+    left: 50%;
+    line-height: (23/20);
+    padding: 0 30px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(medium down) {
+      font-size: 16px;
+    }
+    @include breakpoint(small down) {
+      font-size: 14px;
+      padding: 0 20px;
+    }
+  }
+
+  &__side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 370px;
+
+    @media (max-width: 1150px) {
+      width: 280px;
+    }
+    @include breakpoint(medium down) {
+      display: none;
+    }
+    @include breakpoint(small down) {
+      display: block;
+      width: 100%;
+    }
+  }
+  &__tools {
+    margin-bottom: 36px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: none;
+    }
+  }
+  &__tools-img {
+    margin-bottom: -35px;
+    max-width: 400px;
+    transform: translateX(-50px);
+    user-select: none;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__note {
+    display: flex;
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__note-icon {
+    align-self: flex-start;
+    flex-shrink: 0;
+    margin-right: 20px;
+    user-select: none;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__note-text {
+    color: #946d6a;
+    font-size: 14px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+}

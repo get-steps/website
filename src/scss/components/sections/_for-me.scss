@@ -1,0 +1,164 @@
+.forme {
+  background-color: $brand-off;
+  overflow: hidden;
+  padding: 100px 50px;
+
+  @include breakpoint(medium down) {
+  }
+  @include breakpoint(small down) {
+    padding: 36px 30px 40px;
+  }
+  &__wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__title {
+    font-size: 39px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    margin-top: 0;
+    padding: 0 30px;
+    text-align: center;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+  }
+  &__richtext {
+    text-align: center;
+  }
+  &__subtitle {
+    margin-bottom: 30px;
+  }
+  &__grid {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -25px 40px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      margin: 0 0 20px;
+    }
+  }
+  &__item {
+    margin-bottom: 10px;
+    padding: 0 25px;
+    width: 33.33%;
+    width: calc(100% / 3);
+
+    @include breakpoint(medium down) {
+      margin-bottom: 30px;
+      width: 50%;
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 20px;
+      padding: 0;
+      width: 100%;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__fig {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    position: relative;
+    user-select: none;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 7px;
+    }
+  }
+  &__fig-link {
+    display: block;
+    font-size: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__fig-icon {
+    height: 75px;
+    width: auto;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      height: 40px;
+    }
+  }
+  &__text {
+    font-size: 20px;
+    line-height: (28/20);
+    min-height: 3.2em;
+    text-align: center;
+
+    @include breakpoint(medium down) {
+      padding: 0 50px;
+    }
+    @include breakpoint(small down) {
+      font-size: 17px;
+      min-height: unset;
+      padding: 0 12px;
+    }
+  }
+  &__description {
+    margin-bottom: 30px;
+
+    @include breakpoint(small down) {
+      margin-bottom: 0;
+    }
+  }
+  &__btn-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: none;
+    }
+  }
+  &__btn {
+    border: none;
+
+    &:hover {
+      background-color: #e26d5c;
+      border: none;
+    }
+  }
+}
+
+/*
+@include breakpoint(medium down) {
+  
+}
+@include breakpoint(small down) {
+  
+}
+
+*/

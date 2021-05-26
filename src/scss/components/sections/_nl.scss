@@ -1,0 +1,241 @@
+.nl {
+  background-color: #ccb5a3;
+  color: #fff;
+  padding: 80px 30px;
+
+  @include breakpoint(small down) {
+    padding: 75px 28px;
+  }
+
+  &__cont {
+    .nl--small & {
+      @include breakpoint(medium up) {
+        align-items: center;
+        display: flex;
+        margin: 0 auto;
+        max-width: 1160px;
+      }
+    }
+    .nl--success & {
+      display: none;
+    }
+  }
+  &__title {
+    color: #fff !important;
+    font-size: 40px;
+    margin: 0 auto 48px;
+    max-width: 490px;
+    text-align: center;
+
+    @include breakpoint(small down) {
+      font-size: 24px;
+      margin-bottom: 26px;
+    }
+
+    .nl--small & {
+      @include breakpoint(medium up) {
+        font-size: 25px;
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+    }
+
+    .nl--success.nl--small & {
+      @include breakpoint(medium up) {
+        font-size: 25px;
+        line-height: 1.2 !important;
+        order: 1;
+        padding-left: 32px;
+      }
+    }
+  }
+  &__text {
+    font-size: 20px !important;
+    margin: 0 auto 50px;
+    max-width: 490px;
+    text-align: center;
+
+    @include breakpoint(small down) {
+      font-size: 17px !important;
+      margin-bottom: 35px;
+      max-width: 280px;
+    }
+
+    .nl--small & {
+      @include breakpoint(medium up) {
+        padding-right: 20px;
+        width: 50%;
+      }
+    }
+
+    .nl--small & {
+      @include breakpoint(medium up) {
+        display: none;
+      }
+    }
+  }
+  &__box {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    height: 60px;
+    margin: 0 auto;
+    max-width: 570px;
+    padding-left: 23px;
+    padding-right: 70px;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(small down) {
+    }
+
+    .nl--small & {
+      @include breakpoint(medium up) {
+        width: 50%;
+      }
+    }
+  }
+  &__box-errors {
+    background-color: #fff;
+    border-radius: 3px;
+    left: 0;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 0px 23px;
+    position: absolute;
+    top: 100%;
+  }
+  &__box-error {
+    color: #f00;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px 0;
+  }
+
+  &__el {
+    border: none;
+    color: #ccb5a3;
+    display: block;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+
+    @include breakpoint(small down) {
+      font-size: 17px !important;
+    }
+
+    &::placeholder {
+      color: #ccb5a3;
+    }
+    &:focus {
+      border: none;
+    }
+  }
+  &__btn {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    font-size: 0;
+    height: 100%;
+    justify-content: center;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    z-index: 1;
+  }
+  &__icon {
+  }
+  &__thank {
+    display: none;
+
+    .nl--success & {
+      display: block;
+    }
+    .nl--success.nl--small & {
+      @include breakpoint(medium up) {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 1160px;
+      }
+    }
+  }
+  &__thank-text {
+    color: #fff !important;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    margin-bottom: 50px;
+    text-align: center;
+
+    @include breakpoint(small down) {
+      font-size: 20px !important;
+      margin-bottom: 30px;
+    }
+
+    .nl--success.nl--small & {
+      @include breakpoint(medium up) {
+        font-size: 25px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0;
+        margin-left: 3px;
+        order: 2;
+        text-align: left;
+        width: 50%;
+      }
+    }
+  }
+  &__thank-deco {
+    margin-bottom: 100px;
+    position: relative;
+    user-select: none;
+
+    .nl--success.nl--small & {
+      @include breakpoint(medium up) {
+        margin-bottom: 0;
+        margin-right: 40px;
+        order: 0;
+        width: 50%;
+      }
+    }
+  }
+  &__thank-deco-img {
+    bottom: -60px;
+    margin-right: -50px;
+    max-width: none;
+    pointer-events: none;
+    position: absolute;
+    right: 50%;
+
+    .nl--success.nl--small & {
+      @include breakpoint(medium up) {
+        bottom: -45px;
+        margin-right: 0;
+        right: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &--success {
+  }
+
+  &--small {
+    @include breakpoint(medium up) {
+      padding: 60px 30px;
+    }
+  }
+}
+.produkt .nl--small .nl__text,
+.so-gehts .nl--small .nl__text,
+.warum-einlagen .nl--small .nl__text {
+  @include breakpoint(medium down) {
+    display: none;
+  }
+}

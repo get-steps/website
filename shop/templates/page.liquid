@@ -1,0 +1,11 @@
+<!-- /templates/page.fullwidth.liquid -->
+{% if page.handle =='faqnew' %}
+  {% section 'faq-page'%}
+{% else %}
+  <section class="page">
+    {%comment%}
+  	<h2 class="theme">{{ page.title }}</h2>
+    {%endcomment%}
+  	{{ page.content }}
+{% endif %}
+</section>

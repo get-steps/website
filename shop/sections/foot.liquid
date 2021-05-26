@@ -1,0 +1,50 @@
+<section class="foot">
+  <div class="section-width-wrapper">
+    <div class="foot__grid">
+      
+      <div class="foot__pictures foot__col">
+        <figure class="foot__figure">
+          <img src="{{'foot-analysis-1.png' | asset_url}}" alt="getsteps - {{section.settings.title}}" class="foot__image-main" draggable='false' data-aos="fade-right" data-aos-duration="700" data-aos-delay="400">
+          <img src="{{'foot-analysis-arrows.png' | asset_url}}" alt="" class="foot__image-arrows" draggable='false' data-aos="fade" data-aos-delay="1800" data-aos-duration="700" data-aos-offset="500">
+        </figure>
+        
+        <img src="{{'foot-analysis-2.png' | asset_url}}" alt="getsteps - Foot analysis" class="foot__image-over" draggable='false' data-aos="fade-left" data-aos-duration="700" data-aos-delay="400">
+      </div>
+
+      <div class="foot__description foot__col">
+        <div class="foot__content">
+          <h2 class="foot__title" data-aos-duration="500" data-aos="fade-up">{{section.settings.title}}</h2>
+          <p class="foot__subtitle" data-aos-duration="500" data-aos-delay="200" data-aos="fade-up">{{section.settings.subtitle}}</p>
+          <div class="foot__text" data-aos-duration="500" data-aos-delay="400" data-aos="fade-up">
+            {{section.settings.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Foot analysis",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    }
+  ]
+}
+
+{% endschema %}

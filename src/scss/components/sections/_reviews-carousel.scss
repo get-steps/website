@@ -1,0 +1,19 @@
+.reviews-carousel {
+  // margin-bottom: 50px;
+  background-color: #fff;
+  height: 340px;
+  padding-top: 50px;
+  @media (max-width: 519px) {
+    height: 460px;
+  }
+  &__title {
+    font-size: 39px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include breakpoint(small down) {
+      font-size: 24px;
+      margin-bottom: 41px;
+    }
+  }
+}

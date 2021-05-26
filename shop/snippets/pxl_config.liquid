@@ -1,0 +1,30 @@
+<script>
+  window.PxlApp = {
+    sentry: {
+      dsn: {{ settings.sentry_dsn | json }}
+    },
+    formId: {
+      product_form_id: {{ settings.product_form_id | json }}
+    },
+    variantMaterialIgnore: {
+      variant_id: {{ settings.variant_ignore_material | json }}
+    },
+    featureFlags: {
+      langify: {{ settings.ff_langify | json }}
+    },
+    regionaliseStore: {
+      {% assign regions = "be,de,dk,es,fr,gb,it,nl,se" | split: ',' %}
+      {%-for region in regions -%}
+      {{ region }}: {
+        {% assign link_ref = 'buy_now_' | append: region  %}
+        link: {{ settings[link_ref] | json }},
+        flagUrl: "{{ '.svg' | prepend: region | asset_url }}"
+      }{% unless forloop.last == true %},{% endunless %}
+      {%- endfor -%}
+    }{% if customer %},
+    customer: {
+      id: {{ customer.id }}
+    }
+  {% endif %}
+  };
+</script>

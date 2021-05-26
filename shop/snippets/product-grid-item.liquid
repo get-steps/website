@@ -1,0 +1,106 @@
+
+{%- assign double_img = false -%}
+{%- if product.media[1].preview_image and settings.image_hover_enable -%}
+  {%- assign double_img = true -%}
+{%- endif -%}
+
+{%- if last_element -%}
+  {%- assign lastElementClass = 'visually-hidden' -%}
+{%- endif -%}
+
+{% if fallback %}
+  <div class="product-item {{ grid_width_small }} {{ grid_width_medium }} {{ grid_width_large }} {{ lastElementClass }}">
+    <div class="product-item__image svg-placeholder">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag }}
+    </div>
+    <div class="product-information">
+      {% if showReviews %}
+        <span class="spr-badge" data-rating="0.0">
+          <span class="spr-starrating spr-badge-starrating">
+            <i class="spr-icon spr-icon-star-empty"></i>
+            <i class="spr-icon spr-icon-star-empty"></i>
+            <i class="spr-icon spr-icon-star-empty"></i>
+            <i class="spr-icon spr-icon-star-empty"></i>
+            <i class="spr-icon spr-icon-star-empty"></i>
+          </span>
+        </span>
+      {% endif %}
+      <h3 class="title">{{ 'home_page.onboarding.product_title' | t }}</h3>
+      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+      <span class="price">{{ 9900 | money }}</span>
+    </div>
+  </div>
+{% else %}
+  <div class="product-item {{ grid_width_small }} {{ grid_width_medium }} {{ grid_width_large }} {{ lastElementClass }}">
+    <a id="product-{{ product.variants.first.id }}" class="product-link" href="{{ product.url | within: collection }}" aria-label='{{ product.title }}'>
+
+      {% capture over_image_content %}
+        {% if product.compare_at_price > product.price and settings.sale_tags_enable %}
+          <span class="sale-box">{{ 'products.product.on_sale' | t }}</span>
+        {% endif %}
+        {% if quick_view and product.object_type == 'product' %}
+          <div class="slideup">
+            {%- assign uniqueID = section.id -%}
+            {%- if template.name == 'list-collections' -%}
+              {%- assign uniqueID = collection.id -%}
+            {%- endif -%}
+            <span data-modal="Product{{ forloop.index0 }}{{ paginate.current_page }}-{{uniqueID}}" class="trigger-quick-view caps">{{ 'products.general.quick_view' | t }}</span>
+          </div>
+        {% endif %}
+      {% endcapture %}
+
+      <div class="product-item__image {% if double_img %} double__image{% endif %}">
+        <div class="product-item__bg lazyload"
+          data-aos="img-in"
+          data-aos-anchor=".product-grid"
+          data-aos-delay="{{ animation_delay | times: 150 }}"
+          data-aos-duration="{{ animation_delay | times: 100 | plus: 800 }}"
+          data-aos-easing="ease-out-quart"
+          data-bgset="{% include 'bgset', image: product.featured_media.preview_image %}"></div>
+          {% if double_img %}
+            <div class="product-item__bg__under lazyload" data-bgset="{% include 'bgset', image: product.media[1].preview_image %}"></div>
+          {% endif %}
+        {{ over_image_content }}
+      </div>
+
+      <noscript>
+        <div class="product-item__image no-js-image" style="background-image:url('{{ img_src | img_url: '540x' }}'); background-size: contain; background-position: center center; background-repeat: no-repeat;"
+          >
+          {{ over_image_content }}
+        </div>
+      </noscript>
+      <div class="product-information"
+        data-aos="fade-up"
+        data-aos-anchor=".product-grid"
+        data-aos-delay="{{ animation_delay | times: 100 }}"
+        data-aos-duration="{{ animation_delay | times: 100 | plus: 100 }}">
+{% comment %}
+        {%- if showReviews -%}
+          {%- if settings.enable_yotpo and settings.yotpo_ID != '' -%}
+            <div class="yotpo bottomLine" data-product-id="{{ product.id }}"></div>
+          {%- else -%}
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          {%- endif -%}
+        {%- endif -%}
+{% endcomment %}
+        <h3 class="title">{{ product.title }}</h3>
+        {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+        <span class="price{% if product.compare_at_price > product.price %} sale{% endif %}">
+          {% if product.available %}
+            {% if product.compare_at_price > product.price %}
+              <span class="old-price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+            {% if product.price_varies %}
+              <small>{{ 'products.general.from' | t }}</small> {{ product.price_min | money }}
+            {% else %}
+              {{ product.price_min | money }}
+            {% endif %}
+          {% else %}
+            <span class="sold-out">{{ 'products.product.sold_out' | t }}</span>
+          {% endif %}
+        </span>
+      </div>
+    </a>
+  </div>
+{% endif %}

@@ -1,0 +1,25 @@
+<!-- /snippets/newsletter-form.liquid -->
+
+{% form 'customer' %}
+  {% if form.posted_successfully? %}
+    <p><em>{{ 'general.newsletter_form.thank_you' | t }}</em></p>
+  {% elsif form.errors %}
+    {% for field in form.errors %}
+      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+    {% endfor %}
+  {% endif %}
+
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <div class="input-group newsletter-form">
+    <input type="email" placeholder="{{ 'general.forms.your_email' | t }}" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" name="contact[email]" />
+    <span class="input-group-btn">
+      {% if section.settings.optional_class == 'pxl-steps-newsletter' %}
+        <input type="submit" src="{{ 'submit_arrow.svg'| asset_img_url: '100x' }}" border="0" alt="Submit">
+          {% render 'submit_arrow' %}
+        </input>
+      {% else %}
+        <input type="submit" class="btn caps" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+      {% endif %}
+    </span>
+  </div>
+{% endform %}

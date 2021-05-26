@@ -1,0 +1,229 @@
+<!-- /snippets/product.liquid -->
+<div class="product__wrapper product__wrapper--{{ section.settings.image_layout }}">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_media.preview_image | default: product.featured_media.preview_image -%}
+  {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+
+  {%- if section.settings.show_breadcrumbs -%}
+    <nav class="breadcrumbs">
+      <small>
+        <a href="{{ shop.url }}">{{ 'general.breadcrumbs.home' | t }}</a>
+        <span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
+
+        {% if template contains 'product' %}
+          {% assign first_collection = product.collections[0] %}
+          {% if first_collection.handle != blank %}
+            {{ first_collection.title | link_to: first_collection.url }}
+            <span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
+          {% endif %}
+
+          <span>{{ product.title }}</span>
+        {% endif %}
+
+        {% if template contains 'collection' %}
+          {% if collection %}
+            <a href="{{ collection.url }}">{{ collection.title }}</a>
+            <span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
+          {% endif %}
+        {% endif %}
+      </small>
+    </nav>
+  {%- endif -%}
+  
+  {%comment%}
+  <div class="top-product-box">
+      <div class="product__wrapper">
+      <div class="top-product-box__info">
+        <div class="top-product-box__title">
+          <span>{{ product.title }}</span>
+          <div class="conf-list"><span class="conf-text" id="topProductVariant"></span><span class="conf-text" id="topProductMaterial"></span></div>
+        </div>
+        <div class="top-product-box__price">
+            <span>{{ current_variant.price | money }}</span>
+        </div>
+      </div>
+      <div class="top-product-box__image">
+        <img src="{{product.selected_or_first_available_variant.featured_image | img_url: '350x' }}" />
+      </div>
+    </div>
+  </div>
+  {%endcomment%}
+
+  <div class="grid product__page">
+    <div class="grid__item product-image-wrapper">
+      <div class="product__title__wrapper">
+        <h1 class="product__title">{{ product.title }}</h1>
+        <div class="product__price" data-price-wrapper>
+          <span data-product-price {% if current_variant.compare_at_price > current_variant.price %} class="product__price--sale" {% endif %}>
+            {{ current_variant.price | money }}
+          </span>
+          {{ 'general.meta.vat_included' | t }}
+
+          {% if product.compare_at_price_max > product.price %}
+            <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+            <s class="product__price--strike" data-compare-price>
+              {% if current_variant.compare_at_price > current_variant.price %}
+                {{ current_variant.compare_at_price | money }}
+              {% endif %}
+            </s>
+          {% endif %}
+        </div>
+
+        <div class="trustpilot-widget product-widget-review" data-locale="de-DE" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5e8dd51ab12e1e00015e1564" data-style-height="58px" data-style-width="100%" data-theme="light" data-font-family="Montserrat">
+                <a href="https://de.trustpilot.com/review/get-steps.com" target="_blank" rel="noopener">Trustpilot</a>
+              </div>
+      </div>
+
+      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+      {% include 'pxl_product_carousel' %}
+      <div class="product__slides product-single__photos" data-product-single-media-group data-product-slideshow>
+        {% for media in product.media %}
+          {% include 'media', media: media, featured_media: featured_media, sectionkey: section.id %}
+        {% endfor %}
+      </div>
+
+      {% assign first_3d_model = product.media | where: "media_type", "model" | first %}
+      {% if first_3d_model %}
+        <button class="btn btn--light btn--ar product-single__view-in-space" data-shopify-xr data-shopify-model3d-id="{{ first_3d_model.id }}" data-shopify-title="{{ product.title }}" data-shopify-xr-hidden>
+          {% include 'icon-media-model' %}
+          <span class="product-single__view-in-space-text">{{ 'products.general.view_space' | t }}</span>
+        </button>
+      {% endif %}
+
+      <noscript>
+        {% for image in product.media %}
+          <img src="{{ image.preview_image | img_url: '900x' }}" alt="{{ image.alt | default: product.title }}">
+        {% endfor %}
+      </noscript>
+      {% if product.media.size > 1 %}
+        <div class="product__thumbs--square" data-product-thumbs></div>
+      {%- endif -%}
+    </div>
+
+
+
+
+
+    <div class="grid__item medium-up--one-half product-form-wrapper wrapperBar">
+
+      {% render 'conf' %}
+
+      <div class="form__wrapper{% unless current_variant.available %} variant--soldout{% endunless %}" data-form-wrapper>
+        <div class="form__inner__wrapper">
+          <div class="form__width">
+
+          {%comment%}
+            <div class="product__title__wrapper">
+              <h1 class="product__title">{{ product.title }}</h1>
+              <div class="product__price" data-price-wrapper>
+                <span data-product-price {% if current_variant.compare_at_price > current_variant.price %} class="product__price--sale" {% endif %}>
+                  {{ current_variant.price | money }}
+                </span>
+                {{ 'general.meta.vat_included' | t }}
+
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                  <s class="product__price--strike" data-compare-price>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                  </s>
+                {% endif %}
+              </div>
+              
+              <div class="trustpilot-widget product-widget-review" data-locale="de-DE" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5e8dd51ab12e1e00015e1564" data-style-height="58px" data-style-width="100%" data-theme="light" data-font-family="Montserrat">
+                <a href="https://de.trustpilot.com/review/get-steps.com" target="_blank" rel="noopener">Trustpilot</a>
+              </div>
+
+            </div>
+        
+       {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+
+            {%- if settings.enable_product_reviews -%}
+              <div class="product__badge">
+                {%- if settings.enable_yotpo and settings.yotpo_ID != '' -%}
+                  <div class="yotpo bottomLine" data-product-id="{{ product.id }}"></div>
+                {%- else -%}
+                  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                  <a href="#reviews-scroll">{{ 'products.product.reviews_link' | t }}</a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}{% endcomment %}
+
+            <div class="product__form">
+              {% include 'product-form', buybutton_setting: section.settings.show_payment_button %}
+            </div>
+
+            {%- assign description_position = '' -%}
+            {%- assign product_description_content = product.description -%}
+            {%- assign has_tabs = false -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == "tab_description" -%}
+                {%- assign has_tabs = true -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%-if has_tabs -%}
+              {%- assign product_description_content = product_description_content | split: '<h6>' | first -%}
+            {%- endif -%}
+            
+            {%comment%}
+            <div class="product-description rte">
+              {{ product_description_content }}
+            </div>
+            {%endcomment%}
+
+
+
+
+            {% if section.settings.product_show_vendor and product.vendor %}
+              <p class="product__vendor caps">{{ 'products.product.vendor' | t }}:
+                <a href="{{ product.vendor | url_for_vendor }}" class="text-link">{{ product.vendor }}</a>
+              </p>
+            {%- endif -%}
+
+            {% if section.settings.show_share_buttons %}
+              <div class="product__sharing">
+                {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media.preview_image %}
+              </div>
+            {% endif %}
+
+            {%- if settings.enable_product_reviews -%}
+              {%- if settings.enable_yotpo and settings.yotpo_ID != '' -%}
+                {% include 'yotpo-reviews' %}
+              {%- else -%}
+                <div class="product__reviews" id="reviews-scroll">
+                  <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+    {% include 'pxl_product_content_block' %}
+
+    {%- if section.blocks.size > 0 and section.settings.tabs_enable -%}
+      <div class="tabs-wrapper productTabsWrapper">
+        {% include 'product-tabs' %}
+      </div>
+    {%- endif -%}
+  </div>
+
+
+</div>
+{% unless product == empty %}
+  <script data-product-json type="application/json">
+    {{ product | json }}
+  </script>
+  <script id="ModelJson-{{ section.id }}" type="application/json">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{% endunless %}

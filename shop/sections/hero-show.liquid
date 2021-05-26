@@ -1,0 +1,59 @@
+<section class="hero-show">
+  <picture class="hero-show__image">
+     <source
+        media="(max-width: 640px)"
+        srcset="{{section.settings.image_mobile | img_url: 'master'}}">
+     <img
+      src="{{section.settings.image | img_url: 'master'}}"
+      alt="Get steps - {{section.settings.title}}">
+  </picture>
+  <div class="section-width-wrapper">
+    
+    <div class="hero-show__grid">
+      
+      <div class="hero-show__content">
+        <h1 class="hero-show__title">{{section.settings.title}}</h1>
+
+        <p class="hero-show__text">{{section.settings.description}}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Hero with background",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Background image (mobile)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero with background",
+      "category": "Hero sections"
+    }
+  ]
+}
+
+{% endschema %}

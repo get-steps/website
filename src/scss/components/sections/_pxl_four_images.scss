@@ -1,0 +1,126 @@
+.s-pxl-four-images {
+  background-color: $brand;
+}
+
+.pxl-four-images {
+  display: none;
+  flex-direction: row;
+  padding: 7vw 20px;
+
+  @include breakpoint(medium up) {
+    display: flex;
+    padding: 7vw 0;
+  }
+
+  @include breakpoint(medium only) {
+    flex-direction: column;
+  }
+
+  &-title {
+    > .h1 {
+      @extend %subheader-font-style;
+      margin-bottom: 40px;
+      padding-top: 40px;
+      text-align: center;
+    }
+
+    > p {
+      @extend %body-text-font-style;
+      margin-bottom: 40px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    @include breakpoint(medium up) {
+      display: none;
+    }
+  }
+
+  &-left-side {
+    padding: 10px 0;
+    width: 40%;
+
+    > .h1 {
+      @extend %subheader-font-style;
+      margin-bottom: 40px;
+    }
+
+    > p {
+      @extend %body-text-font-style;
+      margin: 0 0 40px;
+
+      @include breakpoint(medium only) {
+        margin: 0 20px 40px;
+      }
+    }
+
+    @include breakpoint(medium only) {
+      align-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 70px;
+      padding: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    @include breakpoint(xlarge up) {
+      padding: 20px 100px 0 0;
+    }
+  }
+
+  button.btn {
+    background-color: $black;
+    @extend %brand-highlight-button;
+
+    > a {
+      @extend %button-font-style-white;
+      text-transform: none;
+    }
+
+    &.hero__btn {
+      border: 0;
+      margin-top: 25px;
+      width: 275px;
+
+      &:hover {
+        border: 0;
+      }
+    }
+  }
+
+  &-right-side {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+
+    @include breakpoint(medium only) {
+      width: 100%;
+    }
+  }
+
+  &-image-block {
+    justify-content: center;
+    padding: 20px;
+    width: 50%;
+
+    @include breakpoint(medium up) {
+      padding: 20px 0 20px 20px;
+    }
+
+    > span {
+      display: block;
+      padding: 5px;
+      text-align: center;
+      width: 100%;
+    }
+
+    > img {
+      height: 235px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

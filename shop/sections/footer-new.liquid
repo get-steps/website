@@ -1,0 +1,83 @@
+<footer class="footer-w">
+  <div class="section-width-wrapper">
+    <div class="footer-w__grid">
+      <nav class="footer-w__nav">
+        <ul class="footer-w__nav-list">
+          {% for link in linklists[section.settings.linklist].links %}
+            <li class="footer-w__nav-item">
+              <a href="{{ link.url }}" class="footer-w__nav-link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <div class="footer-w__reviews">
+        {{section.settings.reviews_html}}
+      </div>
+
+    </div>
+    <div class="footer-w__more">
+      <div class="footer-w__payment">
+        {% for i in (1..8) %}
+          {% capture image_url %}i-payment-{{i}}.png{% endcapture %}
+          <img src="{{ image_url | asset_url }}" alt="GetSteps payment method" class="footer-w__payment-item">
+        {% endfor %}
+      </div>
+
+      <ul class="footer-w__social">
+        {% for block in section.blocks %}
+          <li class="footer-w__social-item">
+            <a href="{{block.settings.link_url}}" class="footer-w__social-link" target="_blank">
+              <img src="{{block.settings.image_url}}" alt="" class="footer-w__social-img"></a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer-w__bottom">
+      <div class="footer-w__copy">&copy; {{ shop.name }} {{ 'now' | date: "%Y" }}</div>
+    </div>
+  </div>
+</footer>
+
+
+
+{% schema %}
+{
+  "name": "Footer (white)",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "linklist",
+      "label": "Navigation menu",
+      "default": "footer",
+      "info": "This menu won't show dropdown items"
+    },
+    {
+      "type": "html",
+      "id": "reviews_html",
+      "label": "Reviews HTML code",
+      "info": "Trustpilot embed code"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Image URL",
+          "info": "Upload image at 'Settings -> Files', then copy and paste URL here"
+        },
+        {
+          "type": "text",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,116 @@
+.vision {
+  background-color: #ecdcd0;
+  padding: 95px 30px;
+
+  @include breakpoint(medium down) {
+  }
+  @include breakpoint(small down) {
+    padding: 80px 28px;
+  }
+
+  &__grid {
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+
+    @media (max-width: 922px) {
+      flex-wrap: wrap;
+      margin: 0 auto;
+      max-width: 500px;
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__pic {
+    flex-shrink: 0;
+    width: 50%;
+
+    @include breakpoint(medium down) {
+      width: 60%;
+    }
+    @media (max-width: 922px) {
+      width: 100%;
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+    }
+  }
+  &__figure {
+    font-size: 0;
+    height: 100%;
+    position: relative;
+    user-select: none;
+    width: 100%;
+  }
+  &__img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    @media (max-width: 922px) {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 100%;
+      position: static;
+      width: 100%;
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__content {
+    background-color: #fff;
+    padding: 55px 60px 45px;
+    width: 50%;
+
+    @include breakpoint(medium down) {
+      padding: 30px;
+      width: 40%;
+    }
+
+    @media (max-width: 922px) {
+      width: 100%;
+    }
+    @include breakpoint(small down) {
+      padding: 32px 20px 20px;
+      width: 100%;
+    }
+  }
+  &__title {
+    margin-bottom: 32px;
+
+    @include breakpoint(small down) {
+      margin-bottom: 17px;
+      text-align: center;
+    }
+  }
+  &__text {
+    margin-bottom: 35px;
+    padding-right: 5px;
+
+    @include breakpoint(medium down) {
+      padding-right: 0;
+    }
+    @include breakpoint(small down) {
+      text-align: center;
+    }
+
+    p {
+      @include breakpoint(small down) {
+        font-size: 17px !important;
+      }
+      @media (max-width: 400px) {
+        font-size: 16px !important;
+      }
+    }
+  }
+  &__btn-wrapper {
+    @include breakpoint(small down) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

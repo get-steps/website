@@ -1,0 +1,125 @@
+<!-- /sections/testimonials.liquid -->
+{% include 'index_testimonials', section: section %}
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "color",
+      "id": "testimonials_bg",
+      "label": "Background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "range",
+      "id": "testimonials_items",
+      "label": "Items per row",
+      "min": 1,
+      "max": 4,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#726D75"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background color",
+      "default": "#E7E7E7"
+    },
+    {
+      "type": "header",
+      "content": "Developer settings - do not adjust"
+    },
+    {
+      "type":"select",
+      "id":"optional_class",
+      "default": "",
+      "label":"Optional Class",
+      "info": "Adds a class to wrapping parent",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "pxl-mobile-only", "label": ".pxl-mobile-only"}
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "header",
+          "content":"Testimonial"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Customer name",
+          "default": "Example Customer"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial",
+          "default": "Use this text to showcase a review from one of your customers.  A great review is honest and speaks to the concerns of your customers."
+        },
+        {
+          "type": "image_picker",
+          "id": "bio_image",
+          "label": "Bio image"
+        },
+        {
+          "type": "header",
+          "content": "Twitter",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "username",
+          "label": "Username",
+          "default":"@username"
+        },
+        {
+          "type": "text",
+          "id": "tweet_url",
+          "label": "Link to Tweet",
+          "default": "https://twitter.com/"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Use this text to showcase a review from one of your customers.  A great review is honest and speaks to the concerns of your customers.",
+            "title":"Mark Corrigan",
+            "tweet_url":"https://twitter.com/jack/status/20"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Use this text to showcase a review from one of your customers.  A great review is honest and speaks to the concerns of your customers.",
+            "title":"Jeremy Usborne",
+            "tweet_url":"https://twitter.com/jack/status/20"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

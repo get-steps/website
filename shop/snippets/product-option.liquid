@@ -1,0 +1,65 @@
+<div class="selector-wrapper js" data-option="option{{ option.position }}">
+  <label for="SingleOptionSelector-{{ forloop.index0 }}-{{product.id}}" class="product-variant-select-label">
+    {% render 'dropdown_title_helper', index: forloop.index0 %}
+  </label>
+
+  {% comment %}
+    Initial block that defines icon for on-load presentation based on `option.selected_value` value
+  {% endcomment %}
+  {% assign first_option_name = "Schuhtyp für die Einlagen" %}
+  {%- if option.name == first_option_name -%}
+    {%- assign normalised_name = option.selected_value | split: '/' -%}
+    {%- assign normalised_name = normalised_name[0] | strip | downcase | replace: ' ', '_' | handleize -%}
+    {%- assign icon_url = "shoe_icon_" | append: normalised_name | append: ".svg" | asset_url -%}
+    {%- assign icon = ", url('" | append: icon_url | append: "')" -%}
+  {%- else -%}
+    {%- assign normalised_name = option.selected_value | split: ' ' -%}
+    {%- assign normalised_name = normalised_name[0] | strip | downcase -%}
+    {%- assign icon_url = "material_icon_" | append: normalised_name | append: ".jpg" | asset_url -%}
+    {%- assign icon = ", url('" | append: icon_url | append: "')" -%}
+  {%- endif -%}
+
+  {% comment %}
+    While this looks like it repeats some of the above, this block loops through every value for this option,
+    and renders an image into the DOM for the matching asset. This is then used by product.js to change the background
+    image property of the select box, using an asset that has then been loaded by the browser.
+  {% endcomment %}
+  {% for value in option.values %}
+    {%- if option.name == first_option_name -%}
+      {%- assign normalised_value = value | split: '/' -%}
+      {%- assign normalised_value = normalised_value[0] | strip | downcase | replace: ' ', '_' | handleize -%}
+      {%- assign icon_url = "shoe_icon_" | append: normalised_value | append: ".svg" | asset_url -%}
+    {%- else -%}
+      {%- assign normalised_value = value | split: ' ' -%}
+      {%- assign normalised_value = normalised_value[0] | strip | downcase -%}
+      {%- assign icon_url = "material_icon_" | append: normalised_value | append: ".jpg" | asset_url -%}
+    {%- endif -%}
+
+    <img class="hidden-select-image" data-name="{{ value }}" src="{{ icon_url }}" />
+  {% endfor %}
+
+  <select
+    id="SingleOptionSelector-{{ forloop.index0 }}-{{product.id}}" data-selected="{{ normalised_name }}" class="product-variant-select product-select-{{ forloop.index }}"
+    data-single-option-selector data-option-name="{{ option.name }}"
+    data-index="option{{ option.position }}" data-asset-url="{{ 'placeholder' | asset_url }}" style="background-image: url('{{ 'arrow_down.svg' | asset_url }}'){{ icon }}">
+
+  {% assign shoe_type = product.metafields.shoe_type %}
+  {% for value in option.values %}
+      {% assign lower_value = value | downcase %}
+      <option
+        value="{{ value | escape }}"
+        data-shoe-type="{{ value | handleize }}"
+        {% if option.selected_value == value %}selected="selected"{% endif %}>
+        {{ value }}
+
+      </option>
+    {% endfor %}
+  </select>
+
+  {% for value in option.values %}
+    {% assign lower_value = value | downcase %}
+    {% assign shoe_option_value = value | handleize | split: '-' %}
+    {% assign shoe_option_value = shoe_option_value[0] %}
+    <div class="shoe-metafield {{ shoe_option_value }}">{{ shoe_type[shoe_option_value] }}</div>
+  {% endfor %}
+</div>

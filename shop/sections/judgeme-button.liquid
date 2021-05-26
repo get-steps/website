@@ -1,0 +1,29 @@
+{% if section.settings.btnText != blank %}
+  <div class="judgeme__btn-wrapper">
+    <a class="btn-main judgeme__btn js-goto-review" href="/products/massgefertigte-schuheinlagen">{{section.settings.btnText}}</a> 
+  </div>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Judgeme button",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btnText",
+      "label": "Button text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Judgeme button",
+      "category": "Other"
+    }
+  ]
+}
+{% endschema %}

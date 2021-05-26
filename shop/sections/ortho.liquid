@@ -1,0 +1,91 @@
+<section class="ortho">
+  <div class="section-width-wrapper">
+    <div class="ortho__grid">
+
+      <div class="ortho__product">
+        <figure class="ortho__product-figure">
+          <img src="{{section.settings.image | img_url: 'master'}}" alt="Get step product info" class="ortho__image">
+        </figure>
+        <div class="ortho__circle"><span>{{section.settings.circleText}}</span></div>
+      </div>
+
+      <div class="ortho__content">
+        <h2 class="ortho__title">{{section.settings.title}}</h2>
+        <div class="ortho__lines">
+          {% for block in section.blocks %}
+            <p class="ortho__line">{% include 'icon-list-point' %}<span>{{block.settings.line}}</span></p>
+          {% endfor %}
+        </div>
+        <div class="ortho__btn-wrapper">
+          <a href="/pages/{{section.settings.btnUrl}}" class="btn-main">{{section.settings.btnText}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Orthopedic info",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "circleText",
+      "label": "Orange cirlce text"
+    },
+    
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btnText",
+      "label": "Button text"
+    },
+    {
+      "type": "page",
+      "id": "btnUrl",
+      "label": "Button page url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "line",
+      "name": "Info line item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "line",
+          "label": "Line item"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orthopedic info",
+      "category": "Other",
+      "blocks": [
+        {
+          "type": "line"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

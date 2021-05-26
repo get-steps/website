@@ -1,0 +1,68 @@
+<section class="vision">
+  <div class="section-width-wrapper">
+    <div class="vision__grid">
+      <div class="vision__pic">
+        <figure class="vision__figure">
+          <img src="{{section.settings.image | img_url: 'master'}}" alt="GetSteps - Unsere Vision" class="vision__img">
+        </figure>
+      </div>
+
+      <div class="vision__content">
+        <h2 class="vision__title">{{section.settings.title}}</h2>
+        <div class="vision__text">{{section.settings.text}}</div>
+        <div class="vision__btn-wrapper">
+          <a href="/pages/{{section.settings.btnUrl}}" class="btn-main">{{section.settings.btnText}}</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Unsere Vision",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left column picture"
+    },
+    
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btnText",
+      "label": "Button text"
+    },
+    {
+      "type": "page",
+      "id": "btnUrl",
+      "label": "Button page url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Unsere Vision",
+      "category": "Other"
+    }
+  ]
+}
+
+{% endschema %}

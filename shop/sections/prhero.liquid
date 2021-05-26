@@ -1,0 +1,45 @@
+<div class="prhero">
+  <div class="section-width-wrapper">
+    <div class="prhero__grid">
+      <div class="prhero__main">
+        <h1 class="prhero__title">{{section.settings.title | newline_to_br}}</h1>
+        <div class="prhero__text">
+          <p>{{section.settings.text}}</p>
+        </div>
+        
+        <div class="prhero__figure">
+          <img src="{{'prhero-bg-2.png' | asset_url}}" alt="" class="prhero__picture">
+          <div class="prhero__bubble">
+            <img src="{{'hm-bubble.svg' | asset_url}}" alt="" class="prhero__bubble-icon">
+            <div class="prhero__bubble-text">{{section.settings.bubble}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Produkt hero",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "textarea",
+      "id": "bubble",
+      "label": "Bubble text"
+    }
+  ]
+}
+
+{% endschema %}

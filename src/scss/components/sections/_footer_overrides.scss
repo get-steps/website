@@ -1,0 +1,157 @@
+.pxl-steps-footer {
+  $large-padding: 30px;
+  $xlarge-padding: 60px;
+
+  @include breakpoint(large up) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // class set in Section settings
+  background-color: $black;
+  z-index: base_index(footer);
+  &,
+  li a {
+    color: $white;
+    text-transform: none;
+  }
+
+  ul.footer__quicklinks,
+  ul.footer__secondary {
+    columns: 3;
+
+    text-align: left;
+
+    @include breakpoint(small only) {
+      padding-left: 9vw;
+    }
+
+    > li {
+      // safari fix for columns
+      display: inline-block;
+      width: 100%;
+    }
+
+    > li a {
+      -webkit-font-smoothing: auto;
+      @extend %body-text-small-captions-white;
+
+      @include breakpoint(small only) {
+        font-size: rem-calc(14px);
+        letter-spacing: -0.28px;
+      }
+    }
+  }
+
+  ul.footer__secondary {
+    columns: unset;
+    display: flex;
+    justify-content: center;
+    padding-left: 30px; // account for this ul not being wrapped by a parent div
+    padding-left: $large-padding;
+    text-align: center;
+    width: 100%;
+
+    > li {
+      margin-right: 0;
+    }
+
+    @include breakpoint(xxlarge up) {
+      padding-left: $xlarge-padding;
+    }
+  }
+
+  .footer__block__title {
+    display: none;
+  }
+
+  .site-footer {
+    @include breakpoint(small only) {
+      padding: 0;
+    }
+
+    @include breakpoint(large up) {
+      margin: 0 auto;
+      max-width: 1160px;
+      padding: 0;
+      width: 100%;
+    }
+
+    hr {
+      display: none;
+    }
+
+    > .grid {
+      @include breakpoint(medium up) {
+        justify-content: center;
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      @include breakpoint(large up) {
+        text-align: left;
+      }
+    }
+
+    .pxl-footer-logo {
+      text-align: center;
+
+      @include breakpoint(large up) {
+        text-align: center;
+      }
+    }
+
+    .footer__block.grid__item.large-up--one-half {
+      // theme 'large' is 990px, less than foundation
+      @include breakpoint(medium up) {
+        width: 100%;
+      }
+
+      @include breakpoint(xlarge up) {
+        width: 50%;
+      }
+    }
+
+    @include breakpoint(large up) {
+      .footer__block.grid__item.large-up--one-half {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  .footer__copyright {
+    padding: 0;
+    text-align: center;
+  }
+
+  .footer__logo {
+    padding-top: 0px;
+
+    > img {
+      width: 300px;
+
+      @include breakpoint(large up) {
+        margin-top: -20px;
+      }
+    }
+  }
+
+  .pxl-footer-container {
+    display: flex;
+  }
+
+  .image-container {
+    display: none;
+
+    @include breakpoint(medium up) {
+      display: flex;
+    }
+  }
+
+  .stack-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

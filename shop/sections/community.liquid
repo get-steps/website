@@ -1,0 +1,93 @@
+<section class="community">
+  <div class="section-width-wrapper">
+    <h2 class="community__title h2">{{ section.settings.title }}</h2>
+    <div class="community__slider">
+      {% for block in section.blocks %}
+        <div class="community__slide">
+          <div class="community__slide-inner">
+
+            <figure class="community__img-wrapper">
+              <img src='{{ block.settings.image | img_url: '744x' }}' class="community__img"/>
+            </figure>
+
+            <div class="community__slide-content">
+              <p class="community__slide-text">“{{block.settings.title}}”</p>
+              <p class="community__slide-line">{{block.settings.name}}</p>
+              <p class="community__slide-line">{{block.settings.occupation}}</p>
+
+              <div class="community__slide-btn-wrapper">
+                <a
+                  href="{{block.settings.btn_link}}"
+                  class="btn-main community__slide-btn">{{block.settings.btn_label}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Community",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    }
+  ],
+
+
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Block item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Review text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer picture"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "occupation",
+          "label": "Customer occupation"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Community",
+      "category": "Reviews"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,77 @@
+{% if template.name == "index" %}
+  {% assign pl = 'Trage hier deine E-Mail ein' %}
+{% else %}
+
+  {% assign pl = 'Jetzt für Newsletter anmelden' %}
+  {% assign small-class = 'nl--small' %}
+{% endif %}
+
+{% form 'customer' %}
+  {% if form.posted_successfully? %}
+    {% assign success-class = 'nl--success' %}
+  {% elsif form.errors %}
+    {% assign error-class = 'nl--error' %}
+    {% for field in form.errors %}
+      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+    {% endfor %}
+  {% endif %}
+
+  <input type="hidden" name="contact[tags]" value="newsletter">
+
+
+  <div class="nl {{small-class}} {{success-class}} {{error-class}}">
+    <div class="nl__cont">
+      <h2 class="nl__title">{{section.settings.title}}</h2>
+      <p class="nl__text">{{section.settings.text}}</p>
+      <div class="nl__box">
+        <input type="email" class="nl__el" placeholder="{{pl}}" required name="contact[email]">
+        <button class="nl__btn" type="submit">
+          <img src="{{ "i-nl-icon.svg" | asset_url }}" alt="" class="nl__icon">
+        </button>
+        
+        {% if form.errors %}
+          <div class="nl__box-errors">
+            {% for field in form.errors %}
+              <div class="nl__box-error">{{ form.errors.messages[field] }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="nl__thank">
+      <h2 class="nl__title">Danke!</h2>
+      <p class="nl__thank-text">Du bekommst Post von uns.</p>
+      <div class="nl__thank-deco">
+        <img src="{{ "nl-deco.svg" | asset_url }}" alt="" class="nl__thank-deco-img">
+      </div>
+      
+    </div>
+  </div>
+{% endform %}
+
+{% schema %}
+
+{
+  "name": "Newsletter (new)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter (new)",
+      "category": "Other"
+    }
+  ]
+}
+
+{% endschema %}

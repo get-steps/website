@@ -1,0 +1,42 @@
+.template-article {
+  .article__wrapper {
+    > .grid > .grid__item {
+      font-size: rem-calc(30px);
+      margin-top: 20px;
+
+      @include breakpoint(large up) {
+        margin-top: 100px;
+      }
+    }
+
+    .sidebar {
+      display: none;
+    }
+
+    h2 {
+      @extend %header-font-style;
+      font-size: rem-calc(30px);
+
+      @include breakpoint(large up) {
+        font-size: rem-calc(50px);
+      }
+    }
+
+    .medium-up--eight-twelfths {
+      width: 100%;
+    }
+
+    .hr,
+    table,
+    tr,
+    td,
+    .product__column,
+    .article__column {
+      border: 0; // remove ugly borders
+    }
+
+    .widget__title {
+      border-bottom: 0; // remove ugly borders
+    }
+  }
+}

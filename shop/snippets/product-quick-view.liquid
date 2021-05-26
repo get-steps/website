@@ -1,0 +1,71 @@
+{% comment %}
+  * Renders a quick view product
+
+  -  sectionkey {string} - A section key for use in the media object js
+
+  {% include 'media', media: media, product: product, sectionkey: section.id  %}
+{% endcomment %}
+<!-- /snippets/product-quick-view.liquid -->
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign featured_image = current_variant.featured_media.preview_image | default: product.featured_media.preview_image -%}
+
+<div class="modal__wrapper modal--product">
+  <div class="modal__inner__wrapper">
+    <div class="grid">
+      <div class="grid__item medium-up--one-half small--one-third">
+        <div class="product__slides product-single__photos" data-product-slideshow>
+          {% for media in product.media %}
+            {% include 'media', media: media, product: product, sectionkey: sectionkey %}
+          {% endfor %}
+        </div>
+        <div data-product-thumbs class="product__thumbs--square"></div>
+      </div>
+      <div class="grid__item medium-up--one-half small--two-thirds" data-form-wrapper>
+        <div class="product__title__wrapper">
+          <h2 class="product__title">{{ product.title }}</h2>
+          <div class="h5--body product__price" data-price-wrapper>
+            <span data-product-price {% if current_variant.compare_at_price > current_variant.price %} class="product__price--sale"{% endif %}>
+              {{ current_variant.price | money }}
+            </span>
+
+            {% if product.compare_at_price_max > product.price %}
+              <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+              <s class="product__price--strike" data-compare-price>
+                {% if current_variant.compare_at_price > current_variant.price %}
+                  {{ current_variant.compare_at_price | money }}
+                {% endif %}
+              </s>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form__wrapper {% unless current_variant.available %}variant--soldout{% endunless %}" data-form-wrapper>
+          {% include 'product-form', buybutton_setting: settings.quickview_buybutton_enable %}
+        </div>
+
+        <div class="product-description rte">
+          {{ product.description | split: '<h6>' | first | strip_html | truncatewords: 30, '...' }}
+        </div>
+
+        <div class="hr"></div>
+        <p>
+          <a href="{{ product.url }}" class="more">{{ 'products.general.view_product' | t }} &rarr;</a>
+        </p>
+      </div>
+    </div>
+
+    {%- assign uniqueID = section.id -%}
+    {%- if template.name == 'list-collections' -%}
+      {%- assign uniqueID = collection.id -%}
+    {%- endif -%}
+
+    <a href="#" class="close">{% include 'icon-close-thin' %}</a>
+  </div>
+</div>
+
+{% unless product == empty %}
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+{% endunless %}

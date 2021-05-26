@@ -1,0 +1,164 @@
+.ortho {
+  padding: 120px 30px 50px;
+
+  @include breakpoint(small down) {
+    // padding-top: 60px;
+    padding-top: 0;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+
+    @include breakpoint(medium down) {
+      padding-top: 80px;
+    }
+    @include breakpoint(small down) {
+      padding-top: 80px;
+    }
+  }
+  &__product {
+    padding: 0 10px;
+    width: 50%;
+
+    @include breakpoint(medium down) {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    @include breakpoint(small down) {
+      padding-right: 35px;
+    }
+  }
+  &__product-figure {
+    position: relative;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__image {
+    min-width: 50vw;
+    pointer-events: none;
+    position: absolute;
+    right: 41px;
+    top: 0;
+
+    @include breakpoint(medium down) {
+      left: 0;
+      right: unset;
+      transform: translateX(-35%);
+    }
+    @include breakpoint(small down) {
+      margin-top: 70px;
+      transform: translateX(-34%);
+      width: 130vw;
+    }
+  }
+  &__circle {
+    align-items: center;
+    background-color: #e26d5c;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    height: 142px;
+    justify-content: center;
+    line-height: (24/20);
+    margin-left: 25%;
+    margin-top: 154px;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    transform: rotate(-10deg);
+    user-select: none;
+    width: 142px;
+    z-index: 2;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 87px;
+      margin-left: auto;
+      margin-right: 20px;
+      margin-top: 0;
+    }
+  }
+
+  &__content {
+    padding: 0 10px;
+    position: relative;
+    width: 50%;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+    }
+    @include breakpoint(small down) {
+    }
+  }
+  &__title {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: (46/40);
+    margin-bottom: 27px;
+    max-width: 500px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      font-size: 24px;
+      line-height: (28/24);
+      margin-bottom: 30px;
+      padding: 0 15px;
+      text-align: center;
+    }
+  }
+  &__lines {
+    margin-bottom: 55px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      margin-bottom: 28px;
+    }
+  }
+  &__line {
+    align-items: flex-start;
+    display: flex;
+    font-size: 20px;
+    line-height: (28/20);
+    margin-bottom: 13px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    svg {
+      height: auto;
+      margin-right: 15px;
+      margin-top: 0.5em;
+      width: 0.5em;
+
+      @include breakpoint(small down) {
+        display: none;
+      }
+    }
+  }
+  &__btn-wrapper {
+    @include breakpoint(small down) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

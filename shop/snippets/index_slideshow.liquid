@@ -1,0 +1,120 @@
+<div class="homepage-slideshow {{ section.settings.height }} transparent__wrapper {{ section.settings.optional_class }}"
+data-section-id="{{ section.id }}"
+data-section-type="slideshow"
+{%- if section.settings.background_color -%}
+style="background-color: {{ section.settings.background_color }};"
+{%- endif -%}
+>
+  {% if section.blocks.size > 0 %}
+    <div id="slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed | times: 1000 }}" data-dots="{{ section.settings.show_dots }}">
+      {% for block in section.blocks %}
+        
+        <div class="slick-slide slideshow__slide {% if block.settings.caption != blank %}slideshow__slide--caption{% endif %} slideshow__slide--{{ block.id }} wide-image {{ block.settings.text_color }}" data-color="{{ block.settings.text_color }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image -%}
+            {%- assign img_object = block.settings.image -%}
+            {%- assign img_small = block.settings.image | img_url: '18x' -%}
+            {%- assign img_api = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          {%- else -%}
+            {%- assign img_object = 'blank.svg' | asset_url -%}
+            {%- assign img_small =  'blank.svg' | asset_url -%}
+            {%- assign img_api = 'blank.svg' | asset_url -%}
+          {%- endif -%}
+          {%- assign transparency_class = '' -%}
+          {%- if block.settings.transparent or block.settings.button_image -%}
+            {%- assign transparency_class = 'hero__content--transparent' -%}
+          {%- endif -%}
+
+          {% if block.settings.link_text == '' and block.settings.link and block.settings.button_image == nil %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+
+          {% assign overlay_opacity = block.settings.overlay_opacity | times: 0.01 %}
+          <div class="image-overlay" style="background-color:{{ block.settings.overlay_color }} !important; opacity:{{ overlay_opacity }};"></div>
+
+          {% if section.settings.height == 'image-height' %}
+            <img class="lazyload responsive-wide-image slide-image-img"
+              alt="{{ block.settings.image.alt | default: block.settings.title }}"
+              src="{{ img_small }}"
+              data-src="{{ img_api }}"
+              data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+              data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+              data-parent-fit="cover"
+              data-sizes="auto"/>
+          {% else %}
+            <div class="background-size-cover {% if block.settings.caption != blank %}background-size-cover--caption{% endif %} lazyload" data-bgset="{% include 'bgset', image: img_object %}"></div>
+          {% endif %}
+          {% if block.settings.link_text == '' and block.settings.link and block.settings.button_image == nil %}
+            </a>
+          {% endif %}
+
+          <div class="hero__content__wrapper {{ block.settings.flex_align }} {{ transparency_class }}">
+            <div class="hero__content">
+              {% if block.settings.button_image %}
+                {%- assign img_button = block.settings.button_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <a href="{{ block.settings.link }}" class="button-image">
+                  <img class="lazyload image--flex"
+                    alt="{{ block.settings.button_image.alt | default: block.settings.link_text }}"
+                    src="{{ block.settings.button_image | img_url: '180x' }}"
+                    data-src="{{ img_button }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+                    data-aspectratio="{{  block.settings.button_image.aspect_ratio }}"
+                    data-sizes="auto"/>
+                </a>
+              {% else %}
+                {% unless block.settings.title == '' %}
+                  <h2 class="hero__title h1"
+                    data-aos="fade-up"
+                    data-aos-duration="500">
+                    {{ block.settings.title | escape }}
+                  </h2>
+                {% endunless %}
+                {% unless block.settings.description == '' %}
+                  <p class="hero__description h5--body"
+                    data-aos="fade-up"
+                    data-aos-duration="600"
+                    data-aos-delay="100">
+                    {{ block.settings.description }}
+                  </p>
+                {% endunless %}
+                {% unless block.settings.link_text == '' %}
+                  <a class="hero__btn btn btn--large btn--secondary caps"
+                    href="{{ block.settings.link }}"
+                    data-aos="fade-up"
+                    data-aos-duration="700"
+                    data-aos-delay="200">
+                    {{ block.settings.link_text | escape }}
+                  </a>
+                {% endunless %}
+              {% endif %}
+            </div>
+            {% if block.settings.caption != blank %}
+              <div class="slide-caption">{{block.settings.caption}}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {%- assign init_color = section.blocks.first.settings.text_color -%}
+	<div class="slideshow__arrow slideshow__arrow--prev {{ init_color }}" data-prev-arrow>{% include 'icon-arrow-left' %}</div>
+	<div class="slideshow__arrow slideshow__arrow--next {{ init_color }}" data-next-arrow>{% include 'icon-arrow-right' %}</div>
+
+  {% if section.blocks.size == 0 %}
+    <div class="slideshow__slide">
+      <div class="text-center vertical-align">{{ 'home_page.onboarding.no_content' | t }}</div>
+      <div class="image-overlay" style="background-color:{{ block.settings.overlay_color }} !important; opacity:0.25;"></div>
+    </div>
+  {% endif %}
+
+  {% for block in section.blocks %}
+    <noscript>
+      <img src="{{ block.settings.image | img_url: '1440x' }}" alt="{{ block.settings.image.alt | default: section.settings.title }}" class="responsive-wide-image"/>
+    </noscript>
+    {% if block.settings.button_image %}
+      <noscript>
+        <div class="flex--centered"><a href="{{ block.settings.link }}" class="button-image"><img src="{{ block.settings.button_image | img_url: '540x' }}" alt="{{ block.settings.button_image.alt | default: block.settings.link_text }}" class="image--flex" /></a></div>
+      </noscript>
+    {% endif %}
+  {% endfor %}
+</div>

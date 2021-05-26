@@ -1,0 +1,53 @@
+@import 'header_overrides';
+@import 'footer_overrides';
+@import 'index_slideshows';
+@import 'index_rich_text';
+@import 'index_newsletter';
+@import 'product_overrides';
+@import 'product_custom';
+@import 'pxl_four_images';
+@import 'pxl_steps_columns';
+@import 'pxl_steps_columns_background';
+@import 'pxl_page_slideshow';
+@import 'pxl_split_slideshow';
+@import 'press';
+@import 'faq';
+@import 'for-me';
+@import 'faq-page';
+@import 'ortho';
+@import 'foot';
+@import 'hm';
+@import 'prhero';
+@import 'insoles';
+@import 'infoblock';
+@import 'ontop';
+@import 'popup-type';
+@import 'vision';
+@import 'conf';
+@import 'nl'; // newsletter
+@import 'gtn'; // product good to know
+@import 'reviews-carousel'; // index trustpilot reviews carousel
+@import 'reviews-list'; // PDP trustpilot reviews list
+@import 'footer-new'; // new white footer
+@import 'jobs-hello'; // section with button
+@import 'hero-show'; // homepage hero for TV show
+@import 'jobs-accordeon'; // jobs page accordeon (https://get-steps.com/pages/jobs)
+@import 'jobs-hello';
+@import 'page-jobs'; // pages/jobs
+@import 'page-presse'; // pages/presse
+@import 'community'; // reviews section at homepage & vorteile pages
+@import 'post'; // new article page
+@import 'blog'; // new blog archiove page + pagination - /blogs/getsteps-community
+
+.section-width-wrapper {
+  margin: 0 auto;
+  max-width: $max-width-l;
+
+  @include breakpoint(xlarge up) {
+    max-width: $max-width-xl;
+  }
+
+  &-extended {
+    max-width: $max-width-xl + 40px; // to be used for original theme Sections that are hard to align other
+  }
+}

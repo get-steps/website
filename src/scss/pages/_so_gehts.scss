@@ -1,0 +1,143 @@
+.template-page.so-gehts {
+  .grid-item-width-wrapper {
+    margin: 0 auto;
+    max-width: 1160px;
+  }
+}
+
+.so-gehts {
+  .pxl-page-hero {
+    height: auto;
+    margin-bottom: 0;
+
+    .hero__content__wrapper {
+      position: static;
+    }
+    .hero__content {
+      padding-top: 135px;
+
+      @include breakpoint(small down) {
+        padding-top: 60px;
+      }
+    }
+
+    .responsive-wide-image {
+      display: none;
+    }
+  }
+  .pxl-so-gehts-blocks {
+    padding-top: 60px;
+  }
+}
+
+.so-gehts.bar-visible {
+  .pxl-page-hero .hero__content {
+    padding-top: 95px;
+
+    @include breakpoint(small down) {
+      padding-top: 60px;
+    }
+  }
+}
+
+.pxl-so-gehts-blocks {
+  .grid-item {
+    h2 {
+      @extend %body-text-font-style-bold;
+    }
+
+    p {
+      @extend %body-text-font-style;
+    }
+
+    .image-with-text__inner {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+
+      @include breakpoint(medium up) {
+        align-items: flex-start;
+        padding: 50px 50px 50px 30px;
+      }
+
+      @include breakpoint(xxlarge up) {
+        padding: 50px 50px 50px 0;
+      }
+
+      > .btn {
+        margin-top: 20px;
+
+        @include breakpoint(small down) {
+          display: none;
+        }
+      }
+    }
+
+    .video__description {
+      > p {
+        text-align: center;
+
+        @include breakpoint(medium up) {
+          text-align: left;
+        }
+      }
+    }
+
+    &:nth-of-type(1) .image-with-text__image-img {
+      background-size: auto 100%;
+
+      @include breakpoint(large up) {
+        background-position: bottom right;
+      }
+    }
+
+    &:nth-of-type(2) {
+      background-color: $brand-off;
+
+      .image-with-text__image-img {
+        background-color: $background-alternative;
+        background-position: center;
+        background-size: auto 100%;
+
+        @include breakpoint(medium up) {
+          background-position: top left;
+          background-size: 100% auto;
+        }
+      }
+
+      .image-with-text__inner {
+        padding: 50px;
+
+        @include breakpoint(medium up) {
+          padding: 50px 20px 50px 50px;
+        }
+
+        @include breakpoint(large up) {
+          padding: 50px 0 50px 50px;
+        }
+      }
+    }
+
+    &:nth-of-type(3) .image-with-text__image-img {
+      background-size: contain;
+    }
+  }
+
+  @include breakpoint(small only) {
+    .grid-item {
+      .image-with-text__image {
+        display: flex;
+        margin: 0 auto;
+        order: 1;
+        width: 90%;
+      }
+
+      .image-with-text__text {
+        display: flex;
+        flex-direction: column;
+        order: 2;
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{%- if section.settings.image -%}
+  {%- assign img_object = section.settings.image -%}
+  {%- assign img_small = section.settings.image | img_url: '18x' -%}
+  {%- assign img_api = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- else -%}
+  {%- assign img_object = 'blank.svg' | asset_url -%}
+  {%- assign img_small =  'blank.svg' | asset_url -%}
+  {%- assign img_api = 'blank.svg' | asset_url -%}
+{%- endif -%}
+{%- assign transparency_class = '' -%}
+{%- if section.settings.transparent or section.settings.button_image -%}
+  {%- assign transparency_class = 'hero__content--transparent' -%}
+{%- endif -%}
+
+<div class="index-hero wide-image {{ section.settings.text_color }} {{ section.settings.height }} {{ section.settings.optional_class }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="hero"
+  id="FeaturedImage-{{ section.id }}"
+  {%- if section.settings.parallax -%}
+    data-parallax-src="{{ img_small }}"
+    data-src="{{ img_api }}"
+    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+    data-aspectratio="{{  section.settings.image.aspect_ratio }}"
+    data-sizes="auto"
+  {%- endif -%}>
+  {% if section.settings.link_text == '' and section.settings.link and section.settings.button_image == nil %}
+    <a href="{{ section.settings.link }}">
+  {% endif %}
+  <div class="hero__content__wrapper {{ section.settings.flex_align }} {{ transparency_class }}">
+    <div class="hero__content" data-aos="fade-up">
+      {% if section.settings.button_image %}
+        {%- assign img_button = section.settings.button_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <a href="{{ section.settings.link }}" class="button-image">
+          <img class="lazyload image--flex"
+            alt="{{ section.settings.button_image.alt | default: section.settings.link_text }}"
+            src="{{ section.settings.button_image | img_url: '180x' }}"
+            data-src="{{ img_button }}"
+            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+            data-aspectratio="{{  section.settings.button_image.aspect_ratio }}"
+            data-sizes="auto"/>
+        </a>
+      {% else %}
+      <h1 class="hero__title{% if section.settings.title_outside_slideshow == true %} pxl-hero-desktop{% endif %}"
+        {% unless section.settings.title == '' %}
+            data-aos-duration="500"
+            data-aos="fade-up">
+        {{ section.settings.title | escape }}</h1>{% endunless %}
+
+        {% unless section.settings.link_text == '' %}
+          {% if section.settings.hide_btn == true %}
+            {% assign btn_class = 'hide-desktop' %}
+          {% else %}
+            {% assign btn_class = '' %}
+          {% endif %}
+          <a class="hero__btn btn btn--large btn--secondary caps pxl-fancy-button {{btn_class}}"
+            href="{{ section.settings.link }}"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="200">
+          {{ section.settings.link_text | escape }}
+
+          <div class="pxl-fancy-button-svg">
+              {% render 'pxl_fancy_button.liquid' %}
+          </div>
+          </a>
+        {% endunless %}
+        {% unless section.settings.description == '' %}
+          <p class="hero__description h5--body"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="100">
+            {{ section.settings.description }}
+          </p>
+        {% endunless %}
+      {% endif %}
+    </div>
+  </div>
+  {% assign overlay_opacity = section.settings.overlay_opacity | times: 0.01 %}
+  <div class="image-overlay" style="background-color:{{ section.settings.overlay_color }} !important; opacity:{{ overlay_opacity }};"></div>
+
+  {% if section.settings.height == 'image-height' %}
+    <img class="lazyload responsive-wide-image" {% if section.settings.parallax %} style="opacity: 0;"{% endif %}
+      alt="{{ section.settings.image.alt | default: section.settings.title }}"
+      src="{{ img_small }}"
+      data-src="{{ img_api }}"
+      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+      data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+      data-parent-fit="cover"
+      data-sizes="auto"/>
+  {% endif %}
+
+  {% if section.settings.parallax == false and section.settings.height != 'image-height' %}
+    <div class="background-size-cover lazyload" data-bgset="{% include 'bgset', image: img_object %}"></div>
+  {% endif %}
+
+  {% if section.settings.link_text == '' and section.settings.link and section.settings.button_image == nil %}
+    </a>
+  {% endif %}
+
+  <noscript>
+    <img src="{{ section.settings.image | img_url: '1440x' }}" alt="{{ section.settings.image.alt | default: section.settings.title }}" class="responsive-wide-image"/>
+  </noscript>
+  {% if section.settings.button_image %}
+    <noscript>
+      <div class="flex--centered"><a href="{{ section.settings.link }}" class="button-image"><img src="{{ section.settings.button_image | img_url: '540x' }}" alt="{{ section.settings.button_image.alt | default: section.settings.link_text }}" class="image--flex" /></a></div>
+    </noscript>
+  {% endif %}
+</div>
+
+{% unless section.settings.title == '' or section.settings.title_outside_slideshow == false  %}
+    <h2 class="hero__title pxl-hero-mobile h1">
+    {{ section.settings.title | escape }}</h2>
+    {% unless section.settings.description == '' %}
+          <p class="hero__description h5--body"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="100">
+            {{ section.settings.description }}
+          </p>
+        {% endunless %}
+{% endunless %}
+

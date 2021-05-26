@@ -1,0 +1,7 @@
+{% unless customer and customer.orders_count > 0 and section.settings.always_show_purchase_message == false %}
+  {%comment%}
+  <div class="pre-purchase-message">
+    {{ section.settings.purchase_message }}
+  </div>
+  {%endcomment%}
+{% endunless %}

@@ -1,0 +1,120 @@
+{% assign types = "" | split:',' %}
+{% assign materials = "" | split:',' %}
+
+{% assign current = product.selected_or_first_available_variant %}
+
+
+{% assign vars = product.variants | sort: 'price' %}
+{% for var in vars %}
+  {% assign new = var.option2 | split:',' %}
+  {% assign materials = materials | concat:new %}
+{% endfor %}
+
+{% assign materials_uniq = materials | uniq %}
+
+
+<div class="conf">
+
+  <div class="conf__title">Konfiguriere jetzt deine Einlagen</div>
+
+  <div class="conf__block conf__block--active conf__block--type">
+    <div class="conf__block-heading">
+      <div class="conf__block-title">Für welchen Schuhtyp willst du die Einlagen?</div>
+      <a href="#" class="conf__btn js-insoles-popup">Mehr Infos</a>
+    </div>
+
+    <div class="conf__box">
+      <div class="conf__items">
+        {% for type in product.options_by_name['Schuhtyp für die Einlagen'].values %}
+
+          {% if current.option1 == type %}
+            {% assign class = "conf__item--active" %}
+          {% else %}
+            {% assign class = "" %}
+          {% endif %}
+
+
+          <div class="conf__item {{class}}" data-type='{{type | handleize}}'>
+            <div class="conf__item-inner">
+              {%- assign normalised_name = type | split: '/' -%}
+              {%- assign normalised_name = normalised_name[0] | strip | downcase | replace: ' ', '_' | handleize -%}
+              {%- assign icon_url = "shoe_icon_" | append: normalised_name | append: ".svg" | asset_url -%}
+              <img src="{{icon_url}}" alt="" class="conf__item-icon">
+            </div>
+          </div>
+
+          
+        {% endfor %}
+      </div>
+      
+      <div class="conf__content-wrapper">
+        {%comment%}
+            content placed with js
+          {%endcomment%}
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="conf__block-heading">
+    <div class="conf__block-title">Welchen Bezug willst du für deine Einlagen?</div>
+    <a href="#" class="conf__btn js-materials-popup">Mehr Infos</a>
+  </div>
+  
+  {% for type in product.options_by_name['Schuhtyp für die Einlagen'].values %}
+
+    {% if current.option1 == type %}
+      {% assign class = 'conf__block--active' %}
+    {% else %}
+      {% assign class = '' %}
+    {% endif %}
+
+    <div class="conf__block conf__block--insole {{class}}" data-type={{type}}>
+      <div class="conf__box">
+        <div class="conf__items">
+            
+            {% assign vars = product.variants | sort: 'price' %}
+            {% for var in vars %}
+              {% if var.option1 == type %}
+
+                {% if current.option2 == var.option2 %}
+                  {% assign insoleClass = 'conf__item--active' %}
+                {% else %}
+                  {% assign insoleClass = '' %}
+                {% endif %}
+
+                <div class="conf__item {{insoleClass}}" data-type="{{type | handleize}}" data-material="{{var.option2}}">
+                  <div class="conf__item-inner">
+
+                    {%- assign normalised_value = var.option2 | split: ' ' -%}
+                    {%- assign normalised_value = normalised_value[0] | strip | downcase -%}
+                    {%- assign icon_url = "material_icon_" | append: normalised_value | append: ".jpg" | asset_url -%}
+                    
+                    <div class="conf__item-material">
+                      <img src="{{icon_url}}" alt="" class="conf__item-material-bg">
+                    </div>
+                    
+                  </div>
+                </div>
+
+              {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="conf__content-wrapper-material">
+          {%comment%}
+            content placed with js
+          {%endcomment%}
+        </div>
+        <!-- <div class="conf__content conf__content--active" data-material='{{var.option2}}'>
+          <div class="conf__content-title">Sicherheitsmaterial</div>
+          <div class="conf__content-text">
+            <p>Zur Gewährleistung der Sicherheitsstandards ist das antistatische Bezugsmaterial festgelegt und nicht frei wählbar</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+  {% endfor %}
+
+</div>

@@ -1,0 +1,137 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies{% if settings.layout_container_enable %} container-layout{% endif %}" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies{% if settings.layout_container_enable %} container-layout{% endif %}" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="{{ settings.accent_secondary }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {% include 'theme_fonts_header' %}
+
+  {% if settings.favicon %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {% endif %}
+
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif %}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title }}</title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta' %}
+
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'app.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      shop: {
+        assets: "{{ 'nothing.jpg' | asset_url | split: 'nothing.jpg' | first }}"
+      },
+      moneyFormat: {{ shop.money_format | json }},
+      version: '1.3.2'
+    };
+  </script>
+
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'head.js' | asset_url }}"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'head.js' | asset_url }}"></script><![endif]-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'theme.min.js' | asset_url }}"></script><![endif]-->
+
+  {{ content_for_header }}
+
+  {% include 'pxl_scripts' %}
+
+  {% if settings.enable_yotpo and settings.enable_product_reviews and settings.yotpo_ID != '' %}
+    {% include 'yotpo-script' %}
+  {% endif %}
+
+  {% include 'judgeme_core' %}
+  <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <!-- End TrustBox script -->
+  
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1542082,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+  
+</head>
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ template.suffix | handle }}{% if customer %} customer-logged-in{% endif %} {% if settings.disable_preview_bar %}no-preview-bar{% endif %}" data-promo="{{ settings.show_promo_modal }}" data-animations="{{ settings.animations_enable }}" data-endless-scroll="{{ settings.endless_scroll }}">
+
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div class="container" id="SiteContainer">
+    {% section 'header' %}
+
+    <!-- CONTENT -->
+    <main role="main" class="main-content">
+      {{ content_for_layout }}
+
+    </main>
+  </div>
+  
+  {%comment%}
+  {% section 'footer' %}
+  {%endcomment%}
+  
+  {% section 'footer-new' %}
+
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+  {%- if template.name == 'article' or template.name == 'blog' -%}
+    {% if settings.enable_disqus %}
+      {% include 'disqus' %}
+    {% endif %}
+  {%- endif -%}
+
+  <script>Shopify.money_format = '{{ shop.money_format }}';</script>
+
+  {% if settings.show_multiple_currencies %}
+    {% include 'currencies' %}
+  {% endif %}
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7317458.js"></script>
+<!-- End of HubSpot Embed Code -->  
+</body>
+
+{% include 'vg-pd-common' %}
+</html>

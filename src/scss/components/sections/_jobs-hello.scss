@@ -1,0 +1,102 @@
+.jobs-hello {
+  background-color: #e0cbba;
+  padding-bottom: 50px;
+  padding-top: 50px;
+
+  @include breakpoint(small down) {
+    padding-bottom: 100px;
+    padding-top: 100px;
+  }
+
+  &--tall {
+    padding-bottom: 100px;
+    padding-top: 100px;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  &__title {
+    font-size: 25px;
+    line-height: (30/25);
+    margin: 0 auto 36px;
+    max-width: 900px;
+
+    @include breakpoint(small down) {
+      font-size: 24px;
+      line-height: (28/24);
+    }
+
+    &--big {
+      font-size: 40px;
+
+      @include breakpoint(small down) {
+        font-size: 24px;
+      }
+    }
+  }
+  &__text {
+    @at-root p#{&} {
+      font-size: 20px;
+      line-height: (28/20);
+      margin: -20px auto 55px;
+      max-width: 645px;
+
+      @include breakpoint(small down) {
+        font-size: 17px;
+        line-height: (23/17);
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+.btn-rounded {
+  background-color: #ccb5a3;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 27px;
+  text-decoration: none !important;
+  transition: background-color 0.3s;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: #946d6a;
+    color: #fff;
+    text-decoration: none !important;
+  }
+
+  &--big {
+    font-size: 20px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 45px;
+  }
+  &--black {
+    background-color: #1c1c1c;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #e26d5c;
+      color: #fff;
+    }
+  }
+}
+
+.section-p {
+  padding-left: 30px;
+  padding-right: 30px;
+}

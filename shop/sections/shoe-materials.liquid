@@ -1,0 +1,70 @@
+{% assign current = product.selected_or_first_available_variant %}
+{% assign currentType = current.option2 | handleize %}
+
+
+<div class="shoe-materials">
+  {% for block in section.blocks %}
+    {% assign titleHandled = block.settings.title | handleize %}
+
+    {% if currentType == titleHandled %}
+      {% assign class = "conf__content--active" %}
+    {% else %}
+      {% assign class = "" %}
+    {% endif %}
+
+    <div
+      class="conf__content {{class}}"
+      data-type='{{block.settings.title | handleize}}'
+      data-name='{{block.settings.title}}'
+      >
+
+      <div class="conf__content-title">{{block.settings.desc_title}}</div>
+      <div class="conf__content-text">
+        {{block.settings.text}}
+      </div>
+      <img src="{{ block.settings.image_top | img_url: 'master' }}" alt="GetSteps - {{block.settings.desc_title}}" class="conf__content-image">
+
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+
+{
+  "name": "Shoe materials",
+  "blocks": [
+    {
+      "type": "shoe_material",
+      "name": "Shoe material",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product material name (should match product option name)"
+        },
+        {
+          "type": "text",
+          "id": "desc_title",
+          "label": "Description title (swatch)"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description text (swatch)"
+        },
+        // {
+        //   "type": "image_picker",
+        //   "id": "image_box",
+        //   "label": "Swatch image"
+        // },
+        {
+          "type": "image_picker",
+          "id": "image_top",
+          "label": "Top view image (mobile/swatch)"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

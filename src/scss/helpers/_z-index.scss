@@ -1,0 +1,40 @@
+// Custom helpers
+// --------
+
+// Z-INDEX
+// ---------------------------------
+
+//
+// Returns the index of the provided $element as found in $elements, multiplied by 10.
+// @param $element [String]    The target element
+// @return Integer             The target z-index, as a factor of 10
+//
+$base_index_factor: 10;
+
+@function base_index($element) {
+  $elements: bottom, above-bottom, hover-content, floating-nav, mobile-nav,
+    mobile-toggle, overlay, modal, free-spot, age-gate, sticky-nav, footer;
+  @return index($elements, $element) * $base_index_factor;
+}
+
+//
+// Returns the index of the provided $element as found in $level_elements, sequenced into the global
+// z-index above the index of $level.
+//
+// NB - As this is essentially just performing a simple lookup and calculation, care must be taken to not insert more than one set of $level_elements into a given level at any point in time. If necessary, additional levels should be added to the base_index, where each level has no more than ($base_index_factor - 1) sub elements inserted into it.
+//
+// @param $level [String]             The element level to insert the $element after (see base_index for array)
+// @param $level_elements [String]    The array of elements to be inserted at this level (should currently be less than 10)
+// @param $element [String]           The target element
+// @return Integer                    The target z-index, as a factor of 10
+//
+@function index_at_base_level($level, $level_elements, $element) {
+  @if (length($level_elements) >= $base_index_factor) {
+    @error "The current base_index separation is " + $base_index_factor + " - $level_elements has " + length($level_elements) + " elements. Increase the factor in base_index to use more than " + ($base_index_factor - 1) +  " elements";
+  }
+  @return base_index($level) + index($level_elements, $element);
+}
+
+@function border() {
+  @return 1px solid get-color(border);
+}

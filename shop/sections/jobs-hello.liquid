@@ -1,0 +1,39 @@
+<section class="jobs-hello section-p">
+  <div class="section-width-wrapper">
+    <div class="jobs-hello__content">
+      <h3 class="jobs-hello__title">{{section.settings.title}}</h3>
+      <a
+        href="{{section.settings.button_url}}"
+        class="btn-rounded btn-rounded--big btn-rounded--black"
+        target="_blank">
+        {{section.settings.button_text}}
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Jobs contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button label"
+    },
+    {
+      "type": "text",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
+}
+
+{% endschema %}

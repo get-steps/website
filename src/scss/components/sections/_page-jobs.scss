@@ -1,0 +1,55 @@
+.page-jobs {
+  &__content {
+    padding-top: 70px;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      padding-bottom: 15px;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 90px;
+      // font-weight: bold;
+      font-weight: 900;
+      line-height: (100/90);
+      padding-right: 50px;
+
+      @include breakpoint(medium down) {
+        font-size: 50px;
+        padding-right: 0;
+        text-align: left;
+      }
+      @include breakpoint(small down) {
+        font-size: 40px;
+        text-align: left;
+      }
+    }
+    p {
+      font-size: 20px;
+      line-height: (28/20);
+      margin-bottom: 30px;
+      max-width: 570px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @include breakpoint(medium down) {
+      }
+      @include breakpoint(small down) {
+        font-size: 17px;
+        line-height: (23/17);
+      }
+    }
+    a {
+      color: #946d6a;
+
+      &:hover {
+        color: #946d6a;
+        text-decoration: underline;
+      }
+    }
+  }
+}

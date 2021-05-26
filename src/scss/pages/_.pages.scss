@@ -1,0 +1,35 @@
+@import 'typefaces';
+@import 'pages_shared';
+@import 'so_gehts';
+@import 'produkt';
+@import 'warum_einlagen';
+@import 'uber_steps';
+
+.pxl-hero-desktop {
+  @include breakpoint(medium down) {
+    display: none;
+  }
+}
+
+.pxl-hero-mobile {
+  padding-top: 20vh;
+
+  @media (max-height: 500px) {
+    padding-top: 40vh !important;
+  }
+
+  @include breakpoint(large up) {
+    display: none;
+  }
+}
+
+.template-page .main-content {
+  padding: 0;
+}
+
+@include breakpoint(large down) {
+  .hero__description {
+    padding: 20px;
+    text-align: center;
+  }
+}

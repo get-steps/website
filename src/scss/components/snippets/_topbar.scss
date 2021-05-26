@@ -1,0 +1,40 @@
+.topbar {
+  background-color: #000;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.2;
+  max-height: 50px;
+  overflow: hidden;
+  text-align: center;
+  transition: max-height 0.5s linear;
+
+  @include breakpoint(small down) {
+    z-index: -1;
+    //   .template-product .header-moved &,
+    //   .template-index .header-moved & {
+    //     max-height: 0;
+    //   }
+  }
+
+  &__inner {
+    padding: 10px;
+  }
+  p {
+    color: inherit;
+    display: flex;
+    font-size: inherit;
+    justify-content: center;
+    margin: 0;
+    text-decoration: none;
+  }
+  a {
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}

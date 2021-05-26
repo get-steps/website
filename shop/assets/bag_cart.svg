@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="15px" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GetSteps_Warenkorb-Icon_Mobile" stroke="#000000">
+            <path d="M2.5,0.5 L0.5,3.2 L0.5,12.6 C0.5,13.3 1.1,13.9 1.8,13.9 L1.8,13.9 L11.2,13.9 C11.9,13.9 12.5,13.3 12.5,12.6 C12.5,12.6 12.5,12.6 12.5,12.6 L12.5,3.2 L10.5,0.5 L2.5,0.5 Z" id="Path"></path>
+            <line x1="0.5" y1="3.2" x2="12.6" y2="3.2" id="Path"></line>
+            <path d="M9.2,5.9 C9.2,7.4 8,8.6 6.5,8.6 C5,8.5 3.8,7.3 3.8,5.9 L3.8,5.9" id="Path"></path>
+        </g>
+    </g>
+</svg>

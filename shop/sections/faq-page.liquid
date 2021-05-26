@@ -1,0 +1,138 @@
+{% assign themes = "" | split:',' %}
+
+{% for block in section.blocks %}
+  {% assign new = block.settings.theme | split:'|' %}
+  {% assign themes = themes | concat:new %}
+{% endfor %}
+
+{% assign themes_uniq = themes | uniq %}
+
+
+<div class="faq-page">
+  <div class="faq-page__greeting">
+    <div class="section-width-wrapper">
+      <h1 class="faq-page__title">{{section.settings.title}}</h1>
+      <p class="faq-page__text">{{section.settings.text}}</p>
+    </div>
+  </div>
+
+  <div class="faq-page__tabs">
+    <div class="section-width-wrapper">
+      <h2 class="faq-page__tabs-title">Themen</h2>
+      <div class="faq-page__tabs-items">
+        {% for theme in themes_uniq %}
+          <a href="#theme{{forloop.index}}" class="faq-page__tabs-item">{{theme}}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="faq-page__main">
+    <div class="section-width-wrapper">
+
+      {% for theme in themes_uniq %}
+        <div class="faq-page__block" id="theme{{forloop.index}}">
+          <h3 class="faq-page__block-title">{{theme}}</h3>
+          <div class="faq-page__block-content">
+            <div class="faq__items">
+
+              {% for block in section.blocks %}
+                {% if block.settings.theme == theme %}
+                  <div class="faq__item">
+                    <div class="faq__item-header">
+                      <p class="faq__item-title">{{block.settings.question}}</p>
+                      {% include 'icon-plus-2' %}
+                    </div>
+                    <div class="faq__item-content">
+                      <p class="faq__item-text">{{block.settings.answer}}</p>
+                        <p class="faq__item-disclaimer">{{block.settings.note}}</p>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %}
+
+      
+    </div>
+    
+  </div>
+
+  <div class="faq-page__more">
+    <div class="section-width-wrapper">
+      <h2 class="faq-page__more-title">{{section.settings.contactTitle}}</h2>
+      <div class="faq-page__more-text">{{section.settings.contactText}}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Greeting text"
+    },
+    
+
+
+    {
+      "type": "header",
+      "content": "Contact section"
+    },
+    {
+      "type": "text",
+      "id": "contactTitle",
+      "label": "Contact title"
+    },
+    {
+      "type": "richtext",
+      "id": "contactText",
+      "label": "Contact text"
+    }
+  ],
+
+
+
+
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question - answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "theme",
+          "label": "Question theme"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Item question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Item answer"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

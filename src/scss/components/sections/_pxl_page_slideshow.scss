@@ -1,0 +1,21 @@
+.page-slideshow {
+  .pxl-mid-slideshow {
+    h1 {
+      @extend %midheader-font-style;
+      color: $white;
+    }
+
+    p {
+      background-color: transparent;
+      color: $white;
+      height: auto;
+      padding: 10px;
+    }
+
+    .hero__content__wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

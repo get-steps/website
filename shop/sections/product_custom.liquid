@@ -1,0 +1,322 @@
+<!-- /sections/product_custom.liquid -->
+
+<div id="template-product"
+     data-section-id="{{ section.id }}"
+     data-section-type="product"
+     data-product-handle="{{ product.handle }}"
+     data-enable-history-state="true"
+     data-sticky-enabled="true"
+     data-tall-layout="{% if section.settings.image_layout == "stacked" %}true{% else %}false{% endif %}"
+     data-reviews="{{ settings.enable_product_reviews }}"
+     data-cart-bar="{{ section.settings.show_cart_bar }}"
+     data-cart-bar-position="{{ section.settings.cart_bar_position }}"
+     data-video-looping="{{ section.settings.enable_video_looping }}"
+     class="template-product-custom">
+  {%- include 'product' -%}
+</div>
+{% render 'faq-product' %} 
+{% render 'gtn'%}
+{% render 'reviews-list'%}
+
+
+
+
+
+{%comment%}
+{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+{%comment%}
+{%- if section.settings.show_cart_bar -%}
+  {%- include 'cart-bar' -%}
+{%- endif -%}
+{%endcomment%}
+
+{%- if section.settings.show_recently_viewed -%}
+  {%- include 'products-recently-viewed' -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Product (Custom) pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "image_layout",
+        "label": "Image display",
+        "default": "stacked",
+        "options": [
+          { "value": "thumbnails", "label": "Thumbnails" },
+          { "value": "stacked", "label": "Stacked" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_sticky_enable",
+        "label": "Enable sticky description",
+        "info": "Works best with shorter descriptions.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_breadcrumbs",
+        "label": "Show breadcrumbs",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_button",
+        "label": "Show smart checkout button",
+        "info": "Customers will see their preferred accelerated checkout method.",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cart bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_bar",
+        "label": "Show Cart bar",
+        "default": true,
+        "info": "Visible on larger than 1280px screens only"
+      },
+      {
+        "type": "select",
+        "id": "cart_bar_position",
+        "label": "Position",
+        "default": "bottom",
+        "options": [
+          { "value": "top", "label": "Top" },
+          { "value": "bottom", "label": "Bottom" }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Product info tabs"
+      },
+      {
+        "type": "checkbox",
+        "id": "tabs_enable",
+        "label": "Enable tabs",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "Enable video looping",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Additional Settings"
+      },
+      {
+        "type": "text",
+        "id": "purchase_message",
+        "label": "Pre-Purchase Message",
+        "default": "Einlagen inklusive Abdruckset und Fragebogen"
+      },
+      {
+        "type": "checkbox",
+        "id": "always_show_purchase_message",
+        "label": "Always Show Pre-Purchase Messages",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Content Blocks"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_content_blocks",
+        "label": "Enable Content Blocks",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "content_blocks_heading",
+        "label": "Content Blocks Heading",
+        "default": "Was passiert als nächstes?"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "icon",
+        "name": "Good to know",
+        "settings": [
+          {
+            "type": "text",
+            "id": "gtn_icon",
+            "label": "Icon URL"
+          },
+          {
+            "type": "richtext",
+            "id": "gtn_text",
+            "label": "Item text"
+          },
+          {
+            "type": "text",
+            "id": "gtn_btn_label",
+            "label": "Button label"
+          },
+          {
+            "type": "richtext",
+            "id": "gtn_popup_text",
+            "label": "Popup text"
+          }
+        ]
+      },
+      {
+        "type": "faq_tab",
+        "name": "FAQ tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "faq_tab_title",
+            "label": "Tab title"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_tab_text",
+            "label": "Tab text"
+          },
+
+          {
+            "type": "image_picker",
+            "id": "faq_col1_img",
+            "label": "Column (1) image"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_col1_text",
+            "label": "Column (1) text"
+          },
+          {
+            "type": "image_picker",
+            "id": "faq_col2_img",
+            "label": "Column (2) image"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_col2_text",
+            "label": "Column (2) text"
+          },
+          {
+            "type": "image_picker",
+            "id": "faq_col3_img",
+            "label": "Column (3) image"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_col3_text",
+            "label": "Column (3) text"
+          }
+        ]
+      },
+      {
+        "type": "content_block",
+        "name": "Content Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "raw_content",
+            "label": "Content",
+            "default": "<p>Content</p>"
+          }
+        ]
+      },
+      
+      {
+        "type": "tab_description",
+        "name": "Description H6",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Heading 6 titles will be converted to tab headings, tab content will be everything between the Heading 6 titles. [Product Tabs Documentation](https://help.invisiblethemes.com/article/11-tabs)."
+          }
+        ]
+      },
+      {
+        "type": "tab_richtext",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label",
+            "default": "Text tab",
+            "info": "Example: Warranty policy"
+          },
+          {
+            "type": "richtext",
+            "id": "raw_content",
+            "label": "Tab content",
+            "default": "<p>This tab content type will accept <strong>rich text</strong> to help with adding styles and links to additional pages or content. Use this to add supplementary information to help your buyers.</p>"
+          }
+        ]
+      },
+      {
+        "type": "tab_html",
+        "name": "HTML",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label",
+            "default": "HTML tab",
+            "info": "Example: Sizing video"
+          },
+          {
+            "type": "html",
+            "id": "raw_content",
+            "label": "Tab content",
+            "default": "<p>This tab content type will accept HTML code for advanced styling. Use this to add video embeds, or other advanced HTML content.</p>"
+          }
+        ]
+      },
+      {
+        "type": "tab_page",
+        "name": "Page",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label",
+            "default": "Page tab",
+            "info": "Example: Size chart"
+          },
+          {
+            "type": "page",
+            "id": "raw_content",
+            "label": "Tab content"
+          }
+        ]
+      }
+    ]
+  }
+
+
+  {% endschema %}

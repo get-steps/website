@@ -1,0 +1,107 @@
+<!-- /sections/index-image-with-text.liquid -->
+{%- assign button_colors = block.settings.button_colors | default: '#fff' -%}
+{%- assign button_text = '#fff' -%}
+{%- assign brightness = button_colors | color_brightness -%}
+
+{%- if brightness > 127 -%}
+  {%- assign button_text = settings.text_color -%}
+{%- endif -%}
+
+{%- if block.settings.image -%}
+  {%- assign img_object = block.settings.image -%}
+  {%- assign img_api = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- endif -%}
+
+<style>
+  .colors-{{section.id}} {
+    background-color: {{ block.settings.background | default: "#F7F9FA" }};
+    color: {{ block.settings.color  | default: "#282C2E" }};
+  }
+
+  .colors-{{section.id}} .image-with-text__button { color: {{ button_colors }}; border-color: {{ button_colors }}; }
+  .colors-{{section.id}} .image-with-text__button .icon { fill: {{ button_text }}; }
+  .colors-{{section.id}} .image-with-text__button--clear .icon { fill: #fff; }
+  .colors-{{section.id}} .image-with-text__button--filled { color: {{ button_text }}; border-color: {{ button_colors }}; background-color: {{ button_colors }}; }
+  .colors-{{section.id}} .image-with-text__button--filled { color: {{ button_text }}; border-color: {{ button_colors }}; background-color: {{ button_colors }}; }
+  .colors-{{section.id}} .image-with-text__button:hover { color: #fff; border-color: {{ settings.link_hover_color }}; background: {{ settings.link_hover_color }}; }
+  .colors-{{section.id}} .image-with-text__button:hover .icon { fill: #fff; }
+</style>
+
+<section class="index-double js-overflow-container image-with-text-section colors-{{section.id}} {{ block.settings.height }} {% if block.settings.image == blank %}image-with-text-section{% endif %}" data-section-id="{{ section.id }}" data-section-type="image-with-text" id="FeaturedImage-{{ section.id }}">
+  <div class="image-with-text-wrapper js-overflow-container {% if block.settings.title == blank and block.settings.content %}image-with-text--no-text{% endif %} image-with-text-wrapper--{{ block.settings.image_alignment }}">
+    {% unless block.settings.title == blank and block.settings.content %}
+    <div class="image-with-text__text js-overflow-container">
+      <div class="image-with-text__inner js-overflow-content">
+        {% unless block.settings.title == '' %}
+          <h2 class="video__title" data-aos="fade-up" data-aos-duration="500">{{ block.settings.title | escape }}</h2>
+        {% endunless %}
+        {% unless block.settings.content == '' %}
+          <div class="video__description" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">{{ block.settings.content }}</div>
+        {% endunless %}
+
+        {% if block.settings.button_text != blank %}
+        {% assign button_text = block.settings.button_text %}
+
+          {% if block.settings.video_link != blank %}
+            {%- if block.settings.video_link.type == 'youtube' -%}
+              {% capture video_link %}https://www.youtube.com/watch?v={{ block.settings.video_link.id }}{% endcapture %}
+            {%- elsif block.settings.video_link.type == 'vimeo' -%}
+              {% capture video_link %}https://vimeo.com/{{ block.settings.video_link.id }}{% endcapture %}
+            {%- endif -%}
+            <a href="{{ video_link }}" class="hero__btn btn btn--large btn--secondary pxl-fancy-button aos-init aos-animate image__video__play" data-aos="fade-up" data-aos-duration="700" data-aos-delay="500"><span>{{ button_text }}</span>{% include 'icon-play' %}</a>
+          {% elsif block.settings.button_link != blank %}
+            <a href="{{ block.settings.button_link }}" class="hero__btn btn btn--large btn--secondary pxl-fancy-button aos-init aos-animate" data-aos="fade-up" data-aos-duration="700" data-aos-delay="500"><span>{{ button_text }}</span>
+              <div class="pxl-fancy-button-svg">
+                {% render 'pxl_fancy_button.liquid' %}
+              </div>
+            </a>
+          {% else %}
+            <a href="#!" class="image-with-text__button image-with-text__button--{{ block.settings.button_type }}" data-aos="fade-up" data-aos-duration="700" data-aos-delay="500"><span>{{ button_text }}</span></a>
+          {% endif %}
+        </a>
+      {% endif %}
+      </div>
+    </div>
+    {% endunless %}
+
+    <div class="image-with-text__image">
+      {% if block.settings.image %}
+        {% if block.settings.height == 'image-height' %}
+          {%- assign img_object = block.settings.image -%}
+          {%- assign img_small = block.settings.image | img_url: '18x' -%}
+          {%- assign img_api = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+          <img class="lazyload"
+            src="{{ img_small }}"
+            data-src="{{ img_api }}"
+            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+            data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+            data-sizes="auto"
+            alt="{{ block.settings.image.alt | escape }}">
+          <noscript>
+            <img src="{{ block.settings.image | img_url: '2048x' }}" alt="{{ block.settings.image.alt }}">
+          </noscript>
+        {% else %}
+          <div class="image-with-text__image-img lazyload"
+            data-bgset="{{ img_api }}"
+            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+            data-aspectratio="{{  block.settings.image.aspect_ratio }}"
+            data-sizes="auto">
+          </div>
+          <noscript>
+            <div class="image-with-text__image-img no-js-image"
+              style="background-image:url('{{ img_object | img_url: '1080x' }}'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            </div>
+          </noscript>
+        {% endif %}
+      {% else %}
+        <div class="image-with-text__image-img">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+
+      {% assign overlay_opacity = block.settings.overlay_opacity | times: 0.01 %}
+      <div class="image-overlay" style="background-color:{{ block.settings.overlay_color }} !important; opacity:{{ overlay_opacity }};"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+/* stylelint-disable selector-max-id */
+.shoe-type {
+  g#back {
+    animation: animation-1 2s ease 0s infinite alternate;
+    transform-origin: 50% 60%;
+  }
+  @keyframes animation-1 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(5deg);
+    }
+  }
+
+  g#middle {
+    animation: animation-2 2s ease 0s infinite alternate;
+    transform-origin: 75% 60%;
+  }
+  @keyframes animation-2 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+    }
+  }
+
+  g#front {
+    animation: animation-3 2s ease 0s infinite alternate;
+    transform-origin: 50% 60%;
+  }
+  @keyframes animation-3 {
+    from {
+      transform: rotate(0deg) translateX(0%);
+    }
+    to {
+      transform: rotate(20deg) translateX(-10%);
+    }
+  }
+}
+/* stylelint-enable selector-max-id */

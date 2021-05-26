@@ -1,0 +1,163 @@
+.template-page.uber-steps {
+  .pxl-page-hero {
+    height: auto;
+  }
+
+  .hero__content__wrapper {
+    position: static;
+  }
+  .responsive-wide-image {
+    display: none;
+  }
+
+  .hero__content {
+    padding-top: 135px !important;
+
+    @include breakpoint(large down) {
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    @include breakpoint(large up) {
+      margin: 0;
+      padding: 0;
+    }
+
+    @include breakpoint(small down) {
+      padding-top: 60px !important;
+    }
+  }
+
+  .grid-item {
+    padding: 40px 0 0;
+
+    @include breakpoint(large up) {
+      padding: 50px 0 0;
+    }
+
+    &:first-of-type {
+      .image-with-text__image .image-with-text__image-img {
+        background-size: auto 110%;
+
+        @include breakpoint(large up) {
+          background-size: contain;
+        }
+      }
+    }
+
+    &:nth-of-type(2n) {
+      background-color: $brand-off;
+
+      .background-size-cover,
+      .image-with-text__image .image-with-text__image-img,
+      .image-with-text__text,
+      .image-with-text-wrapper {
+        background-color: $brand-off;
+      }
+
+      .image-with-text__image .image-with-text__image-img {
+        background-position: center right !important;
+
+        @include breakpoint(large up) {
+          background-size: contain;
+        }
+      }
+    }
+
+    &-max-width {
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .colors-pxl_page_uber_steps {
+      background-color: transparent;
+    }
+  }
+
+  .background-size-cover {
+    background-color: $brand;
+  }
+
+  .image-with-text__image,
+  .image-with-text__image-img {
+    @include breakpoint(large down) {
+      background-color: $brand;
+      height: 400px;
+    }
+  }
+
+  .image-with-text__image .image-with-text__image-img {
+    background-color: $brand;
+    background-position: center left !important;
+    background-size: auto 100%;
+
+    @include breakpoint(large up) {
+      background-size: contain;
+    }
+  }
+
+  .image-with-text-wrapper--natural .image-with-text__text {
+    @include breakpoint(large up) {
+      text-align: right;
+    }
+  }
+
+  .image-with-text-wrapper--reverse .image-with-text__text {
+    @include breakpoint(large up) {
+      text-align: left;
+    }
+  }
+
+  h2.video__title {
+    display: none;
+  }
+
+  .image-with-text__text,
+  .image-with-text-wrapper {
+    background-color: $brand;
+    margin: 0 auto;
+    max-width: 1160px;
+  }
+
+  .image-with-text__inner {
+    padding: 20px;
+
+    @include breakpoint(large up) {
+      padding: 0;
+    }
+
+    p {
+      @extend %quote-font-style;
+      line-height: 1.2;
+    }
+
+    strong,
+    em {
+      @extend %body-text-font-style;
+    }
+
+    strong {
+      @extend %body-text-font-style-bold;
+      display: block;
+      margin-bottom: -15px;
+    }
+
+    em {
+      color: $black;
+      font-style: normal;
+    }
+  }
+}
+
+.uber-steps.bar-visible {
+  .hero__content {
+    padding-top: 95px !important;
+
+    @include breakpoint(small down) {
+      padding-top: 60px !important;
+    }
+  }
+}

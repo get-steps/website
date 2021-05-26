@@ -1,0 +1,150 @@
+<!-- /sections/index-rich-text.liquid -->
+{% if section.settings.logo == blank %}
+  {% assign no_logo = "no-logo" %}
+{% endif %}
+
+{% assign asset_background = section.settings.background_image %}
+{% assign asset_background_desktop = section.settings.background_image_desktop %}
+{% capture image_url_params %}
+  {{ asset_background | img_url: '640x' }} 640w,
+  {{ asset_background | img_url: '1024x' }} 640w
+{% endcapture %}
+
+<section class="index-rte rich-text {{ section.settings.optional_class }} {{ section.settings.optional_class_two }}"
+data-section-id="{{ section.id }}"
+data-section-type="rich-text"
+{%- if section.settings.rte_background_color -%}
+style="background-color: {{ section.settings.rte_background_color }};"
+{%- endif -%}
+>
+  <div class="wrapper lazyload"
+    data-aos-duration="500"
+    data-aos="fade-up"
+    {%- if asset_background != blank -%}
+    data-bgset="{{ image_url_params }}"
+    {%- endif -%}
+    sizes="(min-width: 10240px) 640px,
+    640px">
+
+    <div class="grid">
+      <div class="grid__item medium-up--push-one-sixth medium-up--four-sixths">
+        {% unless section.settings.logo == blank %}
+          <div class="rich-text-image">
+            {%- assign image = section.settings.logo -%}
+            <img
+              class="lazyload rich-text__logo"
+              src="{{ image | img_url: '540x' }}"
+              data-src="{{ img_url }}"
+              data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+              data-aspectratio="{{ image.aspect_ratio }}"
+              data-sizes="auto"
+              data-parent-fit="contain"
+              alt="{{ image.alt | escape }}">
+            <noscript>
+              <img class="rich-text__logo no-js-image" src="{{ image | img_url: '180x' }}" alt="{{ image.alt | escape }}">
+            </noscript>
+          </div>
+        {% endunless %}
+
+        <div class="rich-text__content">
+          {% if section.settings.title %}
+            <h3>{{section.settings.title}}</h3>
+          {% endif %}
+          {% if section.settings.text %}
+            {{ section.settings.text }}
+          {% endif %}
+          {% if section.settings.button_text != blank %}
+          <button class="hero__btn btn btn--large btn--secondary caps pxl-fancy-button">
+            <a href="{{ section.settings.button_url }}">
+              {{ section.settings.button_text | escape }}
+            </a>
+            <div class="pxl-fancy-button-svg">
+              {% render 'pxl_fancy_button.liquid', fill: 'white', class: 'four-images-fancy-button' %}
+            </div>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "warum einlagen rich text",
+  "class": "pxl-index-rich-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "color",
+      "id": "rte_background_color",
+      "label": "Background color for text area"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Rich text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button text",
+      "default":"Learn More"
+    },
+    {
+      "type":"url",
+      "id":"button_url",
+      "label":"Button link"
+    },
+    {
+      "type": "header",
+      "content": "Developer settings - do not adjust"
+    },
+    {
+      "type":"select",
+      "id":"optional_class",
+      "default": "",
+      "label":"Optional Class",
+      "info": "Adds a class to wrapping parent",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "three-steps", "label": ".three-steps"},
+        { "value": "why-insoles", "label": ".why-insoles"},
+        { "value": "are-steps-for-me", "label": ".are-steps-for-me"}
+      ]
+    },
+    {
+      "type":"select",
+      "id":"optional_class_two",
+      "default": "",
+      "label":"Optional Class",
+      "info": "Adds a class to wrapping parent",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "pxl-mobile-only", "label": ".pxl-mobile-only"}
+      ]
+    },
+    {
+      "type":"image_picker",
+      "id":"background_image",
+      "label":"Image for background"
+    },
+    {
+      "type":"image_picker",
+      "id":"background_image_desktop",
+      "label":"Image for background"
+    }
+  ]
+}
+{% endschema %}

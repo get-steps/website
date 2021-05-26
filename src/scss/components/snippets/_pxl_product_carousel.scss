@@ -1,0 +1,72 @@
+// Required Core Stylesheet
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+
+// Optional Theme Stylesheet
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
+
+.product-image-wrapper {
+  min-height: 220px;
+
+  @include breakpoint(large up) {
+    align-items: center;
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    padding-top: 0;
+  }
+}
+
+.glide__slides {
+  margin: 0;
+  img {
+    width: 100%;
+  }
+}
+
+.glide {
+  margin-bottom: 10px;
+
+  &.glide--slider {
+    min-height: 170px; //stop jumping between variant changes
+  }
+}
+
+.product__slides,
+.product__thumbs--square,
+.carousel-slides-storage {
+  display: none;
+}
+
+.glide__bullets {
+  bottom: -10px;
+}
+
+.glide__bullet {
+  box-shadow: none;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border-color: $brand-dark;
+    border-width: 1px;
+    transition: none;
+  }
+
+  &--active {
+    background-color: $brand-dark !important;
+  }
+}
+
+.glide__arrows {
+  display: none;
+
+  @include breakpoint(large up) {
+    display: block;
+  }
+  .glide__arrow.glide__arrow--right,
+  .glide__arrow.glide__arrow--left {
+    border-color: transparent;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,72 @@
+<section class="jobs-accordeon">
+  <div class="section-width-wrapper">
+    <div class="faq-page__block" id="theme{{forloop.index}}">
+      <h3 class="faq-page__block-title">{{section.settings.title}}</h3>
+      <div class="faq-page__block-content">
+        <div class="faq__items">
+
+          {% for block in section.blocks %}
+            <div class="faq__item">
+              <div class="faq__item-header">
+                <p class="faq__item-title">{{block.settings.question}}</p>
+                {% include 'icon-plus-2' %}
+              </div>
+              <div class="faq__item-content">
+                <p class="faq__item-text">{{block.settings.answer}}</p>
+
+                {% if block.settings.button_url != blank %}
+                  <a href="{{block.settings.button_url}}" class="btn-rounded" target="_blank">{{block.settings.button_text}}</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Jobs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Job accordeon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Job title"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

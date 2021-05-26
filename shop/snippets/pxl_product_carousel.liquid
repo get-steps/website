@@ -1,0 +1,26 @@
+<div class="glide" id="product-carousel">
+  <div class="glide__track" data-glide-el="track">
+
+    <ul class="glide__slides" id="product-carousel-slides">
+    </ul>
+  </div>
+
+  <div class="glide__arrows" data-glide-el="controls">
+    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+      <img src="{{ 'arrow_side_l.svg' | asset_url }}">
+    </button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+      <img src="{{ 'arrow_side_r.svg' | asset_url }}">
+    </button>
+  </div>
+
+  <div class="glide__bullets" data-glide-el="controls[nav]">
+
+  </div>
+</div>
+
+<ul id="carousel-slides-storage" class="carousel-slides-storage">
+  {% for image in product.images %}
+    <li class="glide__slide" data-variant="{{ image.alt }}"><img src="{{ image | img_url: '1200x' }}" alt="{{ image.alt }}" /></li>
+  {% endfor %}
+</ul>

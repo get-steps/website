@@ -1,0 +1,136 @@
+.hero-show {
+  align-items: flex-end;
+  color: #fff;
+  display: flex;
+  // height: 100vh;
+  // height: calc(100vh - 100px);
+  // height: 56.22vw;
+  height: calc(100vh - 91px);
+  max-height: 850px;
+  min-height: 500px;
+  overflow: hidden;
+  padding: 0 30px 105px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  @include breakpoint(medium down) {
+    height: calc(100vh - 114px);
+  }
+  @include breakpoint(small down) {
+    padding-bottom: 70px;
+  }
+
+  .bar-visible & {
+    height: calc(100vh - 131px);
+
+    @include breakpoint(medium down) {
+      height: calc(100vh - 153px);
+    }
+    // @include breakpoint(small down) {
+    //   height: calc(100vh - 153px);
+    // }
+  }
+
+  &::after {
+    background: linear-gradient(
+      10deg,
+      rgba(28, 28, 28, 0.9) 0%,
+      rgba(28, 28, 28, 0.75) 15%,
+      rgba(28, 28, 28, 0) 72%
+    );
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .section-width-wrapper {
+    align-items: flex-end;
+    display: flex;
+    width: 100%;
+  }
+
+  &__image {
+    height: 100%;
+    left: 0;
+    // object-fit: cover;
+    // object-position: center top;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    @media (max-width: 1130px) {
+      // object-position: 11% top;
+    }
+    @include breakpoint(medium down) {
+      // object-position: 15% top;
+    }
+    @include breakpoint(small down) {
+      // object-position: center top;
+    }
+
+    img {
+      height: 100%;
+      left: 0;
+      object-fit: cover;
+      object-position: center top;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      // z-index: -1;
+
+      @media (max-width: 1130px) {
+        object-position: 11% top;
+      }
+      @include breakpoint(medium down) {
+        object-position: 15% top;
+      }
+      @include breakpoint(small down) {
+        object-position: center top;
+      }
+    }
+  }
+  &__grid {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  &__content {
+    max-width: 790px;
+  }
+  &__title {
+    font-size: 85px;
+    font-weight: bold;
+    line-height: (90/85);
+    margin-bottom: 53px;
+
+    @include breakpoint(medium down) {
+      font-size: 64px;
+      margin-bottom: 48px;
+    }
+    @include breakpoint(small down) {
+      font-size: 40px;
+      line-height: (45/40);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+  &__text {
+    color: inherit;
+    font-size: 20px;
+    line-height: (28/20);
+    margin: 0;
+    max-width: 570px;
+
+    @include breakpoint(small down) {
+      font-size: 17px;
+      line-height: (23/17);
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<section class="gtn">
+  <div class="section-width-wrapper">
+    <div class="gtn__grid">
+
+      {% for block in section.blocks %}
+        {% if block.type == 'icon' %}
+          <div class="gtn__col">
+            <div class="gtn__item">
+              <div class="gtn__icon-wrapper">
+                <img src="{{block.settings.gtn_icon}}" alt="" class="gtn__icon">
+              </div>
+              <div class="gtn__content">
+                <div class="gtn__text">{{block.settings.gtn_text}}</div>
+                
+                {% if block.settings.gtn_popup_text != blank %}
+                  <a href="#" class="gtn__btn btn-main" data-popup="{{forloop.index}}">{{block.settings.gtn_btn_label}}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+          {% if block.settings.gtn_popup_text != blank %}
+            <div class="gtn__popup gtn__popup-{{forloop.index}}">
+              <!-- gtn__popup--visible -->
+              <div class="gtn__popup-overlay"></div>
+              <div class="gtn__popup-wrapper">
+                <div class="gtn__popup-btn">
+                  <img src="{{ 'i-close.svg' | asset_url }}" alt="" class="gtn__popup-btn-icon">
+                </div>
+                <div class="gtn__popup-body">
+                  <img src="{{block.settings.gtn_icon}}" alt="" class="gtn__popup-icon">
+                  <h2 class="gtn__popup-title">{{block.settings.gtn_text}}</h2>
+                  <div class="gtn__popup-text">{{block.settings.gtn_popup_text }}</div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          
+
+        {% endif %}
+      {% endfor %}
+      
+    </div>
+
+  </div>
+</section>

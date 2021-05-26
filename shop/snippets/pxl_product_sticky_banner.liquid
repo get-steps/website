@@ -1,0 +1,7 @@
+{% if template == 'product.custom' or template == 'cart' or template == 'index' and section.settings.product_sticky_banner_enabled %}
+<div class="pxl-product-sticky-banner" style="background-color: {{ section.settings.product_sticky_banner_bg_color }}">
+    <div class="pxl-product-sticky-banner-content" style="color: {{ section.settings.product_sticky_banner_text_color }}">
+      {{ section.settings.product_sticky_banner_text }}
+    </div>
+  </div>
+{% endif %}

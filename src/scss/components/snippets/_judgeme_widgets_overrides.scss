@@ -1,0 +1,57 @@
+.jdgm-widget {
+  @include breakpoint(large up) {
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  .jdgm-rev-widg__header {
+    padding: $sticky-button-padding;
+  }
+
+  .jdgm-all-reviews-widget,
+  .jdgm-rev-widg {
+    border: 0;
+
+    @include breakpoint(large down) {
+      padding: 0;
+    }
+  }
+
+  .jdgm-histogram {
+    display: none !important; // hides reviews summary
+  }
+
+  .jdgm-rev-widg__reviews {
+    padding: $sticky-button-padding;
+  }
+
+  .jdgm-rev {
+    background: $white;
+    border: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+  }
+}
+
+.jdgm-carousel-wrapper {
+  @include breakpoint(large up) {
+    padding-top: 60px !important;
+  }
+}
+
+.judgeme {
+  &__btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    @include breakpoint(small down) {
+      margin-bottom: 50px;
+    }
+  }
+  &__btn {
+  }
+}

@@ -1,0 +1,38 @@
+.page-presse {
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  &__col {
+    padding: 0 15px;
+    width: 50%;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+    }
+  }
+  &__content {
+    @include breakpoint(small down) {
+      margin-bottom: 20px;
+    }
+    a {
+      color: #946d6a;
+    }
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .form-item,
+  .form-field {
+    @include breakpoint(small down) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

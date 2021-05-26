@@ -1,0 +1,137 @@
+{% assign tagsSelected = section.settings.tagsString | split: "," %}
+
+
+<div class="blog">
+  <div class="section-width-wrapper">
+    <h1 class="blog__title faq-page__title">GetSteps Blog</h1>
+    
+    {% if tagsSelected.size > 0 %}
+      <div class="blog__tags">
+        <ul class="blog__tags-list">
+
+          {% for tag in blog.all_tags %}
+            {% assign tagNormalized = tag | strip | downcase %}
+
+            {% for t in tagsSelected %}
+              {% assign tNormalized = t | strip | downcase %}
+
+              {% if tagNormalized == tNormalized %}
+                <li class="blog__tag {% if current_tags contains tag %}blog__tag--active{% endif %}">{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+              
+            {% endfor %}
+
+        {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    
+    {% paginate blog.articles by 12 %}
+    <div class="blog__grid">
+      
+
+        {% for article in blog.articles %}
+          <div class="blog__item">
+
+            <div class="blog__item-inner">
+
+              {%comment%}
+              <a href="{{ article.url }}" class="blog__item-link"></a>
+              {%endcomment%}
+              <a href="{{ article.url }}" class="blog__item-link"></a>
+              
+              <img src="{{ article.image | img_url: '540x' }}" alt="{{ article.title }}" class="blog__item-img">
+              <div class="blog__item-main">
+                {% assign published_at = article.published_at | date: format: 'full_date' %}
+                <div class="blog__item-date">{{ published_at }}</div>
+                {%comment%}
+                <!-- <time datetime="{{ published_at }}">{{ published_at }}</time> -->
+                {%endcomment%}
+
+                <h4 class="blog__item-title">{{ article.title }}</h4>
+                <div class="blog__item-more">
+                  <p class="blog__item-text">{{ article.excerpt_or_content | strip_html  | truncatewords: 10 }}</p>
+
+                  <a href="{{ article.url }}" class="blog__item-btn btn-main">Geschichte lesen</a>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        {% endfor %}
+
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav role="navigation">
+        <ol class="pagination">
+
+          {%comment%}
+          {%- if paginate.previous-%}
+            <li>
+              <a href="{{ paginate.previous.url }}">
+             
+              </a>
+            </li>
+          {%- else -%}
+            <li class="disabled">
+            
+            </li>
+          {%- endif -%}
+          {%endcomment%}
+
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <li>
+                <a href="{{ part.url }}">
+                  {{ part.title }}
+                </a>
+              </li>
+            {%- else -%}
+              {%- if part.title == paginate.current_page -%}
+                <li class="active" aria-current="page">
+                  <span>{{ part.title }}</span>
+                </li>
+              {%- else -%}
+                <li>
+                  {{ part.title }}
+                </li>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+
+          {%comment%}
+          {%- if paginate.next -%}
+            <li>
+              
+            </li>
+          {%- else -%}
+            <li class="disabled">
+            
+            </li>
+          {%- endif -%}
+          {%endcomment%}
+        </ol>
+      </nav>
+    {%- endif -%}
+
+    {% endpaginate %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Blog settings",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagsString",
+      "label": "Tags",
+      "info": "List of comma separated tags, example: 'tag name 1, tag name 2' etc. LEAVE BLANK TO HIDE TAGS'"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+<section class="forme">
+  <div class="section-width-wrapper">
+    <div class="forme__wrapper">
+      <h2 class="forme__title">{{section.settings.title}}</h2>
+      <h3 class="forme__subtitle forme__richtext">{{section.settings.subtitle}}</h3>
+      <div class="forme__grid">
+        {% for block in section.blocks %}
+          <div class="forme__item">
+            <figure class="forme__fig">
+              {% if block.settings.figlink != blank %}
+                <a href="{{block.settings.figlink}}" class="forme__fig-link"></a>
+              {% endif %}
+              <img src="{{block.settings.icon}}" alt="" class="forme__fig-icon">
+            </figure>
+            <div class="forme__text">
+              {{block.settings.text}}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="forme__description forme__richtext">
+        {{section.settings.text}}
+      </div>
+
+      <div class="forme__btn-wrapper">
+
+        <button class="forme__btn about__btn hero__btn btn btn--large btn--secondary caps pxl-fancy-button">
+          <a href="{{section.settings.btnUrl}}">{{section.settings.btnText}}</a>
+          <div class="pxl-fancy-button-svg">
+            {% render 'pxl_fancy_button.liquid', fill: 'white', class: 'four-images-fancy-button' %}
+          </div>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Is for me?",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    },
+    
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btnText",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "btnUrl",
+      "label": "Button page url"
+    }
+  ],
+
+
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Block item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Item icon image url"
+        },
+        {
+          "type": "url",
+          "id": "figlink",
+          "label": "Icon link url"
+        },
+        
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+
+      ]
+    }
+  ],
+
+
+  "presets": [
+    {
+      "name": "Is for me?",
+      "category": "Other",
+      "blocks": [
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

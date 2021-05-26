@@ -1,0 +1,141 @@
+<div class="section-width-wrapper section-width-wrapper-extended">
+  {% include 'columns-text-image' %}
+</div>
+
+{% schema %}
+  {
+    "name": "Text columns with images",
+    "class": "index-section s-pxl-steps-columns",
+    "settings": [
+      {
+        "type": "select",
+        "id": "align_text",
+        "label": "Text alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Centered"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title above the secion?"
+      },
+      {
+        "type": "checkbox",
+        "id": "equalize_height",
+        "label": "Equalize image heights",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "photo_aspect_ratio",
+        "min": 0.5,
+        "max": 1.5,
+        "step": 0.1,
+        "unit": ":1",
+        "label": "Photo aspect ratio",
+        "info": "Wide to tall",
+        "default": 1
+      },
+      {
+        "type": "header",
+        "content": "Developer settings - do not adjust"
+      },
+      {
+        "type":"select",
+        "id":"optional_class",
+        "default": "pxl-steps-columns",
+        "label":"Optional Class",
+        "info": "Adds a class to wrapping parent",
+        "options": [
+          { "value": "", "label": "None"},
+          { "value": "pxl-steps-columns", "label": ".pxl-steps-columns"}
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable_image",
+            "label": "Show image",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "info": "Leave blank to link from image"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "header",
+            "content": "Video Popup"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_video",
+            "label": "Show video",
+            "default": false
+          },
+          {
+            "type": "video_url",
+            "id": "video_link",
+            "label": "Video link",
+            "accept": ["youtube", "vimeo"],
+            "info": "https://www.youtube.com/watch?v=123456789"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text columns with images",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,10 @@
+<div class="index-sections">
+  {% section 'pxl_sticky_cta' %}
+
+  {{ content_for_index }}
+</div>
+
+{% if settings.show_promo_modal %}
+  {% include 'modal' %}
+{% endif %}
+

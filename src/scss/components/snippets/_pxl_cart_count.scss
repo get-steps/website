@@ -1,0 +1,46 @@
+.pxl-cart-count-js {
+  // $size: 13px;
+  @extend %body-text-font-style-bold-white;
+  align-items: center;
+  background-color: #e26d5c;
+  border-radius: 50%;
+  display: flex;
+  font-size: 10px;
+  height: 17px;
+  justify-content: center;
+  left: -12px;
+  opacity: 0;
+  padding-bottom: 2px;
+  position: absolute;
+  top: -6px;
+  width: 17px;
+  @include breakpoint(large down) {
+    height: 14px;
+    left: -8px;
+    top: -3px;
+    width: 14px;
+  }
+  // width: $size;
+
+  > a {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  // desktop
+  ul.main-menu & {
+    left: -3px;
+    // right: 0;
+    // top: 0;
+    top: -10px;
+    @include breakpoint(medium) {
+    }
+  }
+}

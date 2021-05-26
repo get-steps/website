@@ -1,0 +1,23 @@
+{% assign published_at = article.published_at | date: format: 'full_date' %}
+
+<div class="post">
+  <div class="section-width-wrapper post__wrapper">
+    <div class="post__hero">
+      <img src="{{ article.image.src | img_url: '1160x' }}" alt="{{article.title}}" class="post__hero-bg">
+      <div class="post__hero-content">
+        <div class="post__hero-date">{{published_at}}</div>
+        <h1 class="post__hero-title">{{article.title}}</h1>
+        <div class="post__hero-author">Von {{article.author}}</div>
+      </div>
+    </div>
+
+    <div class="post__content">
+      {{ article.content }}
+
+      <div class="post__btn-wrapper">
+        <a href="/blogs/getsteps-community" class="post__btn faq__btn">Zurück zur Übersicht</a>
+      </div>
+    </div>
+  </div>
+</div>
+

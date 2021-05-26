@@ -1,0 +1,31 @@
+//  Text reset for pages
+.template-page {
+  h1,
+  .h1 {
+    @extend %header-font-style;
+  }
+
+  h2 {
+    @extend %subheader-font-style;
+  }
+
+  h3 {
+    @extend %midheader-font-style;
+  }
+
+  p {
+    @extend %body-text-font-style;
+  }
+
+  strong {
+    @extend %body-text-font-style-bold;
+  }
+
+  blockquote {
+    @extend %quote-font-style;
+  }
+
+  a.btn {
+    @extend %button-font-style-white;
+  }
+}

@@ -1,0 +1,314 @@
+.gtn {
+  background-color: #fff;
+  padding: 80px 50px;
+
+  @include breakpoint(large down) {
+    padding: 40px 50px 5px;
+  }
+  @include breakpoint(medium down) {
+    padding: 40px 20px 10px;
+  }
+  @include breakpoint(small down) {
+    padding: 40px 20px 10px;
+  }
+
+  .section-width-wrapper {
+    @include breakpoint(medium down) {
+      max-width: 360px;
+    }
+    @include breakpoint(small down) {
+      max-width: 420px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    @include breakpoint(medium down) {
+      flex-wrap: wrap;
+    }
+  }
+  &__col {
+    padding: 0 15px;
+    width: 25%;
+
+    @include breakpoint(large down) {
+      margin-bottom: 35px;
+      width: 50%;
+    }
+    @include breakpoint(medium down) {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+  }
+  &__item {
+    text-align: center;
+
+    @include breakpoint(large down) {
+      align-items: center;
+      display: flex;
+    }
+    @include breakpoint(medium down) {
+      align-items: center;
+      display: flex;
+    }
+    @include breakpoint(small down) {
+      align-items: flex-start;
+    }
+  }
+  &__icon-wrapper {
+    align-items: center;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin-bottom: 10px;
+    user-select: none;
+
+    @include breakpoint(large down) {
+      padding: 10px;
+      width: 85px;
+    }
+    @include breakpoint(medium down) {
+      flex-shrink: 0;
+      padding: 10px;
+      width: 85px;
+    }
+    @include breakpoint(small down) {
+      margin-top: 5px;
+      width: 80px;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    max-width: 70px;
+
+    @include breakpoint(large down) {
+      max-width: 100%;
+    }
+  }
+  &__content {
+    @include breakpoint(large down) {
+      align-items: center;
+      display: flex;
+    }
+    @include breakpoint(medium down) {
+      align-items: center;
+      display: flex;
+    }
+    @media (max-width: 370px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  &__text {
+    font-size: 20px;
+
+    @include breakpoint(large down) {
+      font-size: 17px;
+      max-width: calc(100% - 120px);
+      text-align: left;
+    }
+    @include breakpoint(medium down) {
+      flex-shrink: 1;
+      font-size: 17px;
+      max-width: 100%;
+      text-align: left;
+    }
+
+    p,
+    span,
+    strong,
+    i,
+    b {
+      font-size: inherit !important;
+      margin: 0 !important;
+    }
+  }
+  &__btn {
+    border-radius: 5px;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-top: 15px;
+    padding: 0 11px;
+
+    @include breakpoint(large down) {
+      margin-left: 8px;
+      margin-top: 0;
+    }
+    @include breakpoint(medium down) {
+      margin-left: 12px;
+      margin-top: 0;
+    }
+    @media (max-width: 370px) {
+      margin-left: 0;
+      margin-top: 2px;
+    }
+  }
+
+  // info popup
+  &__popup {
+    align-items: center;
+    display: flex;
+    font-size: 14px !important;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+
+    transition: opacity 0.4s, transform 0.4s;
+    width: 100%;
+    z-index: 2000;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(medium down) {
+      align-items: center;
+      flex-direction: column-reverse;
+      justify-content: center;
+      text-align: center;
+    }
+    @media (max-width: 400px) {
+      padding-top: 24px;
+    }
+
+    &--visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1);
+    }
+  }
+
+  &__popup-overlay {
+    background-color: rgba(#1c1c1c, 0.75);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  &__popup-wrapper {
+    max-width: calc(100% - 50px);
+    position: relative;
+
+    @include breakpoint(small down) {
+      max-width: calc(100% - 56px);
+    }
+
+    @media (max-width: 400px) {
+      max-width: calc(100% - 40px);
+    }
+  }
+  &__popup-body {
+    background-color: #fff;
+    border-radius: 5px;
+    max-height: 90vh;
+    max-height: calc(100vh - 20px);
+    max-width: 100%;
+    overflow: auto;
+    padding: 48px;
+    position: relative;
+
+    transform: translateY(20%);
+    transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.315, 1.425);
+    width: 765px;
+    z-index: 2;
+
+    .gtn__popup--visible & {
+      transform: translateY(0%);
+    }
+    @include breakpoint(medium down) {
+      text-align: center;
+      width: 540px;
+    }
+    @include breakpoint(medium down) {
+      @media (max-height: 420px) {
+        max-height: calc(100vh - 110px);
+      }
+    }
+    @include breakpoint(small down) {
+      margin: 0 auto;
+      max-height: calc(100vh - 30px);
+      max-width: 360px;
+      padding: 40px 20px 34px;
+
+      @media (orientation: landscape) {
+        max-height: calc(100vh - 110px);
+      }
+    }
+    @media (max-width: 400px) {
+      max-height: calc(100vh - 110px);
+      max-width: 100%;
+      padding: 32px 15px 30px;
+    }
+  }
+
+  &__popup-btn {
+    bottom: 100%;
+    bottom: calc(100% + 15px);
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    right: 3px;
+    transition: opacity 0.3s, transform 0.3s;
+    user-select: none;
+    z-index: 3;
+
+    @include breakpoint(medium down) {
+      bottom: unset;
+      left: 50%;
+      right: unset;
+      top: 100%;
+      top: calc(100% + 15px);
+      transform: translateX(-50%);
+    }
+  }
+  &__popup-icon {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 15px;
+    margin-left: 16px;
+    user-select: none;
+    width: 94px;
+  }
+  &__popup-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 29px;
+
+    @include breakpoint(medium down) {
+      font-size: 24px;
+    }
+    @include breakpoint(small down) {
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: inherit !important;
+      font-weight: inherit !important;
+    }
+  }
+  &__popup-text {
+    font-size: 20px;
+
+    @include breakpoint(medium down) {
+      font-size: 17px;
+    }
+
+    p,
+    b,
+    strong {
+      font-size: inherit !important;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+}

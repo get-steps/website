@@ -1,0 +1,65 @@
+{% render 'faq-snippet', section: section %}
+
+{% schema %}
+
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btnText",
+      "label": "Button text"
+    },
+    {
+      "type": "page",
+      "id": "btnUrl",
+      "label": "Button page url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question - answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Item question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Item answer"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "Other",
+      "blocks": [
+        {
+          "type": "qa"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

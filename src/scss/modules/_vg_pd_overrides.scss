@@ -1,0 +1,11 @@
+//  Overrides the Progressive Discount app style / additions
+
+.template-product .table-first {
+  display: none;
+}
+
+/* stylelint-disable selector-max-id */
+#saved-banner-div {
+  display: none;
+}
+/* stylelint-enable selector-max-id */

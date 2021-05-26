@@ -1,0 +1,190 @@
+$button-border-width: 2px;
+$button-transition: 0.3s ease-in-out;
+
+// Button reset styles to align button styles accross various html elements (button|a|input) and browser default styles.
+%button-reset {
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  margin: 0;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  text-decoration: none;
+  transition: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: normal;
+  @extend %button-font-style;
+
+  &:active {
+    background-color: $brand-medium;
+    outline: none;
+    text-decoration: none;
+  }
+
+  @include breakpoint(large up) {
+    &:hover {
+      background-color: $brand-medium;
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+  }
+}
+
+%button {
+  @extend %button-reset;
+  background-color: $black;
+  border: 0;
+  border-radius: 0;
+  color: $white;
+  padding: rem-calc(15px) rem-calc(25px);
+  @extend %button-font-style;
+
+  @include breakpoint(large up) {
+    transition: $button-transition; // ensure colour changes are snappy on mobile
+  }
+
+  // If there are two buttons next to each other; add spacing.
+  & + & {
+    margin-left: rem-calc(15px);
+  }
+
+  &-fill {
+    background-color: $brand-medium;
+    &,
+    a {
+      color: $white;
+    }
+  }
+
+  &-alternative {
+    background: $brand-dark;
+    color: $white;
+  }
+
+  &-full-width {
+    width: 100%;
+  }
+
+  &-outline {
+    border: solid $black $button-border-width;
+    color: $black;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $brand-dark;
+    color: $white;
+    transition: $button-transition;
+
+    &,
+    a {
+      color: $white;
+    }
+  }
+}
+
+%brand-highlight-button {
+  align-items: center;
+  background-color: $black;
+  display: flex;
+  height: $sticky-cta-button-height;
+  justify-content: center;
+
+  -webkit-tap-highlight-color: transparent;
+  transition: none !important;
+
+  &:focus {
+    background-color: $black;
+    outline: none;
+  }
+
+  &:active {
+    background-color: $brand-medium;
+    color: $white;
+    outline: none;
+    text-decoration: none;
+  }
+
+  @include breakpoint(large up) {
+    &:hover {
+      background-color: $brand-medium;
+      color: $white;
+      outline: none;
+      text-decoration: none;
+    }
+  }
+}
+
+%steps-button {
+  @extend %button;
+  background-color: $black;
+  @extend %brand-highlight-button;
+  @extend %button-font-style-white;
+}
+
+.button {
+  @extend %button;
+
+  &.button-alternative {
+    @extend %button-alternative;
+  }
+
+  &.button-fill {
+    @extend %button-fill;
+  }
+
+  &.button-full-width {
+    @extend %button-full-width;
+  }
+
+  &.button-outline {
+    @extend %button-outline;
+  }
+}
+
+.pxl-fancy-button {
+  @extend %fancy-button;
+  max-width: 100%;
+  white-space: normal;
+}
+
+a.hero__btn {
+  border: 0;
+  margin-top: 25px;
+  width: 275px;
+
+  &:hover {
+    border: 0;
+  }
+}
+
+.btn-main {
+  background-color: $brand-mid;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0 30px;
+  text-align: center;
+  transition: background-color 0.3s;
+  user-select: none;
+
+  &:hover {
+    background-color: $brand-dark;
+    color: #fff;
+  }
+}
+
+.btn {
+  border-radius: 5px !important;
+}

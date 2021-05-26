@@ -1,0 +1,146 @@
+<section class="ontop">
+  <div class="section-width-wrapper">
+    <div class="ontop__grid">
+      <div class="ontop__main">
+        <h2 class="ontop__title" data-aos-duration="500" data-aos="fade-up">{{section.settings.title}}</h2>
+        <p class="ontop__subtitle" data-aos-duration="500" data-aos="fade-up">{{section.settings.subtitle}}</p>
+        <div class="ontop__text" data-aos-duration="500" data-aos="fade-up">{{section.settings.text}}</div>
+
+        <div class="ontop__note" data-aos-duration="500" data-aos="fade-up">
+          <img src="{{'i-lamp.svg' | asset_url}}" alt="" class="ontop__note-icon">
+          <div class="ontop__note-text">
+            {{section.settings.note}}
+          </div>
+          <a href="{{section.settings.button_url}}" class="ontop__note-btn" target="_blank">
+            <span>{{section.settings.button_label}}</span>
+            <img src="{{ 'icon-newtab.svg' | asset_url }}" alt="">
+          </a>
+        </div>
+
+      </div>
+      
+      <div class="ontop__side" data-aos-duration="500" data-aos="fade-up">
+        <div class="ontop__slider">
+          <div class="ontop__slider-btn ontop__slider-btn--prev">
+            <img src="{{ 'ontop-arrow.svg' | asset_url }}" alt="">
+          </div>
+          <div class="ontop__slider-btn ontop__slider-btn--next">
+            <img src="{{ 'ontop-arrow.svg' | asset_url }}" alt="">
+          </div>
+          
+          {% for block in section.blocks %}
+            <div class="ontop__slide {% if forloop.index0 == 0 %} ontop__slide--active {% endif %}">
+              <img src="{{ 'ontop-deco.svg' | asset_url }}" alt="" class="ontop__slide-deco">
+              <img src="{{block.settings.image | img_url: 'master' }}" alt="GetSteps - insole top {{block.settings.name}}" class="ontop__slide-img">
+
+              <div class="ontop__slide-bubble">{{block.settings.bubble}}</div>
+              <div class="ontop__slide-content">
+                <div class="ontop__slide-name">{{block.settings.name}}</div>
+                <div class="ontop__slide-title">{{block.settings.title}}</div>
+                <div class="ontop__slide-text">{{block.settings.text}}</div>
+              </div>
+            </div>
+          {% endfor %}
+          
+        </div>
+        <div class="ontop__tabs-wrapper">
+          <div class="ontop__tabs" data-state="1">
+            {% for block in section.blocks %}
+              {% if forloop.index0 == 0 %}
+                <div class="ontop__tab ontop__tab--active">{{block.settings.name}}</div>
+              {% else %}
+                <div class="ontop__tab">{{block.settings.name}}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="ontop__note ontop__note--mob" data-aos-duration="500" data-aos="fade-up">
+        <img src="{{'i-lamp.svg' | asset_url}}" alt="" class="ontop__note-icon">
+        <div class="ontop__note-text">
+          {{section.settings.note}}
+        </div>
+        <a href="{{section.settings.button_url}}" class="ontop__note-btn" target="_blank">
+          <span>{{section.settings.button_label}}</span>
+          <img src="{{ 'icon-newtab.svg' | asset_url }}" alt="">
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "On top",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Bottom note"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide image",
+           "info": "Image height should be 450px"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Slide name"
+        },
+        
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Slide text"
+        },
+        {
+          "type": "text",
+          "id": "bubble",
+          "label": "Slide price bubble"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,169 @@
+<section class="pxl-uber-steps-blocks">
+  {% for block in section.blocks %}
+  <div class="grid-item" {{ block.shopify_attributes }}>
+    <div class="grid-item-max-width">
+    {% case block.type %}
+      {% comment %}
+      Add more snippet-based Sections here if wanted to be used on this page
+      {% endcomment %}
+      {% when 'index-image-with-text' %}
+      {% include 'pxl_index-image-with-text' %}
+    {% endcase %}
+  </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% comment %}
+This comprises Schema content from the following index Sections:
+ 1. index-image-with-text
+ -- Add more here if added --
+ {% endcomment %}
+{% schema %}
+  {
+    "blocks": [
+        {
+          "type": "index-image-with-text",
+          "name": "Image with text",
+          "settings": [
+            {
+              "type": "header",
+              "content": "Text"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Heading",
+              "default": "Image with text"
+            },
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>This area is used to showcase a product, collection, or your brand.</p>"
+            },
+            {
+              "type": "color",
+              "id": "color",
+              "label": "Text",
+              "default": "#282C2E"
+            },
+            {
+              "type": "color",
+              "id": "background",
+              "label": "Background",
+              "default": "#F7F9FA"
+            },
+            {
+              "type": "header",
+              "content": "Image"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "select",
+              "id": "height",
+              "label": "Section height",
+              "default": "screen-height-one-half",
+              "options": [
+                { "value": "screen-height-full", "label": "Full screen height"},
+                { "value": "screen-height-three-quarters", "label": "3/4 of screen"},
+                { "value": "screen-height-two-thirds", "label": "2/3 of screen"},
+                { "value": "screen-height-one-half", "label": "1/2 of screen"},
+                { "value": "screen-height-one-third", "label": "1/3 of screen"},
+                { "value": "seven-fifty-height-hero", "label": "750px" },
+                { "value": "sixty-fifty-height-hero", "label": "650px" },
+                { "value": "five-fifty-height-hero", "label": "550px" },
+                { "value": "four-fifty-height-hero", "label": "450px" },
+                { "value": "image-height", "label": "Image height" }
+              ]
+            },
+            {
+              "type": "select",
+              "id": "image_alignment",
+              "label": "Image alignment",
+              "default": "natural",
+              "options": [
+                { "value": "reverse", "label": "Left"},
+                { "value": "natural", "label": "Right" }
+              ]
+            },
+            {
+              "type": "header",
+              "content": "Overlay"
+            },
+            {
+              "type": "range",
+              "id": "overlay_opacity",
+              "label": "Opacity",
+              "info": "Increase contrast for legible text.",
+              "unit": "%",
+              "min": 0,
+              "max": 90,
+              "step": 5,
+              "default":15
+            },
+            {
+              "type": "color",
+              "id": "overlay_color",
+              "label": "Overlay color",
+              "default": "#fff"
+            },
+            {
+              "type": "header",
+              "content": "Button"
+            },
+            {
+              "type": "text",
+              "id": "button_text",
+              "label": "Label",
+              "default": "Click here"
+            },
+            {
+              "type": "url",
+              "id": "button_link",
+              "label": "Link"
+            },
+            {
+              "type": "video_url",
+              "id": "video_link",
+              "label": "Video link",
+              "accept": ["youtube", "vimeo"],
+              "info": "Video links from YouTube or Vimeo accepted."
+            },
+            {
+              "type": "select",
+              "id": "button_type",
+              "label": "Type",
+              "default": "filled",
+              "options": [
+                { "value": "filled", "label": "Filled"},
+                { "value": "clear", "label": "Clear"}
+              ]
+            },
+            {
+              "type": "color",
+              "id": "button_colors",
+              "label": "Color",
+              "default": "#FFF"
+            },
+            {
+              "type":"select",
+              "id":"optional_class",
+              "default": "",
+              "label":"Optional Class",
+              "info": "Adds a class to wrapping parent",
+              "options": [
+                { "value": "", "label": "None"},
+                { "value": "three-steps", "label": ".three-steps"}
+              ]
+            }
+          ]
+        }
+    ]
+  }
+
+{% endschema %}

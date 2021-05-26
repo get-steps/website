@@ -1,0 +1,14 @@
+.testimonial--no-image {
+  .testimonial__content {
+    &,
+    p {
+      @extend %body-text-font-style;
+      line-height: 1.5;
+    }
+  }
+
+  .testimonial__author-bio-image {
+    height: 30vw;
+    width: 30vw;
+  }
+}

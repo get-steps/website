@@ -1,0 +1,106 @@
+.s-pxl-steps-columns {
+  background-color: $white;
+}
+
+%pxl-steps-subheading {
+  @extend %subheader-font-style;
+
+  @include breakpoint(medium up) {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+}
+
+.s-warum-einlagen-testimonial-columns {
+  .pxl-steps {
+    &-subheading {
+      > h1 {
+        @extend %pxl-steps-subheading;
+
+        @include breakpoint(small only) {
+          background-color: $white-off;
+          margin-bottom: 0px;
+          padding-top: 20px;
+          text-align: center;
+        }
+      }
+
+      @include breakpoint(large up) {
+        max-width: 1000px;
+      }
+    }
+  }
+}
+
+.index-sections {
+  .pxl-steps {
+    &-subheading {
+      @include breakpoint(small only) {
+        display: none;
+      }
+    }
+  }
+}
+
+.pxl-steps {
+  $padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &-subheading {
+    > .h1 {
+      text-align: center;
+      @extend %pxl-steps-subheading;
+    }
+  }
+
+  &-columns {
+    display: none;
+
+    @include breakpoint(medium up) {
+      display: block;
+    }
+
+    .wrapper--columns,
+    .grid {
+      margin: 0;
+    }
+
+    .grid__item {
+      a {
+        @extend %steps-button;
+        background-color: transparent;
+        border: solid $brand-dark 2px;
+        color: $brand-dark;
+      }
+
+      @include breakpoint(large up) {
+        padding: 20px;
+        padding-left: 20px !important; // override the theme !Important :(
+      }
+
+      @include breakpoint(xlarge up) {
+        padding: $padding;
+        padding-left: $padding !important; // override the theme !Important :(
+      }
+
+      .column__heading {
+        @extend %midheader-font-style;
+      }
+
+      .column__image__wrapper {
+        background-color: $brand;
+      }
+
+      .column__text,
+      .btn {
+        margin: 0 auto;
+        max-width: 85%;
+
+        @include breakpoint(small only) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

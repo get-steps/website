@@ -1,0 +1,30 @@
+{% render 'hello' %}
+
+{% schema %}
+{
+  "name": "Section with button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section text"
+    },
+    
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button label"
+    },
+    {
+      "type": "text",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
+}
+{% endschema %}

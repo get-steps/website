@@ -1,0 +1,49 @@
+{% comment %}
+<!--
+This helper takes a standard image asset file reference, and then extrapolates to assign suitable
+sizes from Shopify's asset serving.
+
+Shopify capture is not super clean and so we have to capture the whole asset + filter and pass that in.
+We can't just capture a filter change, unfortunately.
+
+Params:
+asset_name: [string or settings object] Settings id for the image, or the name of the file in assets folder.
+original_size: [string] The largest size this image can and should ever be displayed.
+asset_url: [boolean] - whether we need the asset_url filter. True for a hardcoded image from assets, and false (default) for an image from theme/section settings.
+background_image: [string] whether the image should be used as a background on a <div>. If not true, this will be default <img> tag.
+!-->
+{% endcomment %}
+
+{% capture image_url_params %}
+  {% if asset_url %}
+      {{ asset_name | asset_img_url: '320x' }} 320w,
+      {{ asset_name | asset_img_url: '640x' }} 640w,
+      {{ asset_name | asset_img_url: '1024x' }} 1024w,
+      {{ asset_name | asset_img_url: 'master' }}"
+  {% else %}
+      {{ asset_name | img_url: '320x' }} 320w,
+      {{ asset_name | img_url: '640x' }} 640w,
+      {{ asset_name | img_url: '1024x' }} 1024w,
+      {{ asset_name | img_url: 'master' }}"
+  {% endif %}
+{% endcapture %}
+
+{% if background_image == true %}
+  <div class="lazyload {% if additional_class != false %}{{ additional_class }}{% endif %}"
+       data-bgset="{{ image_url_params }}"
+       sizes="(max-width: 320px) 320px,
+            (max-width: 1024px) 1024px,
+            {{ original_size }}"></div>
+{% else %}
+  <img class="lazyload"
+       style="width: 100%;"
+       data-srcset="{{ image_url_params }}"
+       sizes="(max-width: 320px) 320px,
+            (max-width: 1024px) 1024px,
+            {{ original_size }}"
+       alt="{{ alt }}"
+  >
+{% endif %}
+
+{% assign asset_url = false %}
+{% assign background_image = false %}

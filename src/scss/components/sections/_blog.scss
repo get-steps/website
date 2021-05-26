@@ -1,0 +1,249 @@
+.blog {
+  padding: 20px 50px;
+
+  @include breakpoint(small down) {
+    padding: 0 30px 50px;
+  }
+
+  &__title {
+    color: $brand-dark;
+    margin-bottom: 65px;
+
+    @include breakpoint(small down) {
+      font-size: 40px;
+      margin-bottom: 0;
+    }
+  }
+  &__tags {
+    user-select: none;
+  }
+  &__tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    margin-left: 0;
+  }
+  &__tag {
+    border: 1px solid $brand-dark;
+    border-radius: 5px;
+    color: $brand-dark;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 38px;
+    margin-bottom: 18px;
+    margin-right: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: color 0.3s, background-color 0.3s;
+
+    @include breakpoint(small down) {
+      margin-bottom: 10px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      // background-color: rgba($brand-dark, 0.1);
+      background-color: #946d6a;
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      display: inline-block;
+      padding: 0 32px;
+      text-decoration: none;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    &--active {
+      background-color: $brand-dark;
+
+      color: #fff;
+
+      &:hover {
+        background-color: rgba($brand-dark, 0.8);
+      }
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px 28px;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    padding: 0 10px;
+    user-select: none;
+    width: 33.33%;
+    width: calc(100% / 3);
+
+    @include breakpoint(medium down) {
+      width: 50%;
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+    }
+  }
+
+  &__item-inner {
+    border-radius: 5px;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+
+    &::after {
+      content: '';
+      display: block;
+      padding-top: 100%;
+      width: 100%;
+    }
+  }
+  &__item-link {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+
+    @include breakpoint(small down) {
+      display: none;
+    }
+
+    .blog__item--active & {
+      @include breakpoint(small down) {
+        display: block;
+      }
+    }
+  }
+  &__item-img {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: 50% 100%;
+    transition: transform 0.5s;
+    width: 100%;
+    z-index: 1;
+
+    .blog__item-inner:hover & {
+      transform: scale(1.01);
+    }
+  }
+  &__item-main {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    left: 0;
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    &:hover {
+      &::after {
+        transform: translateY(-50%);
+      }
+    }
+
+    &::after {
+      background: linear-gradient(
+        0deg,
+        rgba(28, 28, 28, 0.8) 50%,
+        rgba(28, 28, 28, 0) 86%
+      );
+      content: '';
+      height: 200%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: transform 0.5s;
+      width: 100%;
+      z-index: -1;
+
+      .blog__item-inner:hover & {
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__item-date {
+    font-size: 14px;
+    line-height: (21/14);
+    margin-bottom: 19px;
+  }
+  &__item-title {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: (30/25);
+    margin: 0;
+  }
+  &__item-more {
+    flex-shrink: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  &__item-text {
+    color: inherit;
+    padding-top: 20px;
+
+    p {
+      color: inherit;
+    }
+  }
+  &__item-btn {
+    border-radius: 5px;
+  }
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+
+  li {
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    line-height: (28/20);
+    margin: 0 15px;
+
+    &.active {
+      font-weight: bold;
+      pointer-events: none;
+    }
+  }
+  span {
+    align-items: center;
+    display: flex;
+    margin: 0;
+    margin-bottom: 3px; // fix font normal/bold symbol height issues
+
+    @include breakpoint(small down) {
+      margin-bottom: 1px;
+    }
+  }
+  a {
+    align-items: center;
+    display: flex;
+  }
+}
+
+// @include breakpoint(medium down) {
+// }
+// @include breakpoint(small down) {
+// }

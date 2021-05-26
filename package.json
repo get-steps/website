@@ -1,0 +1,139 @@
+{
+  "name": "steps",
+  "description": "Steps Theme from 'Broadcast'",
+  "version": "1.3.1",
+  "license": "Private / Pixelcabin",
+  "author": "Pixelcabin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixelcabin/steps"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "autoformat:all": "npm run autoformat:js && npm run autoformat:scss",
+    "autoformat:js": "npm run lint:js -- --fix",
+    "autoformat:scss": "npm run lint:scss -- --fix",
+    "bundlesize": "bundlesize",
+    "cypress:open": "cypress open",
+    "dev": "concurrently \"grunt watch\" \"grunt connect\"",
+    "eslint-check": "eslint-config-prettier-check",
+    "lint:all": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint ./src/js/**",
+    "lint:scss": "stylelint ./src/scss/**",
+    "start": "npm run watch",
+    "stylelint-check": "stylelint-config-prettier-check",
+    "upload": "grunt shopify:upload",
+    "watch": "concurrently --raw 'grunt watch' 'webpack --config ./webpack/config/dev.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:all",
+      "pre-push": "npm run lint:all"
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@glidejs/glide": "^3.4.1",
+    "@sentry/browser": "^5.6.3",
+    "animejs": "^3.1.0",
+    "babel-polyfill": "^6.16.0",
+    "cash-dom": "^4.1.5",
+    "colcade": "^0.2.0",
+    "core-js": "^2.6.9",
+    "foundation-sites": "^6.5.3",
+    "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
+    "lazysizes": "^5.1.1",
+    "normalize-scss": "^7.0.1",
+    "waypoints": "^4.0.1",
+    "what-input": "^5.2.7"
+  },
+  "devDependencies": {
+    "@lodder/grunt-postcss": "^1.0.9",
+    "autoprefixer": "^6.5.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.6",
+    "bundlesize": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "cssnano": "^3.8.1",
+    "cypress": "~3.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "expose-loader": "^0.7.5",
+    "glob": "~7.1.1",
+    "growl": "~1.9.2",
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.0",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-eslint": "^22.0.0",
+    "grunt-exec": "^1.0.1",
+    "grunt-postcss": "^0.9.0",
+    "grunt-sass": "^3.1.0",
+    "grunt-shopify": "https://github.com/wilr/grunt-shopify/tarball/master",
+    "grunt-stylelint": "^0.11.1",
+    "grunt-sync": "^0.8.1",
+    "grunt-webpack": "^3.1.3",
+    "grunt-zip": "^0.18.2",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.5",
+    "i": "^0.3.5",
+    "imagemin": "^4.0.0",
+    "imports-loader": "^0.6.5",
+    "jest": "^22.4.3",
+    "jest-environment-jsdom": "^22.4.3",
+    "jest-environment-jsdom-global": "^1.0.3",
+    "jsdom": "11.11.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.12.0",
+    "prettier": "1.18.2",
+    "sinon": "^4.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-declaration-strict-value": "^1.1.3",
+    "stylelint-order": "^3.1.0",
+    "stylelint-prettier": "^1.1.1",
+    "stylelint-scss": "^3.10.1",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "setupFiles": [
+      "./tests/setupTests.js"
+    ],
+    "globals": {
+      "__DEV__": false,
+      "__PROD__": false,
+      "__TEST__": true
+    },
+    "testEnvironment": "jest-environment-jsdom-global"
+  },
+  "bundlesize": [
+    {
+      "path": "./shop/assets/*.min.js",
+      "maxSize": "20 kB"
+    },
+    {
+      "path": "./shop/assets/*.bundle.js",
+      "maxSize": "160 kB"
+    }
+  ]
+}

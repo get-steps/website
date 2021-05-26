@@ -1,0 +1,26 @@
+<section class="faq">
+  <div class="section-width-wrapper">
+    <h2 class="faq__title">{{ section.settings.title }}</h2>
+    <div class="faq__items">
+
+      {% for block in section.blocks %}
+        <div class="faq__item">
+          <div class="faq__item-header">
+            <p class="faq__item-title">{{block.settings.question}}</p>
+            {% render 'icon-plus-2' %}
+          </div>
+          <div class="faq__item-content">
+            <div class="faq__item-text">{{block.settings.answer}}</div>
+
+            {% if block.settings.note != blank %}
+              <p class="faq__item-disclaimer">{{block.settings.note}}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="faq__btn-wrapper">
+      <a href="/pages/{{section.settings.btnUrl}}" class="faq__btn">{{section.settings.btnText}}</a>
+    </div>
+  </div>
+</section>

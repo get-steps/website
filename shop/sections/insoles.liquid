@@ -1,0 +1,65 @@
+<section class="insoles">
+  <div class="section-width-wrapper">
+    <div class="insoles__grid">
+      <div class="insoles__pictures" data-aos-duration="500" data-aos="fade-up">
+        <img src="{{'insoles.png' | asset_url}}" alt="" class="insoles__img">
+
+        <div class="insoles__btn-wrapper">
+          <button class="insoles__btn js-insoles-popup">{{section.settings.btn}}</button>
+        </div>
+      </div>
+
+      <div class="insoles__main">
+        <h2 class="insoles__title" data-aos-duration="500" data-aos="fade-up">{{section.settings.title | newline_to_br}}</h2>
+        <p class="insoles__subtitle" data-aos-duration="500" data-aos="fade-up">{{section.settings.subtitle}}</p>
+        <div class="insoles__text" data-aos-duration="500" data-aos="fade-up">{{section.settings.text}}</div>
+
+        <div class="insoles__note" data-aos-duration="500" data-aos="fade-up">
+          <img src="{{'i-lamp.svg' | asset_url}}" alt="" class="insoles__note-icon">
+          <div class="insoles__note-text">{{section.settings.note}}</div>
+        </div>
+
+      </div>
+
+      <div class="insoles__note insoles__note--mob" data-aos-duration="500" data-aos="fade-up">
+        <img src="{{'i-lamp.svg' | asset_url}}" alt="" class="insoles__note-icon">
+        <div class="insoles__note-text">{{section.settings.note}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Insoles",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text description"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Bottom note"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Popup button"
+    }
+  ]
+}
+{% endschema %}

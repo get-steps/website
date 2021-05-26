@@ -1,0 +1,80 @@
+.infoblock {
+  background-color: #e0cbba;
+  padding: 120px 50px 100px;
+  text-align: center;
+
+  @include breakpoint(medium down) {
+  }
+  @include breakpoint(small down) {
+    padding: 60px 28px 65px;
+  }
+
+  &__title {
+    //override h2 styles
+    @at-root h2#{&} {
+      color: #fff;
+      font-size: 80px;
+      font-weight: bold;
+      line-height: (90/80);
+      margin-bottom: 38px;
+      margin-top: 0;
+
+      @include breakpoint(medium down) {
+      }
+      @include breakpoint(small down) {
+        font-size: 45px;
+        margin-bottom: 42px;
+      }
+    }
+  }
+  &__text {
+    margin: 0 auto 40px;
+    max-width: 900px;
+
+    p {
+      margin-bottom: 0;
+
+      @include breakpoint(medium down) {
+      }
+      @include breakpoint(small down) {
+        font-size: 17px !important;
+      }
+    }
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      font-size: 17px;
+      margin-bottom: 0;
+
+      .template-article & {
+        margin-bottom: 34px;
+      }
+    }
+  }
+  &__btn-wrapper {
+    display: flex;
+    justify-content: center;
+
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+      display: none;
+
+      .template-article & {
+        display: flex;
+      }
+    }
+  }
+  &__btn {
+    @include breakpoint(medium down) {
+    }
+    @include breakpoint(small down) {
+    }
+
+    &:hover {
+      background-color: #e26d5c;
+      border-color: #e26d5c;
+    }
+  }
+}
