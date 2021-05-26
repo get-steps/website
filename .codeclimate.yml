@@ -1,0 +1,27 @@
+---
+engines:
+  scss-lint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: false
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.scss"
+  - "**.js"
+  - "**.rb"
+exclude_paths:
+  - src/scss/lib/
+  - bower_components/
+  - tests/
+  - src/js/app/lib/

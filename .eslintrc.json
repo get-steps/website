@@ -1,0 +1,49 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true
+  },
+  "globals": {
+    "YT": false,
+    "expect": false,
+    "test": false,
+    "describe": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "cy": false,
+    "jest": false,
+    "jsdom": false,
+    "it": false,
+    "Shopify": false,
+    "Promise": false,
+    "__DEV__": false,
+    "__PROD__": false,
+    "__TEST__": false,
+    "__VERSION__": false,
+    "__NAME__": false,
+    "$": false,
+    "Offline": false,
+    "_": false,
+    "ga": false,
+    "Qurl": false,
+    "Vimeo": false,
+    "Modernizr": false,
+    "zoomProduct": false,
+    "product_json": false
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "eqeqeq": ["error", "always"],
+    "no-caller": "error",
+    "no-console": 0,
+    "no-prototype-builtins": "error"
+  }
+}

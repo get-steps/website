@@ -1,0 +1,51 @@
+language: node_js
+node_js:
+- 10.16.0
+sudo: required
+cache:
+  npm: true
+  directories:
+  - "/home/travis/.cache/Cypress"
+  - "$HOME/node_modules"
+  - "$HOME/.npm"
+  - "/home/travis/.rvm/"
+before_cache:
+- rm -f $HOME/travis/.npm/anonymous-cli-metrics.json
+before_install:
+- gem update --system
+install:
+- bundle install --jobs=3 --retry=3
+- npm install
+- npm install -g ngrok
+before_script:
+#- mkdir public
+#- curl -sO http://stedolan.github.io/jq/download/linux64/jq
+#- ngrok http file://$(pwd)/public/ --authtoken=${NGROK_AUTH_TOKEN} > /dev/null &
+#- sleep 3
+#- echo {} > credentials.json
+script:
+#- grunt compile:production || exit 1
+#- grunt zip
+#- NGROK_PATH=$(curl 'http://localhost:4040/api/tunnels' | jq -r '.tunnels[0].public_url')/theme.zip
+#- echo "{\"theme\":{\"name\":\"Travis Curl Test - $(date +"%D %T %Z")\",\"src\":\"$NGROK_PATH\"}}"
+#  > body.json
+#- echo $(cat body.json)
+#- 'TEST_THEME_ID=$(curl -d @body.json -H "Accept: application/json" -H "Content-Type:
+#  application/json" https://${SHOPIFY_API_KEY}:${SHOPIFY_API_PASSWORD}@${SHOPIFY_URL}/admin/api/2019-04/themes.json
+#  | jq -r ''.theme.id'')'
+#- if [ ${TEST_THEME_ID} == null ] ; then exit 1 ; fi
+#- while [ $(curl https://${SHOPIFY_API_KEY}:${SHOPIFY_API_PASSWORD}@${SHOPIFY_URL}/admin/api/2019-04/themes/$TEST_THEME_ID.json
+#  | jq -r '.theme.previewable') != 'true' ]; do echo 'Waiting for theme'; sleep 2;
+#  done
+#- cypress run --env SHOPIFY_URL=${SHOPIFY_URL},SHOPIFY_THEME_ID=$TEST_THEME_ID
+#- 'curl -H "Accept: application/json" -X DELETE https://${SHOPIFY_API_KEY}:${SHOPIFY_API_PASSWORD}@${SHOPIFY_URL}/admin/api/2019-04/themes/$TEST_THEME_ID.json'
+addons:
+  chrome: stable
+  apt:
+    packages:
+    - libgconf-2-4
+env:
+  global:
+  - SHOPIFY_URL: get-steps.myshopify.com
+  - secure: q8WqAVgfEMgBrr1iIhNIhbGbP3dro7WOu4/ekSKQ7vsTfRqrJeYcHXGrWtHVWVVpzfNXfwCo8nwZIj5rmcCcdjz00iby/n/Atjbt4ZD5hQPvZNYQPslo//7xjKeNN8xd2TP5wF5LaNpOK2n5tyYTbIrfze6G4HNGVvh59dxeU2To125en+EPdf165zdw6xE9IBVGdd7/bqH06ZN9ZIvnG8YdSXKesAi8MQ+dAFzxO20XGWY/XaFekiioYQN3P13/i+irKgXsk67na32QyeZL6u+xXyvKxyJKCbUX+RrjY8IPXIAMPUBaqVYr+aFLa3t/peI/hNDw0R/ycdr5Y96u5bmsvW6knLXGJ7V+VwjIc+P6gQFoB8dYgud74NJAe9pbcJKCeGiPFStorh5CD7exT8+rA3ojhS3J5FXZ3iQbdjP0pv2K5RjUbgpF9IVgJdID0ukwWJU6NOVljoMSP6J5eyfLeIhcFDaB9NBDdrGNY3BvyC6KqmJwGDOvq+dC7Xif7luJaZpLX7OyH4f8+v90fUEp5IwWO5HQGDooxgf4hHcEBLQ3iW6UclTSzi6gFMrm13wcI+gGLnskOk46XlFX3yPgvFsJVTUJqnH3eIHOxpXy7PY9xYcxla7zXcmS32sYqA9N7GyyfhVT0Coj9UE89AYyzx23NV8IncZ/HPaRfOc=
+  - secure: qBEMfvJ1NzI4/9B014RWuT3/Dyu8GBMCW7CdYRc1PWwK1zPupPymfVGZQ7pXWR4ZgU2U9xR50y2qebkvFn2jH4bUSIkqFJa+ixsMz5dxhG+9izywN3zvgljTG4Ds18ev0H0SmoiEUtgTIqsMzM1zaHeNFTq+oi6Nae8VKBz+dHvkC3hpktIzqcOtHzntT3w3EhjtVq85KCTJUOwNYzRZ4AzsiuHj19NjZWXdjyy4SzIaMDlcIW+2NXre4VM+XOLkdBXbCXub5mCDDVeQbhHC9YxlQWS6wX4oxEKl37hiy9rbRsPuaNpkmy9M9obErKtfjAlv2nmm6m1k6cVUxS9pH/rXjqS8BLadJ0R/3Wf2UONc1g+LeeJPPAoHJghEZIDCACMG4b1Dq5XkF1m27F4OPmg4I/boD/RTJcRjo0WaVfqNSgmNBL31XOxu0k3nm7nStcRe4GP0y8zWwuJXHJtDZwTzK/uZg8cgWbx/Trg40tPgKcal3bjBFSiVsWivH1Mo21rWFUuHMbCHyKleEYYLvp+Ow7HX7/5uIUiP0iifLvIlBU7tmGUtaEOmu75w02TzUAjbH8KqTRIcIYPaHQi0TFNhckzBHKi06S2tZwxRb6w4W9jS/zJlqH7JKkmwsa3aPNqmAEQUt4fOgkTjQJYwUyrtGsPavLgcg/atdN+Ultg=

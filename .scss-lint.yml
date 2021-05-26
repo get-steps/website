@@ -1,0 +1,41 @@
+# Extends default - github.com/brigade/scss-lint/blob/master/config/default.yml
+# Rule explanations with examples - github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+
+exclude:
+  - 'src/scss/lib/**'
+  - 'node_modules/**'
+  - 'docs/**'
+
+linters:
+  FinalNewline:
+    enabled: false
+
+  SingleLinePerSelector:
+    enabled: false
+
+  # TODO refactor all of the rules below so we can remove the rule
+  # and use the default of enabled: true
+
+  DeclarationOrder:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  NameFormat:
+    enabled: false
+    # allow_leading_underscore: true
+    # convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
+
+  QualifyingElement:
+    enabled: false
+
+  SelectorDepth:
+    enabled: false
+
+  SelectorFormat:
+    enabled: false
+    # convention: hyphenated_lowercase # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+  PrivateNamingConvention:
+    enabled: true
